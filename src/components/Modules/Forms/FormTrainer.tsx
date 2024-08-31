@@ -1,0 +1,88 @@
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+
+export const FormTrainer = () => {
+  return (
+    <Card className="w-full max-w-2xl">
+      <CardHeader>
+        <CardTitle>Formulaire Formateur</CardTitle>
+      </CardHeader>
+      <CardContent className="space-y-4">
+        <div className="grid grid-cols-2 gap-4">
+          <div className="space-y-2">
+            <Label htmlFor="nom">Nom</Label>
+            <Input id="nom" placeholder="Entrez votre nom" />
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="prenom">Prénom</Label>
+            <Input id="prenom" placeholder="Entrez votre prénom" />
+          </div>
+        </div>
+        <div className="space-y-2">
+          <Label htmlFor="email">Email</Label>
+          <Input id="email" type="email" placeholder="Entrez votre email" />
+        </div>
+        <div className="space-y-2">
+          <Label htmlFor="tel">Téléphone</Label>
+          <Input
+            id="tel"
+            type="tel"
+            placeholder="Entrez votre numéro de téléphone"
+          />
+        </div>
+        <div className="space-y-2">
+          <Label htmlFor="tarif">Tarif (€ journalier)</Label>
+          <Input
+            id="tarif"
+            type="number"
+            min="0"
+            step="0.01"
+            placeholder="Entrez votre tarif journalier"
+          />
+        </div>
+        <div className="space-y-2">
+          <Label>Compétences</Label>
+          <div className="grid grid-cols-2 gap-2">
+            <div className="flex items-center space-x-2">
+              <Checkbox id="web" />
+              <Label htmlFor="web">Développement Web</Label>
+            </div>
+            <div className="flex items-center space-x-2">
+              <Checkbox id="mobile" />
+              <Label htmlFor="mobile">Développement Mobile</Label>
+            </div>
+            <div className="flex items-center space-x-2">
+              <Checkbox id="data" />
+              <Label htmlFor="data">Science des Données</Label>
+            </div>
+            <div className="flex items-center space-x-2">
+              <Checkbox id="design" />
+              <Label htmlFor="design">Design UX/UI</Label>
+            </div>
+          </div>
+        </div>
+        <div className="space-y-2">
+          <Label htmlFor="commentaire">Commentaire</Label>
+          <Textarea
+            id="commentaire"
+            placeholder="Ajoutez un commentaire ou des informations supplémentaires"
+            className="min-h-[100px]"
+          />
+        </div>
+      </CardContent>
+      <CardFooter>
+        <Button className="w-full">Soumettre</Button>
+      </CardFooter>
+    </Card>
+  );
+};

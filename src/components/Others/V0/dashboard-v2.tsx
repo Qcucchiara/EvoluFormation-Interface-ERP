@@ -67,7 +67,7 @@ import {
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "../ui/tooltip";
+} from "@/components/ui/tooltip";
 import {
   UsersIcon,
   BuildingIcon,
@@ -77,6 +77,9 @@ import {
   DollarSignIcon,
   PlusIcon,
 } from "lucide-react";
+import { SearchNewEntity } from "@/components/Composites/SearchNewEntity";
+import { CreateNewProspect } from "@/components/Composites/CreateNewProspect";
+import { InputInteger } from "@/components/Primitives/InputInteger";
 
 export function DashboardV2() {
   return (
@@ -387,84 +390,19 @@ export function DashboardV2() {
                       />
                     </div>
                     <Card>
-                      <CardHeader>
-                        <CardTitle>Representative</CardTitle>
-                        <CardDescription>Linked Prospects </CardDescription>
+                      <CardHeader className="w-full flex flex-row justify-between">
+                        <div className="w-fit">
+                          <CardTitle>Representative</CardTitle>
+                          <CardDescription>Linked Prospects</CardDescription>
+                        </div>
+                        <Button className="w-40 gap-2">
+                          New Prospect
+                          <PlusIcon />
+                        </Button>
                       </CardHeader>
                       <CardContent>
-                        <div className="flex gap-2 ">
-                          <Label htmlFor="prospect">Prospect</Label>
-                          <Input
-                            id="prospect"
-                            list="prospects-list"
-                            type="search"
-                          />
-                          <TooltipProvider>
-                            <Tooltip>
-                              <TooltipTrigger>
-                                <PlusIcon />
-                              </TooltipTrigger>
-                              <TooltipContent>
-                                link another prospect
-                              </TooltipContent>
-                            </Tooltip>
-                          </TooltipProvider>
-                          <datalist id="prospects-list">
-                            <option value="Truc"></option>
-                            <option value="Coconut"></option>
-                            <option value="Mint"></option>
-                            <option value="Strawberry"></option>
-                            <option value="Vanilla"></option>
-                          </datalist>
-                        </div>
-                        <div className="grid grid-cols-2 gap-4">
-                          <div className="grid gap-2">
-                            <Label htmlFor="first-name">First Name</Label>
-                            <Input
-                              id="first-name"
-                              placeholder="Enter first name"
-                            />
-                          </div>
-                          <div className="grid gap-2">
-                            <Label htmlFor="last-name">Last Name</Label>
-                            <Input
-                              id="last-name"
-                              placeholder="Enter last name"
-                            />
-                          </div>
-                        </div>
-                        <div className="grid gap-2">
-                          <Label htmlFor="civility">Civility</Label>
-                          <Select id="civility">
-                            <SelectTrigger>
-                              <SelectValue placeholder="Select civility" />
-                            </SelectTrigger>
-                            <SelectContent>
-                              <SelectItem value="mr">Mr.</SelectItem>
-                              <SelectItem value="mrs">Mrs.</SelectItem>
-                            </SelectContent>
-                          </Select>
-                        </div>
-                        <div className="grid gap-2">
-                          <Label htmlFor="representative-email">
-                            Representative Email
-                          </Label>
-                          <Input
-                            id="representative-email"
-                            type="email"
-                            placeholder="Enter representative email"
-                          />
-                        </div>
-                        <div className="grid gap-2">
-                          <Label htmlFor="representative-phone">
-                            Representative Phone
-                          </Label>
-                          <Input
-                            id="representative-phone"
-                            type="tel"
-                            placeholder="Enter representative phone"
-                          />
-                        </div>
+                        <SearchNewEntity listItems={["rest", "test"]} />
+                        {/* <CreateNewProspect /> */}
                       </CardContent>
                     </Card>
                     <div className="grid gap-2">
@@ -493,14 +431,15 @@ export function DashboardV2() {
                       </div>
                     </div>
                     <div className="grid grid-cols-2 gap-4">
-                      <div className="grid gap-2">
+                      {/* <div className="grid gap-2">
                         <Label htmlFor="num-students">Number of Students</Label>
                         <Input
                           id="num-students"
                           type="number"
                           placeholder="Enter number of students"
                         />
-                      </div>
+                      </div> */}
+                      <InputInteger />
                       <div className="grid gap-2">
                         <Label htmlFor="formation-address">
                           Formation Address
@@ -624,7 +563,7 @@ export function DashboardV2() {
   );
 }
 
-function BriefcaseIcon(props) {
+function BriefcaseIcon(props: any) {
   return (
     <svg
       {...props}
@@ -644,7 +583,7 @@ function BriefcaseIcon(props) {
   );
 }
 
-function CalendarIcon(props) {
+function CalendarIcon(props: any) {
   return (
     <svg
       {...props}
@@ -666,7 +605,7 @@ function CalendarIcon(props) {
   );
 }
 
-function HomeIcon(props) {
+function HomeIcon(props: any) {
   return (
     <svg
       {...props}
@@ -686,7 +625,7 @@ function HomeIcon(props) {
   );
 }
 
-function MenuIcon(props) {
+function MenuIcon(props: any) {
   return (
     <svg
       {...props}
@@ -707,7 +646,7 @@ function MenuIcon(props) {
   );
 }
 
-function MountainIcon(props) {
+function MountainIcon(props: any) {
   return (
     <svg
       {...props}
@@ -726,7 +665,7 @@ function MountainIcon(props) {
   );
 }
 
-function SettingsIcon(props) {
+function SettingsIcon(props: any) {
   return (
     <svg
       {...props}
