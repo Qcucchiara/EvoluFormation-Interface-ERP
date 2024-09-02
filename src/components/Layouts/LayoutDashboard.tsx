@@ -10,6 +10,16 @@ import {
   ResizablePanel,
   ResizablePanelGroup,
 } from "@/components/ui/resizable";
+import {
+  Command,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+  CommandList,
+  CommandSeparator,
+} from "../ui/command";
+import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 
 export const LayoutDashboard = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -120,9 +130,35 @@ export const LayoutDashboard = () => {
           <ResizablePanel defaultSize={25} minSize={30}>
             <div className="h-full flex flex-col p-4">
               <div className="mb-4">
-                <Button variant="outline" className="w-full justify-between">
-                  Filtre dossiers <ChevronDown className="h-4 w-4 ml-2" />
-                </Button>
+                <Popover>
+                  <PopoverTrigger>
+                    <Button
+                      variant="outline"
+                      className="w-full justify-between"
+                    >
+                      Filtre dossiers <ChevronDown className="h-4 w-4 ml-2" />
+                    </Button>
+                  </PopoverTrigger>
+                  <PopoverContent>
+                    <Command>
+                      <CommandInput placeholder="Type a command or search..." />
+                      <CommandList>
+                        <CommandEmpty>No results found.</CommandEmpty>
+                        <CommandGroup heading="Suggestions">
+                          <CommandItem>Calendar</CommandItem>
+                          <CommandItem>Search Emoji</CommandItem>
+                          <CommandItem>Calculator</CommandItem>
+                        </CommandGroup>
+                        <CommandSeparator />
+                        <CommandGroup heading="Settings">
+                          <CommandItem>Profile</CommandItem>
+                          <CommandItem>Billing</CommandItem>
+                          <CommandItem>Settings</CommandItem>
+                        </CommandGroup>
+                      </CommandList>
+                    </Command>
+                  </PopoverContent>
+                </Popover>
               </div>
               <ScrollArea className="flex-1">
                 <div className="space-y-4">

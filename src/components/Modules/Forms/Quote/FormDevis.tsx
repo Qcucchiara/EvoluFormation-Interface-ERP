@@ -24,7 +24,6 @@ const modules = [
 ];
 
 export const FormDevis = () => {
-  const [showAddress, setShowAddress] = useState(false);
   const [selectedModules, setSelectedModules] = useState<typeof modules>([]);
   const [formationTitle, setFormationTitle] = useState("");
 
@@ -54,15 +53,11 @@ export const FormDevis = () => {
       </CardHeader>
       <CardContent className="space-y-6">
         <div className="flex items-center space-x-2">
-          <Checkbox
-            id="showAddress"
-            checked={showAddress}
-            onCheckedChange={setShowAddress}
-          />
+          <Checkbox id="showAddress" />
           <Label htmlFor="showAddress">Afficher l'adresse</Label>
         </div>
 
-        <div className="grid grid-cols-3 gap-4">
+        {/* <div className="grid grid-cols-3 gap-4">
           <div className="space-y-2">
             <Label htmlFor="lastName">Nom</Label>
             <Input id="lastName" placeholder="Nom" />
@@ -101,12 +96,11 @@ export const FormDevis = () => {
           </div>
         </div>
 
-        {showAddress && (
-          <div className="space-y-2">
-            <Label htmlFor="address">Adresse</Label>
-            <Textarea id="address" placeholder="Adresse complète" />
-          </div>
-        )}
+        <div className="space-y-2">
+          changer le type d'adresse pas le format a 3 input
+          <Label htmlFor="address">Adresse</Label>
+          <Textarea id="address" placeholder="Adresse complète" />
+        </div> */}
 
         <div className="space-y-2">
           <Label htmlFor="moduleSelect">Ajouter un module</Label>
@@ -178,9 +172,18 @@ export const FormDevis = () => {
                 <SelectValue placeholder="Sélectionnez le type" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="presentiel">Présentiel</SelectItem>
-                <SelectItem value="distanciel">Distanciel</SelectItem>
-                <SelectItem value="mixte">Mixte</SelectItem>
+                <SelectItem value="inter distanciel">
+                  inter entreprise (distanciel)
+                </SelectItem>
+                <SelectItem value="inter présentiel">
+                  inter entreprise (présentiel)
+                </SelectItem>
+                <SelectItem value="intra distanciel">
+                  intra entreprise (distanciel)
+                </SelectItem>
+                <SelectItem value="intra présentiel">
+                  intra entreprise (présentiel)
+                </SelectItem>
               </SelectContent>
             </Select>
           </div>
