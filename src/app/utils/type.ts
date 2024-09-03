@@ -9,3 +9,6 @@ export type moduleForm = {
   link?: string;
   commentary?: string;
 };
+export type instructor = {
+  instructor: string;
+};

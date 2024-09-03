@@ -25,17 +25,18 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { moduleForm } from "@/app/utils/type";
+import { instructor, moduleForm } from "@/app/utils/type";
 import { schemaModule } from "@/validator/ModuleValidtor";
 import { yupResolver } from "@hookform/resolvers/yup";
 import InputCheckbox from "@/components/Composites/InputCheckbox";
+import { string } from "yup";
 
 export const FormModule = () => {
   const [categories] = useState(["Catégorie 1", "Catégorie 2", "Catégorie 3"]);
   const [domaines] = useState(["Domaine 1", "Domaine 2", "Domaine 3"]);
   const [objectifs] = useState(["Objectif 1", "Objectif 2", "Objectif 3"]);
   const [formateurs] = useState(["Formateur 1", "Formateur 2", "Formateur 3"]);
-  const [formateur, setFormateur] = useState([]);
+  const [formateur, setFormateur] = useState<[]>([]);
   const [domaineBPF, setDomaineBPF] = useState<string>("");
   const [objectifBPF, setObjectifBPF] = useState<string>("");
   const {
@@ -45,7 +46,7 @@ export const FormModule = () => {
     watch,
     formState: { errors },
   } = useForm<moduleForm>({
-    mode: "all",
+    mode: "onChange",
     resolver: yupResolver(schemaModule),
   });
   const onSubmit: SubmitHandler<moduleForm> = async (data) => {
@@ -60,7 +61,7 @@ export const FormModule = () => {
     setValue("objectifBPF", objectifBPF);
   }, [objectifBPF]);
   useEffect(() => {
-    console.log(formateur);
+    setValue("instructor", formateur);
   }, [formateur]);
 
   return (
