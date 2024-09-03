@@ -14,9 +14,13 @@ const InputCheckbox = ({
   const [isChecked, setIsChecked] = useState(false);
   useEffect(() => {
     isChecked &&
-      setFormateur((prev: any) => {
-        return [prev, formateurName];
+      setFormateur((prev: []) => {
+        return [...prev, formateurName];
       });
+    !isChecked &&
+      setFormateur((prev: []) =>
+        prev.filter((formateur) => formateur !== formateurName)
+      );
   }, [isChecked]);
   return (
     <div key={formateurId} className="flex items-center space-x-2">

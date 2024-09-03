@@ -24,7 +24,6 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { Checkbox } from "@/components/ui/checkbox";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { moduleForm } from "@/app/utils/type";
 import { schemaModule } from "@/validator/ModuleValidtor";
@@ -37,10 +36,12 @@ export const FormModule = () => {
   const [objectifs] = useState(["Objectif 1", "Objectif 2", "Objectif 3"]);
   const [formateurs] = useState(["Formateur 1", "Formateur 2", "Formateur 3"]);
   const [formateur, setFormateur] = useState([]);
-  const [domaineBPF, setDomaineBPF] = useState("");
+  const [domaineBPF, setDomaineBPF] = useState<string>("");
+  const [objectifBPF, setObjectifBPF] = useState<string>("");
   const {
     register,
     handleSubmit,
+    setValue,
     watch,
     formState: { errors },
   } = useForm<moduleForm>({
@@ -52,10 +53,16 @@ export const FormModule = () => {
   };
   useEffect(() => {
     console.log(domaineBPF);
+    setValue("domaineBPF", domaineBPF);
+    watch("domaineBPF");
   }, [domaineBPF]);
+  useEffect(() => {
+    setValue("objectifBPF", objectifBPF);
+  }, [objectifBPF]);
   useEffect(() => {
     console.log(formateur);
   }, [formateur]);
+
   return (
     <Card className="w-full max-w-2xl">
       <CardHeader>
@@ -109,18 +116,15 @@ export const FormModule = () => {
                   ))}
                 </SelectContent>
               </Select>
-              {errors.domaineBPF?.message && (
-                <p className="text-red-600">{errors.domaineBPF.message}</p>
+              {errors.domaineBPF?.message && watch("domaineBPF") === "" && (
+                <p className="text-red-600">{errors.domaineBPF?.message}</p>
               )}
             </div>
             <div className="space-y-2">
               <Label htmlFor="objectif">Objectif de formation selon BPF</Label>
-              <Select>
+              <Select onValueChange={setObjectifBPF}>
                 <SelectTrigger id="objectif">
-                  <SelectValue
-                    placeholder="Sélectionnez un objectif"
-                    {...register("objectifBPF")}
-                  />
+                  <SelectValue placeholder="Sélectionnez un objectif" />
                 </SelectTrigger>
                 <SelectContent>
                   {objectifs.map((obj, index) => (
@@ -130,8 +134,8 @@ export const FormModule = () => {
                   ))}
                 </SelectContent>
               </Select>
-              {errors.objectifBPF?.message && (
-                <p className="text-red-600">{errors.objectifBPF.message}</p>
+              {errors.objectifBPF?.message && watch("objectifBPF") === "" && (
+                <p className="text-red-600">{errors.objectifBPF?.message}</p>
               )}
             </div>
             <div></div>
@@ -176,6 +180,7 @@ export const FormModule = () => {
                   <div className="grid grid-cols-2 gap-2">
                     {formateurs.map((formateur, index) => (
                       <InputCheckbox
+                        key={index}
                         formateurId={String(index)}
                         formateurName={formateur}
                         setFormateur={setFormateur}
