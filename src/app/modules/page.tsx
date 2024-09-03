@@ -1,6 +1,8 @@
 "use client";
 import LayoutStandard from "@/components/Layouts/LayoutStandard";
 import { FormModule } from "@/components/Modules/Forms/FormModule";
+import ListModules from "@/components/Modules/Lists/ListModules";
+import { ModaleModuleActions } from "@/components/Modules/Modale/ModaleModuleActions";
 import { Card } from "@/components/ui/card";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -23,8 +25,8 @@ const children = () => {
         </TabsContent>
         <TabsContent value="browsing" className="h-full">
           <div className="bg-card p-4 rounded-lg shadow">
-            {/* TODO: Créer une liste de navigation des modules */}
-            {/* TODO: Une fois le module sélectionné, afficher ses détails (peut êtr en modale, je sais pas) */}
+            <ListModules />
+            {/* TODO: Une fois le module sélectionné, afficher ses détails (peut être en modale, je sais pas) */}
           </div>
         </TabsContent>
         <TabsContent value="other" className="h-full">
@@ -44,7 +46,8 @@ const page = () => {
   return (
     <>
       <ContexteModules.Provider value>
-        <LayoutStandard children={children()} />;
+        <LayoutStandard children={children()} />
+        <ModaleModuleActions />
       </ContexteModules.Provider>
     </>
   );
