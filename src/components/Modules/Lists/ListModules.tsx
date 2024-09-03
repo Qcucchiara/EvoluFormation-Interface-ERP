@@ -18,8 +18,10 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { ModaleModuleActions } from "../Modale/ModaleModuleActions";
+import { ListModuleElement } from "./ListModuleElement";
 
-type DataItem = {
+export type DataItem = {
   id: number;
   titre: string;
   categorie: string;
@@ -103,10 +105,6 @@ const ListModules = () => {
     }
     setSortConfig({ key, direction });
   };
-  const handleAction = (action: string, item: DataItem) => {
-    console.log(`Action ${action} for item:`, item);
-    // Implement actual logic for details, edit, delete here
-  };
 
   return (
     <div className="container mx-auto py-10">
@@ -141,40 +139,7 @@ const ListModules = () => {
         </TableHeader>
         <TableBody>
           {filteredData.map((item) => (
-            <TableRow key={item.id}>
-              <TableCell>{item.titre}</TableCell>
-              <TableCell>{item.categorie}</TableCell>
-              <TableCell>{item.montant} €</TableCell>
-              <TableCell>{item.duree}</TableCell>
-              <TableCell>{item.domaineBPF}</TableCell>
-              <TableCell>
-                <DropdownMenu>
-                  <DropdownMenuTrigger asChild>
-                    <Button variant="ghost" className="h-8 w-8 p-0">
-                      <span className="sr-only">Open menu</span>
-                      <MoreHorizontal className="h-4 w-4" />
-                    </Button>
-                  </DropdownMenuTrigger>
-                  <DropdownMenuContent align="end">
-                    <DropdownMenuItem
-                      onClick={() => handleAction("details", item)}
-                    >
-                      Détails
-                    </DropdownMenuItem>
-                    <DropdownMenuItem
-                      onClick={() => handleAction("modifier", item)}
-                    >
-                      Modifier
-                    </DropdownMenuItem>
-                    <DropdownMenuItem
-                      onClick={() => handleAction("supprimer", item)}
-                    >
-                      Supprimer
-                    </DropdownMenuItem>
-                  </DropdownMenuContent>
-                </DropdownMenu>
-              </TableCell>
-            </TableRow>
+            <ListModuleElement item={item} />
           ))}
         </TableBody>
       </Table>

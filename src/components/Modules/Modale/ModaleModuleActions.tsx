@@ -1,5 +1,5 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import React from "react";
+import React, { useEffect } from "react";
 import {
   Dialog,
   DialogContent,
@@ -10,10 +10,19 @@ import {
 } from "@/components/ui/dialog";
 import { FormModule } from "../Forms/FormModule";
 
-export const ModaleModuleActions = () => {
+export const ModaleModuleActions = ({
+  open,
+  setOpen,
+}: {
+  open: boolean;
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}) => {
+  useEffect(() => {
+    console.log("opened?");
+  }, [open]);
   return (
-    <Dialog>
-      <DialogTrigger>Open</DialogTrigger>
+    <Dialog open={open} onOpenChange={setOpen}>
+      {/* <DialogTrigger>trigger</DialogTrigger> */}
       <DialogContent>
         <DialogHeader>
           <DialogTitle>Détails du module "":</DialogTitle>
