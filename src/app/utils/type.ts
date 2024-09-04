@@ -12,3 +12,17 @@ export type moduleForm = {
 export type instructor = {
   instructor: string;
 };
+export type prospectForm = {
+  civility: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  type: string;
+  company: string;
+  address?: {
+    place: string;
+    postalCode: string;
+    city: string;
+  };
+};
