@@ -8,7 +8,7 @@ import {
 import { PlusIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-export const ButtonIcon = ({ children, className, ...props }) => {
+export const ButtonIcon = ({ children, className, ...props }: any) => {
   return (
     <div
       className={cn(
