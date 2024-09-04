@@ -83,7 +83,6 @@ const frameworks = [
     label: "Jekyll",
   },
 ];
-
 const main = () => {
   return (
     <Tabs defaultValue="overview" className="h-full flex flex-col">
@@ -123,7 +122,6 @@ const main = () => {
     </Tabs>
   );
 };
-
 const aside = () => {
   return (
     <div className="h-full flex flex-col p-4">

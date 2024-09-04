@@ -20,39 +20,15 @@ export const ListModuleElement = ({ item }: { item: any }) => {
   };
   return (
     <TableRow key={item.id}>
-      <TableCell
-        onClick={() => {
-          setOpenModale(true);
-        }}
-      >
-        {item.titre}
-      </TableCell>
-      <TableCell
-        onClick={() => {
-          setOpenModale(true);
-        }}
-      >
+      <TableCell onClick={() => setOpenModale(true)}>{item.titre}</TableCell>
+      <TableCell onClick={() => setOpenModale(true)}>
         {item.categorie}
       </TableCell>
-      <TableCell
-        onClick={() => {
-          setOpenModale(true);
-        }}
-      >
+      <TableCell onClick={() => setOpenModale(true)}>
         {item.montant} €
       </TableCell>
-      <TableCell
-        onClick={() => {
-          setOpenModale(true);
-        }}
-      >
-        {item.duree}
-      </TableCell>
-      <TableCell
-        onClick={() => {
-          setOpenModale(true);
-        }}
-      >
+      <TableCell onClick={() => setOpenModale(true)}>{item.duree}</TableCell>
+      <TableCell onClick={() => setOpenModale(true)}>
         {item.domaineBPF}
       </TableCell>
       <TableCell>
