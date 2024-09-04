@@ -9,6 +9,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
+import { FormModule } from "../Forms/FormModule";
 
 export const ModaleModuleActions = ({
   open,
@@ -41,7 +42,7 @@ export const ModaleModuleActions = ({
               mêmes infos que dans détails, mais avec des input ghost préremplis
             </div>
             <Button variant={"destructive"}>delete</Button>
-            {/* <FormModule /> */}
+            <FormModule />
           </TabsContent>
         </Tabs>
       </DialogContent>

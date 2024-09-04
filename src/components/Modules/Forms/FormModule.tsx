@@ -30,6 +30,8 @@ import { schemaModule } from "@/validator/ModuleValidtor";
 import { yupResolver } from "@hookform/resolvers/yup";
 import InputCheckbox from "@/components/Composites/InputCheckbox";
 import { string } from "yup";
+import { MinusIcon, PlusIcon } from "@radix-ui/react-icons";
+import { InputNumber } from "@/components/Composites/InputNumber";
 
 export const FormModule = () => {
   const [categories] = useState(["Catégorie 1", "Catégorie 2", "Catégorie 3"]);
@@ -65,14 +67,14 @@ export const FormModule = () => {
   }, [formateur]);
 
   return (
-    <Card className="w-full max-w-2xl">
+    <Card className="w-full max-w-7xl">
       <CardHeader>
         <CardTitle>Formulaire Module</CardTitle>
       </CardHeader>
       <form onSubmit={handleSubmit(onSubmit)}>
         <CardContent className="space-y-6">
           <div className="space-y-4">
-            <div className="flex justify-around">
+            <div className="grid grid-cols-2 gap-4">
               <div className="space-y-2">
                 <Label htmlFor="titre">Titre</Label>
                 <Input
@@ -103,47 +105,51 @@ export const FormModule = () => {
                 </datalist>
               </div>
             </div>
-            <div className="space-y-2">
-              <Label htmlFor="domaine">Domaine selon BPF</Label>
-              <Select onValueChange={setDomaineBPF}>
-                <SelectTrigger id="domaine">
-                  <SelectValue placeholder="Sélectionnez un domaine" />
-                </SelectTrigger>
-                <SelectContent>
-                  {domaines.map((dom, index) => (
-                    <SelectItem key={index} value={dom}>
-                      {dom}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-              {errors.domaineBPF?.message && watch("domaineBPF") === "" && (
-                <p className="text-red-600">{errors.domaineBPF?.message}</p>
-              )}
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="objectif">Objectif de formation selon BPF</Label>
-              <Select onValueChange={setObjectifBPF}>
-                <SelectTrigger id="objectif">
-                  <SelectValue placeholder="Sélectionnez un objectif" />
-                </SelectTrigger>
-                <SelectContent>
-                  {objectifs.map((obj, index) => (
-                    <SelectItem key={index} value={obj}>
-                      {obj}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
+            <div className="grid grid-cols-2 gap-4">
+              <div className="space-y-2">
+                <Label htmlFor="domaine">Domaine selon BPF</Label>
+                <Select onValueChange={setDomaineBPF}>
+                  <SelectTrigger id="domaine">
+                    <SelectValue placeholder="Sélectionnez un domaine" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {domaines.map((dom, index) => (
+                      <SelectItem key={index} value={dom}>
+                        {dom}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+                {errors.domaineBPF?.message && watch("domaineBPF") === "" && (
+                  <p className="text-red-600">{errors.domaineBPF?.message}</p>
+                )}
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="objectif">
+                  Objectif de formation selon BPF
+                </Label>
+                <Select onValueChange={setObjectifBPF}>
+                  <SelectTrigger id="objectif">
+                    <SelectValue placeholder="Sélectionnez un objectif" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {objectifs.map((obj, index) => (
+                      <SelectItem key={index} value={obj}>
+                        {obj}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
               {errors.objectifBPF?.message && watch("objectifBPF") === "" && (
                 <p className="text-red-600">{errors.objectifBPF?.message}</p>
               )}
             </div>
-            <div></div>
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-2">
                 <Label htmlFor="montant">Montant (€)</Label>
                 <Input
+                  className="[&::-webkit-inner-spin-button]:appearance-none"
                   id="montant"
                   type="number"
                   min="0"
@@ -156,13 +162,10 @@ export const FormModule = () => {
                 )}
               </div>
               <div className="space-y-2">
-                <Label htmlFor="duree">Durée (heures)</Label>
-                <Input
-                  id="duree"
-                  type="number"
-                  min="0"
-                  step="0.5"
-                  placeholder="Entrez la durée"
+                <InputNumber
+                  label={"Durée (heures)"}
+                  step={1}
+                  placeholder={"placeholder test"}
                   {...register("duration")}
                 />
                 {errors.duration?.message && (

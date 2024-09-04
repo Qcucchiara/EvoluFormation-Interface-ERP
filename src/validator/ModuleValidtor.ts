@@ -1,5 +1,7 @@
 import * as yup from "yup";
 
+let patternTwoDigisAfterComma = /^\d+(\.\d{0,2})?$/;
+
 export const schemaModule = yup.object().shape({
   title: yup
     .string()
@@ -21,6 +23,16 @@ export const schemaModule = yup.object().shape({
     .number()
     .required("Ce champ est obligatoire")
     .positive()
+    .test(
+      "is-decimal",
+      "The amount should be a decimal with maximum two digits after comma",
+      (val: any) => {
+        if (val != undefined) {
+          return patternTwoDigisAfterComma.test(val);
+        }
+        return true;
+      }
+    )
     .min(0, "Minimum 0"),
   duration: yup
     .number()
