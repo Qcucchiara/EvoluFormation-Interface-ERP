@@ -20,6 +20,7 @@ import {
   CommandList,
   CommandSeparator,
 } from "@/components/ui/command";
+import { FormCompany } from "@/components/Modules/Forms/FormCompany";
 
 const frameworks = [
   {
@@ -183,7 +184,8 @@ const page = () => {
   return (
     <main>
       {/* <ComboboxInput inputData={frameworks} defaultValue="Prospects..." /> */}
-      <LayoutStandard children={main()} aside={aside()} notifs={notifs()} />
+      {/* <LayoutStandard children={main()} aside={aside()} notifs={notifs()} /> */}
+      <FormCompany />
     </main>
   );
 };
