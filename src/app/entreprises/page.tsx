@@ -1,6 +1,10 @@
+"use client";
 import LayoutStandard from "@/components/Layouts/LayoutStandard";
+import { FormCompany } from "@/components/Modules/Forms/FormCompany";
 import { FormModule } from "@/components/Modules/Forms/FormModule";
+import { ListCompanies } from "@/components/Modules/Lists/ListCompanies";
 import ListModules from "@/components/Modules/Lists/ListModules";
+import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ContexteModules } from "@/context/contexteModule";
@@ -12,17 +16,17 @@ const children = () => {
       <TabsList className="mb-4">
         <TabsTrigger value="form_entreprise">nouvelle entreprise</TabsTrigger>
         <TabsTrigger value="browsing">liste entreprises</TabsTrigger>
-        {/* <TabsTrigger value="other"></TabsTrigger> */}
+        <TabsTrigger value="other"></TabsTrigger>
       </TabsList>
       <ScrollArea className="flex-1">
-        <TabsContent value="new_module" className="h-full">
+        <TabsContent value="form_entreprise" className="h-full">
           <div className="bg-card p-4 rounded-lg shadow">
-            {/* <FormModule /> */}
+            <FormCompany />
           </div>
         </TabsContent>
         <TabsContent value="browsing" className="h-full">
           <div className="bg-card p-4 rounded-lg shadow">
-            <ListModules />
+            <ListCompanies />
             {/* TODO: Une fois le module sélectionné, afficher ses détails (peut être en modale, je sais pas) */}
           </div>
         </TabsContent>

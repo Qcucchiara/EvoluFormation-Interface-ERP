@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
@@ -19,6 +20,9 @@ import {
   InputOTPSeparator,
   InputOTPSlot,
 } from "@/components/ui/input-otp";
+import { schemaCompany } from "@/validator/CompanyValidator";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 type Contact = {
   id: number;
@@ -32,29 +36,34 @@ type Student = {
   email: string;
   tel: string;
 };
-
+const dummyData = [
+  { id: 1, name: "John Doe", email: "john@example.com", tel: "0123456789" },
+  { id: 2, name: "Jane Smith", email: "jane@example.com", tel: "9876543210" },
+];
 export const FormCompany = () => {
-  const [siret, setSiret] = useState(["", "", "", ""]);
-  const [contacts, setContacts] = useState<Contact[]>([
-    { id: 1, name: "John Doe", email: "john@example.com", tel: "0123456789" },
-    { id: 2, name: "Jane Smith", email: "jane@example.com", tel: "9876543210" },
-  ]);
-  const [students, setStudents] = useState<Student[]>([
-    { id: 1, name: "John Doe", email: "john@example.com", tel: "0123456789" },
-    { id: 2, name: "Jane Smith", email: "jane@example.com", tel: "9876543210" },
-  ]);
+  const [contacts, setContacts] = useState<Contact[]>(dummyData);
+  const [students, setStudents] = useState<Student[]>(dummyData);
+  const [companyName, setCompanyName] = useState("");
+  const [siret, setSiret] = useState<number>();
+  const [adressStreet, setAdressStreet] = useState("");
+  const [adressPostalCode, setAdressPostalCode] = useState<number>();
+  const [adressCity, setAdressCity] = useState("");
   const [selectedContacts, setSelectedContacts] = useState<Contact[]>([]);
   const [selectedStudents, setSelectedStudents] = useState<Student[]>([]);
 
-  const handleSiretChange = (index: number, value: string) => {
-    const newSiret = [...siret];
-    newSiret[index] = value;
-    setSiret(newSiret);
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log("Form submitted");
+  // TODO: gérer la récupération des contacts et students dans le useForm
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    watch,
+    formState: { errors },
+  } = useForm<any>({
+    mode: "onChange",
+    resolver: yupResolver(schemaCompany),
+  });
+  const onSubmit: SubmitHandler<any> = async (data) => {
+    console.log(data);
   };
 
   const handleContactSelect = (contactId: string) => {
@@ -70,34 +79,6 @@ export const FormCompany = () => {
     }
   };
 
-  const handleRemoveContact = (contactId: number) => {
-    setSelectedContacts(selectedContacts.filter((c) => c.id !== contactId));
-  };
-  const handleRemoveStudent = (studentId: number) => {
-    setSelectedStudents(selectedStudents.filter((c) => c.id !== studentId));
-  };
-
-  const handleAddNewContact = () => {
-    const newContact: Contact = {
-      id: contacts.length + 1,
-      name: "Nouveau Contact",
-      email: "nouveau@example.com",
-      tel: "0000000000",
-    };
-    setContacts([...contacts, newContact]);
-    setSelectedContacts([...selectedContacts, newContact]);
-  };
-  const handleAddNewStudent = () => {
-    const newStudent: Student = {
-      id: students.length + 1,
-      name: "Nouvel Elève",
-      email: "nouveau@example.com",
-      tel: "0000000000",
-    };
-    setStudents([...students, newStudent]);
-    setSelectedStudents([...selectedStudents, newStudent]);
-  };
-
   return (
     <Card className="w-full mx-auto">
       <CardHeader>
@@ -111,13 +92,14 @@ export const FormCompany = () => {
             <TabsTrigger value="students">Elèves</TabsTrigger>
           </TabsList>
           <TabsContent value="enterprise">
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
               <div className="space-y-2">
                 <Label htmlFor="name">Nom de l'entreprise</Label>
                 <Input
                   id="name"
                   placeholder="Entrez le nom de l'entreprise"
                   required
+                  {...register("name")}
                 />
               </div>
 
@@ -125,6 +107,7 @@ export const FormCompany = () => {
                 <Label htmlFor="siret">Numéro SIRET</Label>
                 <div className="flex space-x-2">
                   <InputOTP maxLength={14}>
+                    {/* TODO: gérer la récupération de la value de l'input SIRET */}
                     <InputOTPGroup>
                       <InputOTPSlot index={0} />
                       <InputOTPSlot index={1} />
@@ -160,16 +143,27 @@ export const FormCompany = () => {
                     id="street"
                     placeholder="Entrez le numéro et le nom de la rue"
                     required
+                    {...register("street")}
                   />
                 </div>
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-2">
                     <Label htmlFor="postalCode">Code postal</Label>
-                    <Input id="postalCode" placeholder="Code postal" required />
+                    <Input
+                      id="postalCode"
+                      placeholder="Code postal"
+                      required
+                      {...register("postalCode")}
+                    />
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="city">Ville</Label>
-                    <Input id="city" placeholder="Ville" required />
+                    <Input
+                      id="city"
+                      placeholder="Ville"
+                      required
+                      {...register("city")}
+                    />
                   </div>
                 </div>
               </div>
@@ -197,7 +191,20 @@ export const FormCompany = () => {
                     ))}
                   </SelectContent>
                 </Select>
-                <Button onClick={handleAddNewContact}>Nouveau Contact</Button>
+                <Button
+                  onClick={() => {
+                    const newContact: Contact = {
+                      id: contacts.length + 1,
+                      name: "Nouveau Contact",
+                      email: "nouveau@example.com",
+                      tel: "0000000000",
+                    };
+                    setContacts([...contacts, newContact]);
+                    setSelectedContacts([...selectedContacts, newContact]);
+                  }}
+                >
+                  Nouveau Contact
+                </Button>
               </div>
               <div className="space-y-4">
                 {selectedContacts.map((contact) => (
@@ -217,7 +224,11 @@ export const FormCompany = () => {
                     <Button
                       variant="ghost"
                       size="icon"
-                      onClick={() => handleRemoveContact(contact.id)}
+                      onClick={() =>
+                        setSelectedContacts(
+                          selectedContacts.filter((c) => c.id !== contact.id)
+                        )
+                      }
                     >
                       <X className="h-4 w-4" />
                     </Button>
@@ -244,7 +255,20 @@ export const FormCompany = () => {
                     ))}
                   </SelectContent>
                 </Select>
-                <Button onClick={handleAddNewStudent}>Nouvel Elève</Button>
+                <Button
+                  onClick={() => {
+                    const newStudent: Student = {
+                      id: students.length + 1,
+                      name: "Nouvel Elève",
+                      email: "nouveau@example.com",
+                      tel: "0000000000",
+                    };
+                    setStudents([...students, newStudent]);
+                    setSelectedStudents([...selectedStudents, newStudent]);
+                  }}
+                >
+                  Nouvel Elève
+                </Button>
               </div>
               <div className="space-y-4">
                 {selectedStudents.map((student) => (
@@ -264,7 +288,11 @@ export const FormCompany = () => {
                     <Button
                       variant="ghost"
                       size="icon"
-                      onClick={() => handleRemoveStudent(student.id)}
+                      onClick={() =>
+                        setSelectedStudents(
+                          selectedStudents.filter((c) => c.id !== student.id)
+                        )
+                      }
                     >
                       <X className="h-4 w-4" />
                     </Button>
