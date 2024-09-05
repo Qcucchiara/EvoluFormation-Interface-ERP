@@ -61,7 +61,7 @@ export const ListCompanies = () => {
   const [selectedEntreprise, setSelectedEntreprise] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const handleRowClick = (entreprise) => {
+  const handleRowClick = (entreprise: any) => {
     setSelectedEntreprise(entreprise);
     setIsModalOpen(true);
   };

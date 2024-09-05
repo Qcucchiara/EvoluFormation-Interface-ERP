@@ -13,7 +13,7 @@ import React from "react";
 const children = () => {
   return (
     <Tabs defaultValue="overview" className="h-full flex flex-col">
-      <TabsList className="mb-4">
+      <TabsList className="mb-4  translate-y-0">
         <TabsTrigger value="form_entreprise">nouvelle entreprise</TabsTrigger>
         <TabsTrigger value="browsing">liste entreprises</TabsTrigger>
         <TabsTrigger value="other"></TabsTrigger>
@@ -46,9 +46,9 @@ const children = () => {
 const page = () => {
   return (
     <>
-      <ContexteModules.Provider value>
-        <LayoutStandard children={children()} />
-      </ContexteModules.Provider>
+      {/* <ContexteModules.Provider value> */}
+      {children()}
+      {/* </ContexteModules.Provider> */}
     </>
   );
 };
