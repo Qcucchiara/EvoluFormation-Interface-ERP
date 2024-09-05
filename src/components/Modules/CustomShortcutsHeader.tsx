@@ -28,7 +28,6 @@ export const CustomShortcutsHeader = ({
           <Menu className="h-6 w-6" />
         </Button>
       </header>
-      <div className=" h-12"></div>
     </>
   );
 };

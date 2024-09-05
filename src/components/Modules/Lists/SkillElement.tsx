@@ -11,9 +11,9 @@ export const SkillElement = ({ skill }: { skill: string }) => {
       }}
     >
       <TableCell className="font-medium">
-        <Checkbox checked={isChecked} />
+        <Checkbox checked={isChecked} className=" border-none bg-slate-200" />
       </TableCell>
-      <TableCell>{skill}</TableCell>
+      <TableCell className=" select-none">{skill}</TableCell>
     </TableRow>
   );
 };

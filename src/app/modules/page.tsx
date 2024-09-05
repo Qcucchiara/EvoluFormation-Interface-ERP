@@ -11,7 +11,7 @@ import React from "react";
 
 const children = () => {
   return (
-    <Tabs defaultValue="overview" className="h-full flex flex-col">
+    <Tabs defaultValue="new_module" className="h-full flex flex-col">
       <TabsList className="mb-4">
         <TabsTrigger value="new_module">Nouveau module</TabsTrigger>
         <TabsTrigger value="browsing">Regarder les modules</TabsTrigger>

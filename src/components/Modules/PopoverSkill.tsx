@@ -28,17 +28,15 @@ export const PopoverSkill = () => {
             <TabsTrigger value="list">Liste compétences</TabsTrigger>
             <TabsTrigger value="new">Nouvelle compétence</TabsTrigger>
           </TabsList>
-          <TabsContent className="max-h-[400px] overflow-y-scroll" value="list">
+          <TabsContent value="list">
             <div>
               <Input type="text" placeholder="Recherche" />
             </div>
             <div>
-              <ScrollArea>
-                <ListSkills />
-              </ScrollArea>
+              <ListSkills />
             </div>
           </TabsContent>
-          <TabsContent value="new">
+          <TabsContent className=" h-[444px]" value="new">
             formulaire de compétences (a priori il faut juste mettre le nom)
           </TabsContent>
         </Tabs>

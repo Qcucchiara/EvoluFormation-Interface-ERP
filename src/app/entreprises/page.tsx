@@ -12,8 +12,8 @@ import React from "react";
 
 const children = () => {
   return (
-    <Tabs defaultValue="overview" className="h-full flex flex-col">
-      <TabsList className="mb-4  translate-y-0">
+    <Tabs defaultValue="form_entreprise" className="h-full flex flex-col">
+      <TabsList className="mb-4 translate-y-0">
         <TabsTrigger value="form_entreprise">nouvelle entreprise</TabsTrigger>
         <TabsTrigger value="browsing">liste entreprises</TabsTrigger>
         <TabsTrigger value="other"></TabsTrigger>

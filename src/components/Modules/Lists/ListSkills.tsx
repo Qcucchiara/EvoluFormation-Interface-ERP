@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/table";
 import React from "react";
 import { SkillElement } from "./SkillElement";
+import { ScrollArea } from "@/components/ui/scroll-area";
 const skills = [
   "JavaScript",
   "HTML",
@@ -45,14 +46,18 @@ export const ListSkills = () => {
       <TableHeader>
         {/* <TableHeader className=" fixed"> */}
         <TableRow>
-          <TableHead className="w-[100px]">check</TableHead>
+          {/* TODO: (pas urgent)   je sais pas comment ajouter cette colonne sans casser le scroll */}
+          {/* <TableHead className="w-[100px]">check</TableHead> */}
           <TableHead>Name</TableHead>
         </TableRow>
       </TableHeader>
-      <TableBody className="max-h-[400px] overflow-y-scroll">
-        {skills.map((skill, index) => {
-          return <SkillElement skill={skill} key={index} />;
-        })}
+
+      <TableBody>
+        <ScrollArea className="max-h-80 overflow-y-scroll">
+          {skills.map((skill, index) => {
+            return <SkillElement skill={skill} key={index} />;
+          })}
+        </ScrollArea>
       </TableBody>
     </Table>
   );

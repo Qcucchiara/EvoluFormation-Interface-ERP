@@ -3,14 +3,14 @@ import { Button } from "../ui/button";
 import Link from "next/link";
 
 const navItems = [
-  "Prospects", // fait
-  "Entreprises", // fait
-  "Dossiers",
-  "Modules", // fait
+  "Prospects",
+  "Entreprises",
+  "Dossiers", // TODO
+  "Modules",
   "Formateurs",
   "Ressources",
-  "Sessions",
-  "Agenda",
+  "Sessions", // TODO
+  "Agenda", // TODO
 ];
 export const SideNav = ({ sidebarOpen }: { sidebarOpen: boolean }) => {
   return (
