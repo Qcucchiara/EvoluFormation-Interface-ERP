@@ -44,9 +44,7 @@ const children = () => {
 const page = () => {
   return (
     <>
-      <ContexteModules.Provider value>
-        <LayoutStandard children={children()} />
-      </ContexteModules.Provider>
+      <ContexteModules.Provider value>{children()}</ContexteModules.Provider>
     </>
   );
 };

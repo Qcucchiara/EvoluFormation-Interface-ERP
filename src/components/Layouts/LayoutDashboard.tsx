@@ -38,7 +38,7 @@ export const LayoutDashboard = () => {
   return (
     <div className="flex h-screen bg-background">
       {/* Sidebar */}
-      <aside
+      {/* <aside
         className={`${
           sidebarOpen ? "translate-x-0" : "-translate-x-full"
         } fixed inset-y-0 left-0 z-50 w-64 bg-card transition-transform duration-300 ease-in-out lg:translate-x-0 lg:static lg:inset-0`}
@@ -50,12 +50,12 @@ export const LayoutDashboard = () => {
             </Button>
           ))}
         </nav>
-      </aside>
+      </aside> */}
 
       {/* Main Content */}
       <div className="flex-1 flex flex-col overflow-hidden">
         {/* Top Bar */}
-        <header className="bg-muted p-4 flex items-center justify-between">
+        {/* <header className="bg-muted p-4 flex items-center justify-between">
           <Button
             variant="ghost"
             size="icon"
@@ -70,7 +70,7 @@ export const LayoutDashboard = () => {
               className="max-w-sm"
             />
           </div>
-        </header>
+        </header> */}
 
         {/* Notifications */}
         <div className="bg-card p-4 m-4 rounded-lg shadow">
