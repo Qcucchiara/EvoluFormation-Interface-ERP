@@ -21,6 +21,7 @@ import {
   CommandSeparator,
 } from "@/components/ui/command";
 import { FormCompany } from "@/components/Modules/Forms/FormCompany";
+import { PopoverSkill } from "@/components/Modules/PopoverSkill";
 
 const frameworks = [
   {
@@ -185,74 +186,8 @@ const page = () => {
     <main>
       {/* <ComboboxInput inputData={frameworks} defaultValue="Prospects..." /> */}
       {/* <LayoutStandard children={main()} aside={aside()} notifs={notifs()} /> */}
-      <FormCompany />
-      <div className="min-h-screen flex justify-center p-8">
-        <div className="max-w-3xl w-full">
-          <div className="sticky top-0 bg-blue-500 text-white p-4 mb-8 rounded">
-            <h1 className="text-xl font-bold">Premier élément sticky</h1>
-            <p>Je suis sticky jusqu'à ce que l'autre élément me remplace.</p>
-          </div>
-
-          <div className="space-y-16">
-            <p className="text-gray-700">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin
-              convallis, purus eget ultricies tincidunt, velit velit feugiat
-              massa, a congue nulla metus ut neque. Sed ultricies nunc ut tortor
-              tincidunt, sed facilisis dolor dictum. Vivamus malesuada enim ut
-              justo aliquet vehicula. Nulla facilisi. Fusce euismod bibendum
-              orci, at interdum nisl hendrerit id.
-            </p>
-            <p className="text-gray-700">
-              Curabitur vitae consequat nisi. Cras viverra ipsum ac mi
-              ultricies, eget vehicula eros tempus. Praesent auctor convallis
-              magna non dapibus. Suspendisse potenti. Cras volutpat, justo ut
-              malesuada ullamcorper, urna velit dignissim metus, in vehicula
-              felis nisi eget enim. Nullam dapibus dictum enim, sed pharetra
-              eros aliquet nec.
-            </p>
-            <div className="sticky top-16 bg-green-500 text-white p-4 rounded">
-              <h1 className="text-xl font-bold">Deuxième élément sticky</h1>
-              <p>Je deviens sticky après le premier élément.</p>
-            </div>
-            <p className="text-gray-700">
-              Vivamus suscipit ligula sit amet ultricies vulputate. Nam
-              condimentum eros eget ultricies sodales. Sed sed lectus nec ipsum
-              elementum fermentum. Aenean ultricies, lacus in consequat viverra,
-              nisi nisi lacinia lacus, nec malesuada augue sapien ut nisi.
-            </p>
-            <p className="text-gray-700">
-              Suspendisse potenti. Nunc pulvinar ligula ac lorem vestibulum, at
-              hendrerit lacus iaculis. Aliquam euismod risus ut lectus suscipit,
-              in rhoncus erat vehicula. Nulla ut scelerisque urna. Nam dictum
-              dolor vel malesuada egestas.
-            </p>{" "}
-            <p className="text-gray-700">
-              Vivamus suscipit ligula sit amet ultricies vulputate. Nam
-              condimentum eros eget ultricies sodales. Sed sed lectus nec ipsum
-              elementum fermentum. Aenean ultricies, lacus in consequat viverra,
-              nisi nisi lacinia lacus, nec malesuada augue sapien ut nisi.
-            </p>
-            <p className="text-gray-700">
-              Suspendisse potenti. Nunc pulvinar ligula ac lorem vestibulum, at
-              hendrerit lacus iaculis. Aliquam euismod risus ut lectus suscipit,
-              in rhoncus erat vehicula. Nulla ut scelerisque urna. Nam dictum
-              dolor vel malesuada egestas.
-            </p>{" "}
-            <p className="text-gray-700">
-              Vivamus suscipit ligula sit amet ultricies vulputate. Nam
-              condimentum eros eget ultricies sodales. Sed sed lectus nec ipsum
-              elementum fermentum. Aenean ultricies, lacus in consequat viverra,
-              nisi nisi lacinia lacus, nec malesuada augue sapien ut nisi.
-            </p>
-            <p className="text-gray-700">
-              Suspendisse potenti. Nunc pulvinar ligula ac lorem vestibulum, at
-              hendrerit lacus iaculis. Aliquam euismod risus ut lectus suscipit,
-              in rhoncus erat vehicula. Nulla ut scelerisque urna. Nam dictum
-              dolor vel malesuada egestas.
-            </p>
-          </div>
-        </div>
-      </div>
+      {/* <FormCompany /> */}
+      <PopoverSkill />
     </main>
   );
 };

@@ -3,10 +3,10 @@ import { Button } from "../ui/button";
 import Link from "next/link";
 
 const navItems = [
-  "Prospects (fait)",
-  "Entreprises (fait)",
+  "Prospects", // fait
+  "Entreprises", // fait
   "Dossiers",
-  "Modules (fait)",
+  "Modules", // fait
   "Formateurs",
   "Ressources",
   "Sessions",

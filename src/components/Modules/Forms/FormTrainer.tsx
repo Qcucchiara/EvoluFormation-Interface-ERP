@@ -10,6 +10,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import { PopoverSkill } from "../PopoverSkill";
 
 export const FormTrainer = () => {
   return (
@@ -50,27 +51,7 @@ export const FormTrainer = () => {
             placeholder="Entrez votre tarif journalier"
           />
         </div>
-        <div className="space-y-2">
-          <Label>Compétences</Label>
-          <div className="grid grid-cols-2 gap-2">
-            <div className="flex items-center space-x-2">
-              <Checkbox id="web" />
-              <Label htmlFor="web">Développement Web</Label>
-            </div>
-            <div className="flex items-center space-x-2">
-              <Checkbox id="mobile" />
-              <Label htmlFor="mobile">Développement Mobile</Label>
-            </div>
-            <div className="flex items-center space-x-2">
-              <Checkbox id="data" />
-              <Label htmlFor="data">Science des Données</Label>
-            </div>
-            <div className="flex items-center space-x-2">
-              <Checkbox id="design" />
-              <Label htmlFor="design">Design UX/UI</Label>
-            </div>
-          </div>
-        </div>
+        <PopoverSkill />
         <div className="space-y-2">
           <Label htmlFor="commentaire">Commentaire</Label>
           <Textarea
