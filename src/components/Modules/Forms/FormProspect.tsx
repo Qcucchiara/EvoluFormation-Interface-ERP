@@ -23,6 +23,8 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { prospectForm } from "@/app/utils/type";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { schemaProspect } from "@/validator/ProspectValidator";
+import InputForm from "@/components/Composites/inputForm";
+import InputSelectForm from "@/components/Composites/InputSelectForm";
 
 export const FormProspect = () => {
   const [showNewCompany, setShowNewCompany] = useState(false);
@@ -54,7 +56,6 @@ export const FormProspect = () => {
     setValue("company", company);
   }, [company]);
   return (
-    //TODO faire en
     <Card className="w-full">
       <CardHeader>
         <CardTitle>Nouveau prospect</CardTitle>
@@ -85,72 +86,55 @@ export const FormProspect = () => {
                     </div>
                   </RadioGroup>
                 </div>
-                <div className="space-y-2">
-                  <Label htmlFor="prenom">Prénom</Label>
-                  <Input
-                    id="prenom"
-                    placeholder="Entrez votre prénom"
-                    {...register("firstName")}
-                  />
-                  {errors.firstName?.message && (
-                    <p className="text-red-600">{errors.firstName.message}</p>
-                  )}
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="nom">Nom</Label>
-                  <Input
-                    id="nom"
-                    placeholder="Entrez votre nom"
-                    {...register("lastName")}
-                  />
-                  {errors.lastName?.message && (
-                    <p className="text-red-600">{errors.lastName.message}</p>
-                  )}
-                </div>
+                <InputForm
+                  label={"Prénom"}
+                  id={"prenom"}
+                  placeholder={"Entrez votre prénom"}
+                  type={"text"}
+                  register={register("firstName")}
+                  errors={errors.firstName?.message}
+                />
+                <InputForm
+                  label={"Nom"}
+                  id={"nom"}
+                  placeholder={"Entrez votre nom"}
+                  type={"text"}
+                  register={register("lastName")}
+                  errors={errors.lastName?.message}
+                />
+                <InputForm
+                  label={"Email"}
+                  id={"email"}
+                  placeholder={"Entrez votre email"}
+                  type={"email"}
+                  register={register("email")}
+                  errors={errors.email?.message}
+                />
+                <InputForm
+                  label={"Téléphone"}
+                  id={"tel"}
+                  placeholder={"Entrez votre numéro de téléphone"}
+                  type={"tel"}
+                  register={register("phone")}
+                  errors={errors.phone?.message}
+                />
               </div>
               <div className="grid grid-cols-2 gap-4">
-                <div className="space-y-2">
-                  <Label htmlFor="email">Email</Label>
-                  <Input
-                    id="email"
-                    type="email"
-                    placeholder="Entrez votre email"
-                    {...register("email")}
-                  />
-                  {errors.email?.message && <p>{errors.email.message}</p>}
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="tel">Téléphone</Label>
-                  <Input
-                    id="tel"
-                    type="tel"
-                    placeholder="Entrez votre numéro de téléphone"
-                    {...register("phone")}
-                  />
-                  {errors.phone?.message && (
-                    <p className="text-red-600">{errors.phone.message}</p>
-                  )}
-                </div>
-              </div>
-              <div className="grid grid-cols-2 gap-4">
-                <div className="space-y-2">
-                  <Label htmlFor="type">Type</Label>
-                  <Select onValueChange={setType}>
-                    <SelectTrigger id="type">
-                      <SelectValue placeholder="Sélectionnez un type" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="client">Client</SelectItem>
-                      <SelectItem value="fournisseur">Fournisseur</SelectItem>
-                      <SelectItem value="partenaire">Partenaire</SelectItem>
-                    </SelectContent>
-                  </Select>
-                  {errors.type?.message && type === "" && (
-                    <p className="text-red-600">{errors.type.message}</p>
-                  )}
-                </div>
-
+                <InputSelectForm
+                  id={"type"}
+                  label={"Type"}
+                  placeholder={"Sélectionnez un type"}
+                  state={type}
+                  setState={setType}
+                  errors={errors.type?.message}
+                >
+                  <SelectItem value="client">Client</SelectItem>
+                  <SelectItem value="fournisseur">Fournisseur</SelectItem>
+                  <SelectItem value="partenaire">Partenaire</SelectItem>
+                </InputSelectForm>
+                {errors.type?.message && type === "" && (
+                  <p className="text-red-600">{errors.type.message}</p>
+                )}
                 <div className="space-y-4">
                   <div className="flex justify-between items-center">
                     <Label>Entreprise</Label>
@@ -165,16 +149,14 @@ export const FormProspect = () => {
                     </Button>
                   </div>
                   {showNewCompany ? (
-                    <div>
-                      <Input
-                        id="nouvelle-entreprise"
-                        placeholder="Nom de la nouvelle entreprise"
-                        {...register("company")}
-                      />
-                      {errors.company?.message && (
-                        <p className="text-red-600">{errors.company.message}</p>
-                      )}
-                    </div>
+                    <InputForm
+                      label={""}
+                      id={"nouvelle-entreprise"}
+                      placeholder={"Nom de la nouvelle entreprise"}
+                      type={"text"}
+                      register={register("company")}
+                      errors={errors.company?.message}
+                    />
                   ) : (
                     <div>
                       <Select onValueChange={setCompany}>
@@ -222,8 +204,11 @@ export const FormProspect = () => {
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="ville">Ville</Label>
-                    <Input id="ville" placeholder="Entrez votre ville"
-                    {...register("address.city")} />
+                    <Input
+                      id="ville"
+                      placeholder="Entrez votre ville"
+                      {...register("address.city")}
+                    />
                   </div>
                 </div>
               </div>
