@@ -21,8 +21,9 @@ export type prospectForm = {
   type: string;
   company: string;
   address?: {
-    place: string;
+    street: string;
     postalCode: string;
     city: string;
   };
+  commentary?: string;
 };
