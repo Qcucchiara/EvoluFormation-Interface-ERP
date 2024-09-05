@@ -24,6 +24,7 @@ import { prospectForm } from "@/app/utils/type";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { schemaProspect } from "@/validator/ProspectValidator";
 import InputForm from "@/components/Composites/inputForm";
+import InputSelectForm from "@/components/Composites/InputSelectForm";
 
 export const FormProspect = () => {
   const [showNewCompany, setShowNewCompany] = useState(false);
@@ -119,23 +120,21 @@ export const FormProspect = () => {
                 />
               </div>
               <div className="grid grid-cols-2 gap-4">
-                <div className="space-y-2">
-                  <Label htmlFor="type">Type</Label>
-                  <Select onValueChange={setType}>
-                    <SelectTrigger id="type">
-                      <SelectValue placeholder="Sélectionnez un type" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="client">Client</SelectItem>
-                      <SelectItem value="fournisseur">Fournisseur</SelectItem>
-                      <SelectItem value="partenaire">Partenaire</SelectItem>
-                    </SelectContent>
-                  </Select>
-                  {errors.type?.message && type === "" && (
-                    <p className="text-red-600">{errors.type.message}</p>
-                  )}
-                </div>
-
+                <InputSelectForm
+                  id={"type"}
+                  label={"Type"}
+                  placeholder={"Sélectionnez un type"}
+                  state={type}
+                  setState={setType}
+                  errors={errors.type?.message}
+                >
+                  <SelectItem value="client">Client</SelectItem>
+                  <SelectItem value="fournisseur">Fournisseur</SelectItem>
+                  <SelectItem value="partenaire">Partenaire</SelectItem>
+                </InputSelectForm>
+                {errors.type?.message && type === "" && (
+                  <p className="text-red-600">{errors.type.message}</p>
+                )}
                 <div className="space-y-4">
                   <div className="flex justify-between items-center">
                     <Label>Entreprise</Label>
