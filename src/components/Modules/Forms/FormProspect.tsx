@@ -23,7 +23,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { prospectForm } from "@/app/utils/type";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { schemaProspect } from "@/validator/ProspectValidator";
-import InputForm from "@/components/Composites/inputForm";
+import InputForm from "@/components/Composites/InputForm";
 import InputSelectForm from "@/components/Composites/InputSelectForm";
 
 export const FormProspect = () => {
@@ -136,7 +136,7 @@ export const FormProspect = () => {
                   <p className="text-red-600">{errors.type.message}</p>
                 )}
                 <div className="space-y-4">
-                  <div className="flex justify-between items-center">
+                  <div className="flex items-center justify-between">
                     <Label>Entreprise</Label>
                     <Button
                       variant="outline"
