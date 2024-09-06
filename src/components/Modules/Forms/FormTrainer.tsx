@@ -12,7 +12,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { PopoverSkill } from "../PopoverSkill";
 import { PopoverList } from "../PopoverList";
-import { SetStateAction } from "react";
+import { SetStateAction, useState } from "react";
 
 const skills = [
   "JavaScript",
@@ -43,6 +43,7 @@ const skills = [
 ];
 
 export const FormTrainer = () => {
+  const [selectedNames, setSelectedNames] = useState<string[]>([]);
   return (
     <Card className="w-full max-w-2xl">
       <CardHeader>
@@ -81,7 +82,7 @@ export const FormTrainer = () => {
             placeholder="Entrez votre tarif journalier"
           />
         </div>
-        {/* <PopoverList listNames={skills} setSelectedNames={} /> */}
+        <PopoverList listNames={skills} setSelectedNames={setSelectedNames} />
         <div className="space-y-2">
           <Label htmlFor="commentaire">Commentaire</Label>
           <Textarea
