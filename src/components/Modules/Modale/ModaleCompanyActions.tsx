@@ -23,6 +23,12 @@ export const ModaleCompanyActions = ({
   }, [isModalOpen]);
   return (
     <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
+      <DialogTitle hidden>
+        <DialogTitle>Actions Entreprises</DialogTitle>
+        <DialogDescription>
+          des actions possibles a effectuer sur l'entreprise selectionné
+        </DialogDescription>
+      </DialogTitle>
       <DialogContent>
         <Tabs defaultValue="overview">
           <TabsList>

@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -44,7 +44,7 @@ export const FormCompany = () => {
   const [contacts, setContacts] = useState<Contact[]>(dummyData);
   const [students, setStudents] = useState<Student[]>(dummyData);
   const [companyName, setCompanyName] = useState("");
-  const [siret, setSiret] = useState<number>();
+  const [siret, setSiret] = useState<string>("");
   const [adressStreet, setAdressStreet] = useState("");
   const [adressPostalCode, setAdressPostalCode] = useState<number>();
   const [adressCity, setAdressCity] = useState("");
@@ -80,7 +80,7 @@ export const FormCompany = () => {
   };
 
   return (
-    <Card className="w-full mx-auto">
+    <Card className="mx-auto w-full">
       <CardHeader>
         <CardTitle>Formulaire d'Entreprise</CardTitle>
       </CardHeader>
@@ -103,11 +103,15 @@ export const FormCompany = () => {
                 />
               </div>
 
+              {/* TODO: gérer la récupération de la value de l'input SIRET */}
               <div className="space-y-2">
                 <Label htmlFor="siret">Numéro SIRET</Label>
                 <div className="flex space-x-2">
-                  <InputOTP maxLength={14}>
-                    {/* TODO: gérer la récupération de la value de l'input SIRET */}
+                  <InputOTP
+                    maxLength={14}
+                    value={siret}
+                    onChange={(value) => setSiret(value)}
+                  >
                     <InputOTPGroup>
                       <InputOTPSlot index={0} />
                       <InputOTPSlot index={1} />
@@ -210,7 +214,7 @@ export const FormCompany = () => {
                 {selectedContacts.map((contact) => (
                   <div
                     key={contact.id}
-                    className="flex items-center justify-between p-4 border rounded-md"
+                    className="flex items-center justify-between rounded-md border p-4"
                   >
                     <div>
                       <p className="font-semibold">{contact.name}</p>
@@ -226,7 +230,7 @@ export const FormCompany = () => {
                       size="icon"
                       onClick={() =>
                         setSelectedContacts(
-                          selectedContacts.filter((c) => c.id !== contact.id)
+                          selectedContacts.filter((c) => c.id !== contact.id),
                         )
                       }
                     >
@@ -274,7 +278,7 @@ export const FormCompany = () => {
                 {selectedStudents.map((student) => (
                   <div
                     key={student.id}
-                    className="flex items-center justify-between p-4 border rounded-md"
+                    className="flex items-center justify-between rounded-md border p-4"
                   >
                     <div>
                       <p className="font-semibold">{student.name}</p>
@@ -290,7 +294,7 @@ export const FormCompany = () => {
                       size="icon"
                       onClick={() =>
                         setSelectedStudents(
-                          selectedStudents.filter((c) => c.id !== student.id)
+                          selectedStudents.filter((c) => c.id !== student.id),
                         )
                       }
                     >
