@@ -41,7 +41,6 @@ const skills = [
   "Kubernetes",
   "Angular",
 ];
-const [selectedNames, setSelectedNames] = useState<string[]>([]);
 export const FormTrainer = () => {
   const [selectedNames, setSelectedNames] = useState<string[]>([]);
   return (

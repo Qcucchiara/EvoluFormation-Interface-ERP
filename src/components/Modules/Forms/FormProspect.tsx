@@ -136,7 +136,7 @@ export const FormProspect = () => {
                   <p className="text-red-600">{errors.type.message}</p>
                 )}
                 <div className="space-y-4">
-                  <div className="flex justify-between items-center">
+                  <div className="flex items-center justify-between">
                     <Label>Entreprise</Label>
                     <Button
                       variant="outline"
