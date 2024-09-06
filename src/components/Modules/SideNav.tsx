@@ -21,7 +21,7 @@ export const SideNav = ({ sidebarOpen }: { sidebarOpen: boolean }) => {
     >
       <nav className="h-full flex flex-col pt-20 p-4 space-y-2">
         {navItems.map((item, index) => (
-          <Link href={`/${item.toLowerCase()}`} className="w-full">
+          <Link key={index} href={`/${item.toLowerCase()}`} className="w-full">
             <Button
               key={index}
               variant="ghost"

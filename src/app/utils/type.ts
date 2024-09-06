@@ -27,3 +27,8 @@ export type prospectForm = {
   };
   commentary?: string;
 };
+export type resourceForm = {
+  name: string;
+  type: string;
+  price: number;
+};

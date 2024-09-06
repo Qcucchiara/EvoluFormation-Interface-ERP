@@ -7,8 +7,10 @@ const InputForm = ({
   id,
   placeholder,
   type,
+  list,
   register,
   errors,
+  require,
   divCSSAditional,
   labelCSSAditional,
   inputCSSAditional,
@@ -17,9 +19,11 @@ const InputForm = ({
   label: string;
   id: string;
   placeholder: string;
-  type: string;
+  type?: string;
+  list?: string;
+  require?: boolean;
   register: {};
-  errors: string | undefined;
+  errors?: string | undefined;
   divCSSAditional?: string;
   labelCSSAditional?: string;
   inputCSSAditional?: string;
@@ -32,9 +36,11 @@ const InputForm = ({
       </Label>
       <Input
         id={id}
-        type={type}
+        type={type ? type : "text"}
+        list={list}
         placeholder={placeholder}
         {...register}
+        required={require || false}
         className={inputCSSAditional}
       />
       <p className={`${pCSSAditional} text-red-600`}>{errors}</p>
