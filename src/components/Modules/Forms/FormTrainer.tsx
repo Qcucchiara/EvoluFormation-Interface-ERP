@@ -43,6 +43,7 @@ const skills = [
 ];
 const [selectedNames, setSelectedNames] = useState<string[]>([]);
 export const FormTrainer = () => {
+  const [selectedNames, setSelectedNames] = useState<string[]>([]);
   return (
     <Card className="w-full max-w-2xl">
       <CardHeader>

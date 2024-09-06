@@ -56,7 +56,9 @@ export const PopoverList = ({
   }, [lastChecked]);
   return (
     <Popover>
-      <PopoverTrigger>compétences</PopoverTrigger>
+      <PopoverTrigger className="h-10 rounded-md bg-primary px-4 py-2 text-primary-foreground hover:bg-primary/90">
+        compétences
+      </PopoverTrigger>
       <PopoverContent>
         <Tabs defaultValue="list" className="w-auto">
           <TabsList>
@@ -99,7 +101,7 @@ export const PopoverList = ({
               </Table>
             </div>
           </TabsContent>
-          <TabsContent className=" h-[444px]" value="new">
+          <TabsContent className="h-[444px]" value="new">
             formulaire de compétences (a priori il faut juste mettre le nom)
           </TabsContent>
         </Tabs>
