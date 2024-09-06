@@ -14,5 +14,9 @@ export const schemaTrainer = yup.object().shape({
     .min(10, "Doit contenir 10 chiffres")
     .max(10, "Doit contenir 10 chiffres"),
   rate: yup.number().required("Ce champ est requis").min(0),
-  skills: yup.array().of(yup.string().required()).required().min(1),
+  skills: yup
+    .array()
+    .of(yup.string().required())
+    .required()
+    .min(1, "Veuillez séléctionner une compétence"),
 });

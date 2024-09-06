@@ -10,12 +10,13 @@ type LastChecked = {
 export const PopoverListElement = ({
   name,
   setLastChecked,
+  isFound,
 }: {
   name: string;
   setLastChecked: React.Dispatch<React.SetStateAction<LastChecked>>;
+  isFound: boolean;
 }) => {
-  const [isChecked, setIsChecked] = useState(false);
-
+  const [isChecked, setIsChecked] = useState(isFound);
   useEffect(() => {
     setLastChecked({ name: name, isChecked: isChecked });
   }, [isChecked]);
@@ -28,10 +29,10 @@ export const PopoverListElement = ({
     >
       {/* TODO: (pas urgent) je sais pas comment ajouter cette colonne sans casser le scroll */}
       {/* <TableCell className="font-medium"></TableCell> */}
-      <TableCell className=" select-none">
+      <TableCell className="select-none">
         <Checkbox
           checked={isChecked}
-          className=" border-none bg-slate-200 mr-8"
+          className="mr-8 border-none bg-slate-200"
         />
         {name}
       </TableCell>

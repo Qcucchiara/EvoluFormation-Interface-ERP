@@ -25,15 +25,21 @@ function filtreElement(arr: string[], requete: string) {
     return el.toLowerCase().indexOf(requete.toLowerCase()) === -1;
   });
 }
-
+export type whoIsCheckedProps = {
+  name: string;
+  isChecked: boolean;
+};
 export const PopoverList = ({
   listNames,
+  selectedNames,
   setSelectedNames,
 }: {
   listNames: string[];
+  selectedNames: string[];
   setSelectedNames: React.Dispatch<React.SetStateAction<string[]>>;
 }) => {
   const [searchValue, setSearchValue] = useState<string>("");
+
   const [searchedNames, setSearchedNames] = useState<string[]>([]);
   const [lastChecked, setLastChecked] = useState({
     name: "",
@@ -41,6 +47,7 @@ export const PopoverList = ({
   });
 
   useEffect(() => {
+    console.log(searchValue, "test");
     setSearchedNames(filtreSearch(listNames, searchValue));
   }, [searchValue]);
 
@@ -88,8 +95,16 @@ export const PopoverList = ({
                 <TableBody>
                   <ScrollArea className="max-h-80 overflow-y-scroll">
                     {searchedNames.map((name, index) => {
+                      const found = selectedNames.find(
+                        (Element) => Element === name,
+                      );
+                      let isFound: boolean = false;
+                      if (found) {
+                        isFound = true;
+                      }
                       return (
                         <PopoverListElement
+                          isFound={isFound}
                           name={name}
                           setLastChecked={setLastChecked}
                           key={index}

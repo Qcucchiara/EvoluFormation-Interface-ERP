@@ -63,6 +63,8 @@ export const FormTrainer = () => {
     //TODO plus tard avec le back
   };
   useEffect(() => {
+    console.log(selectedNames);
+    setValue("skills", []);
     setValue("skills", selectedNames);
   }, [selectedNames]);
   return (
@@ -118,7 +120,7 @@ export const FormTrainer = () => {
               <p className="text-red-600">{errors.rate.message}</p>
             )}
           </div>
-          <PopoverList listNames={skills} setSelectedNames={setSelectedNames} />
+          <PopoverList listNames={skills} selectedNames={selectedNames} setSelectedNames={setSelectedNames} />
           {errors.skills?.message && (
             <p className="text-red-600">{errors.skills.message}</p>
           )}
