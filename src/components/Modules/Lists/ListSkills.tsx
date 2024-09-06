@@ -46,7 +46,7 @@ export const ListSkills = () => {
       <TableHeader>
         {/* <TableHeader className=" fixed"> */}
         <TableRow>
-          {/* TODO: (pas urgent)   je sais pas comment ajouter cette colonne sans casser le scroll */}
+          {/* TODO: (pas urgent) je sais pas comment ajouter cette colonne sans casser le scroll */}
           {/* <TableHead className="w-[100px]">check</TableHead> */}
           <TableHead>Name</TableHead>
         </TableRow>

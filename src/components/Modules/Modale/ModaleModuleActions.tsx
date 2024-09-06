@@ -23,7 +23,6 @@ export const ModaleModuleActions = ({
   }, [open]);
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      {/* <DialogTrigger>trigger</DialogTrigger> */}
       <DialogContent>
         <DialogHeader>
           <DialogTitle>Détails du module "":</DialogTitle>
