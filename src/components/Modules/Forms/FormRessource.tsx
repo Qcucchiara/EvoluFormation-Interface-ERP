@@ -18,9 +18,6 @@ import InputForm from "@/components/Composites/InputForm";
 import { InputNumber } from "@/components/Composites/InputNumber";
 
 export const FormRessource = () => {
-  const [name, setName] = useState("");
-  const [type, setType] = useState("");
-  const [price, setPrice] = useState("");
   const {
     register,
     handleSubmit,
