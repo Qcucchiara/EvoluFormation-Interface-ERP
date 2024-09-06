@@ -6,7 +6,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import React from "react";
+import React, { useEffect } from "react";
 import { FormCompany } from "../Forms/FormCompany";
 
 export const ModaleCompanyActions = ({
@@ -18,6 +18,9 @@ export const ModaleCompanyActions = ({
   setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
   selectedEntreprise: any;
 }) => {
+  useEffect(() => {
+    console.log("opened?");
+  }, [isModalOpen]);
   return (
     <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
       <DialogContent>

@@ -11,6 +11,36 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { PopoverSkill } from "../PopoverSkill";
+import { PopoverList } from "../PopoverList";
+import { SetStateAction } from "react";
+
+const skills = [
+  "JavaScript",
+  "HTML",
+  "CSS",
+  "React",
+  "Node.js",
+  "Python",
+  "Git",
+  "SQL",
+  "Docker",
+  "MongoDB",
+  "Express.js",
+  "TypeScript",
+  "REST API",
+  "GraphQL",
+  "Webpack",
+  "Agile Methodology",
+  "Redux",
+  "Jest",
+  "Sass",
+  "Java",
+  "C++",
+  "PHP",
+  "AWS",
+  "Kubernetes",
+  "Angular",
+];
 
 export const FormTrainer = () => {
   return (
@@ -51,7 +81,7 @@ export const FormTrainer = () => {
             placeholder="Entrez votre tarif journalier"
           />
         </div>
-        <PopoverSkill />
+        {/* <PopoverList listNames={skills} setSelectedNames={} /> */}
         <div className="space-y-2">
           <Label htmlFor="commentaire">Commentaire</Label>
           <Textarea

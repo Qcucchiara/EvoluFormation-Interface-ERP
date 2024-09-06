@@ -22,6 +22,7 @@ import {
 } from "@/components/ui/command";
 import { FormCompany } from "@/components/Modules/Forms/FormCompany";
 import { PopoverSkill } from "@/components/Modules/PopoverSkill";
+import { PopoverList } from "@/components/Modules/PopoverList";
 
 const frameworks = [
   {
@@ -181,13 +182,46 @@ const notifs = () => {
   );
 };
 
+const skills = [
+  "JavaScript",
+  "HTML",
+  "CSS",
+  "React",
+  "Node.js",
+  "Python",
+  "Git",
+  "SQL",
+  "Docker",
+  "MongoDB",
+  "Express.js",
+  "TypeScript",
+  "REST API",
+  "GraphQL",
+  "Webpack",
+  "Agile Methodology",
+  "Redux",
+  "Jest",
+  "Sass",
+  "Java",
+  "C++",
+  "PHP",
+  "AWS",
+  "Kubernetes",
+  "Angular",
+];
+
 const page = () => {
+  const [selectedNames, setSelectedNames] = React.useState<string[]>([]);
+
+  // React.useEffect(() => {
+  //   console.log(selectedNames);
+  // }, [selectedNames]);
   return (
     <main>
       {/* <ComboboxInput inputData={frameworks} defaultValue="Prospects..." /> */}
       {/* <LayoutStandard children={main()} aside={aside()} notifs={notifs()} /> */}
       {/* <FormCompany /> */}
-      <PopoverSkill />
+      <PopoverList listNames={skills} setSelectedNames={setSelectedNames} />
     </main>
   );
 };
