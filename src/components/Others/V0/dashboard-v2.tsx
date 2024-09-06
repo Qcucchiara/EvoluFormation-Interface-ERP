@@ -390,7 +390,7 @@ export function DashboardV2() {
                       />
                     </div>
                     <Card>
-                      <CardHeader className="flex w-full flex-row justify-between">
+                      <CardHeader className="w-full flex flex-row justify-between">
                         <div className="w-fit">
                           <CardTitle>Representative</CardTitle>
                           <CardDescription>Linked Prospects</CardDescription>
@@ -472,8 +472,7 @@ export function DashboardV2() {
                     </div>
                     <div className="grid gap-2">
                       <Label htmlFor="civility">Civility</Label>
-                      <Select>
-                        {/* id="civility" */}
+                      <Select id="civility">
                         <SelectTrigger>
                           <SelectValue placeholder="Select civility" />
                         </SelectTrigger>
