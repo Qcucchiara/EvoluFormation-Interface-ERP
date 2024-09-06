@@ -88,7 +88,7 @@ const frameworks = [
 ];
 const main = () => {
   return (
-    <Tabs defaultValue="overview" className="h-full flex flex-col">
+    <Tabs defaultValue="overview" className="flex h-full flex-col">
       <TabsList className="mb-4">
         <TabsTrigger value="overview">Overview dossier</TabsTrigger>
         <TabsTrigger value="details">Détails</TabsTrigger>
@@ -96,24 +96,24 @@ const main = () => {
       </TabsList>
       <ScrollArea className="flex-1">
         <TabsContent value="overview" className="h-full">
-          <div className="bg-card p-4 rounded-lg shadow">
-            <h3 className="text-lg font-semibold mb-2">Aperçu du dossier</h3>
+          <div className="rounded-lg bg-card p-4 shadow">
+            <h3 className="mb-2 text-lg font-semibold">Aperçu du dossier</h3>
             <p className="text-muted-foreground">
               Informations générales sur le dossier sélectionné.
             </p>
           </div>
         </TabsContent>
         <TabsContent value="details" className="h-full">
-          <div className="bg-card p-4 rounded-lg shadow">
-            <h3 className="text-lg font-semibold mb-2">Détails du dossier</h3>
+          <div className="rounded-lg bg-card p-4 shadow">
+            <h3 className="mb-2 text-lg font-semibold">Détails du dossier</h3>
             <p className="text-muted-foreground">
               Informations détaillées sur le dossier sélectionné.
             </p>
           </div>
         </TabsContent>
         <TabsContent value="history" className="h-full">
-          <div className="bg-card p-4 rounded-lg shadow">
-            <h3 className="text-lg font-semibold mb-2">
+          <div className="rounded-lg bg-card p-4 shadow">
+            <h3 className="mb-2 text-lg font-semibold">
               Historique du dossier
             </h3>
             <p className="text-muted-foreground">
@@ -127,12 +127,12 @@ const main = () => {
 };
 const aside = () => {
   return (
-    <div className="h-full flex flex-col p-4">
+    <div className="flex h-full flex-col p-4">
       <div className="mb-4">
         <Popover>
           <PopoverTrigger>
             <Button variant="outline" className="w-full justify-between">
-              Filtre dossiers <ChevronDown className="h-4 w-4 ml-2" />
+              Filtre dossiers <ChevronDown className="ml-2 h-4 w-4" />
             </Button>
           </PopoverTrigger>
           <PopoverContent>
@@ -159,8 +159,8 @@ const aside = () => {
       <ScrollArea className="flex-1">
         <div className="space-y-4">
           {[1, 2, 3, 4, 5].map((item) => (
-            <div key={item} className="bg-card p-4 rounded-lg shadow">
-              <h4 className="font-semibold mb-1">Dossier {item}</h4>
+            <div key={item} className="rounded-lg bg-card p-4 shadow">
+              <h4 className="mb-1 font-semibold">Dossier {item}</h4>
               <p className="text-sm text-muted-foreground">
                 Brève description du dossier {item}
               </p>
@@ -173,8 +173,8 @@ const aside = () => {
 };
 const notifs = () => {
   return (
-    <div className="bg-card p-4 m-4 rounded-lg shadow">
-      <h2 className="text-lg font-semibold mb-2">
+    <div className="m-4 rounded-lg bg-card p-4 shadow">
+      <h2 className="mb-2 text-lg font-semibold">
         Dernières notifications (non lues)
       </h2>
       <p className="text-muted-foreground">Aucune nouvelle notification</p>

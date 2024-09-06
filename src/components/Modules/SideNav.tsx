@@ -19,13 +19,13 @@ export const SideNav = ({ sidebarOpen }: { sidebarOpen: boolean }) => {
         sidebarOpen ? "translate-x-0" : "-translate-x-full"
       } fixed inset-y-0 left-0 z-50 w-64 bg-card transition-transform duration-300 ease-in-out`}
     >
-      <nav className="h-full flex flex-col pt-20 p-4 space-y-2">
+      <nav className="flex h-full flex-col space-y-2 p-4 pt-20">
         {navItems.map((item, index) => (
-          <Link key={index} href={`/${item.toLowerCase()}`} className="w-full">
+          <Link href={`/${item.toLowerCase()}`} key={item} className="w-full">
             <Button
               key={index}
               variant="ghost"
-              className="justify-start w-full"
+              className="w-full justify-start"
             >
               {item}
             </Button>
