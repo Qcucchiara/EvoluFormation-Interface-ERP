@@ -81,7 +81,7 @@ export const ListCompanies = () => {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {entreprises.map((entreprise) => (
+          {entreprises.map((entreprise, index) => (
             // <TableRow
             //   key={entreprise.id}
             //   onClick={() => handleRowClick(entreprise)}
@@ -97,7 +97,7 @@ export const ListCompanies = () => {
             //     </Button>
             //   </TableCell>
             // </TableRow>
-            <ListCompanyElement entreprise={entreprise} />
+            <ListCompanyElement key={index} entreprise={entreprise} />
           ))}
         </TableBody>
       </Table>
