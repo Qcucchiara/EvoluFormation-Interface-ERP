@@ -210,6 +210,15 @@ export const FormModule = () => {
                   </AccordionItem>
                 </Accordion>
                 <div className="space-y-2">
+                  <Label htmlFor="objectif">objectif de formation</Label>
+                  <Input
+                    id="objectif"
+                    type="text"
+                    placeholder="Objectif de formation"
+                    {...register("link")}
+                  />
+                </div>
+                <div className="space-y-2">
                   <Label htmlFor="page">Page du site</Label>
                   <Input
                     id="page"
