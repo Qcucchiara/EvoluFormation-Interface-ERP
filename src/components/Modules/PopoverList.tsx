@@ -61,7 +61,7 @@ export const PopoverList = ({
     <Popover>
       <PopoverTrigger asChild>
         <Button variant="outline" className="w-[200px] justify-between">
-          Sélectionner un {entityName}
+          Sélectionner {entityName}
           <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>
       </PopoverTrigger>
@@ -81,7 +81,7 @@ export const PopoverList = ({
             </div>
             <div>
               <Table>
-                <TableCaption>sélectionner les {entityName} lié</TableCaption>
+                <TableCaption>sélectionner {entityName} lié</TableCaption>
                 <TableHeader>
                   {/* <TableHeader className=" fixed"> */}
                   <TableRow>

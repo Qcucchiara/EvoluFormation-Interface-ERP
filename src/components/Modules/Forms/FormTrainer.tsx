@@ -13,6 +13,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { PopoverSkill } from "../PopoverSkill";
 import { PopoverList } from "../PopoverList";
 import { SetStateAction, useState } from "react";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const skills = [
   "JavaScript",
@@ -45,52 +46,67 @@ const skills = [
 export const FormTrainer = () => {
   const [selectedNames, setSelectedNames] = useState<string[]>([]);
   return (
-    <Card className="w-full max-w-2xl">
+    <Card className="mx-auto w-full max-w-4xl">
       <CardHeader>
         <CardTitle>Formulaire Formateur</CardTitle>
       </CardHeader>
+
       <CardContent className="space-y-4">
-        <div className="grid grid-cols-2 gap-4">
-          <div className="space-y-2">
-            <Label htmlFor="nom">Nom</Label>
-            <Input id="nom" placeholder="Entrez votre nom" />
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="prenom">Prénom</Label>
-            <Input id="prenom" placeholder="Entrez votre prénom" />
-          </div>
-        </div>
-        <div className="space-y-2">
-          <Label htmlFor="email">Email</Label>
-          <Input id="email" type="email" placeholder="Entrez votre email" />
-        </div>
-        <div className="space-y-2">
-          <Label htmlFor="tel">Téléphone</Label>
-          <Input
-            id="tel"
-            type="tel"
-            placeholder="Entrez votre numéro de téléphone"
-          />
-        </div>
-        <div className="space-y-2">
-          <Label htmlFor="tarif">Tarif (€ journalier)</Label>
-          <Input
-            id="tarif"
-            type="number"
-            min="0"
-            step="0.01"
-            placeholder="Entrez votre tarif journalier"
-          />
-        </div>
-        <PopoverList listNames={skills} setSelectedNames={setSelectedNames} />
-        <div className="space-y-2">
-          <Label htmlFor="commentaire">Commentaire</Label>
-          <Textarea
-            id="commentaire"
-            placeholder="Ajoutez un commentaire ou des informations supplémentaires"
-            className="min-h-[100px]"
-          />
-        </div>
+        <Tabs defaultValue="requis">
+          <TabsList>
+            <TabsTrigger value="requis">Requis</TabsTrigger>
+            <TabsTrigger value="commentaire">Commentaire</TabsTrigger>
+          </TabsList>
+          <TabsContent value="requis">
+            <div className="grid grid-cols-2 gap-4">
+              <div className="space-y-2">
+                <Label htmlFor="nom">Nom</Label>
+                <Input id="nom" placeholder="Entrez votre nom" />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="prenom">Prénom</Label>
+                <Input id="prenom" placeholder="Entrez votre prénom" />
+              </div>
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="email">Email</Label>
+              <Input id="email" type="email" placeholder="Entrez votre email" />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="tel">Téléphone</Label>
+              <Input
+                id="tel"
+                type="tel"
+                placeholder="Entrez votre numéro de téléphone"
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="tarif">Tarif (€ journalier)</Label>
+              <Input
+                id="tarif"
+                type="number"
+                min="0"
+                step="0.01"
+                placeholder="Entrez votre tarif journalier"
+              />
+            </div>
+            <PopoverList
+              listNames={skills}
+              setSelectedNames={setSelectedNames}
+              entityName={"formation"}
+            />
+          </TabsContent>
+          <TabsContent value="commentaire">
+            <div className="space-y-2">
+              <Label htmlFor="commentaire">Commentaire</Label>
+              <Textarea
+                id="commentaire"
+                placeholder="Ajoutez un commentaire ou des informations supplémentaires"
+                className="min-h-[100px]"
+              />
+            </div>
+          </TabsContent>
+        </Tabs>
       </CardContent>
       <CardFooter>
         <Button className="w-full">Soumettre</Button>

@@ -24,7 +24,7 @@ export const FormUnavailibility = () => {
   };
 
   return (
-    <Card className="w-full max-w-md mx-auto">
+    <Card className="mx-auto w-full max-w-4xl">
       <CardHeader>
         <CardTitle>Register Unavailability</CardTitle>
         <CardDescription>

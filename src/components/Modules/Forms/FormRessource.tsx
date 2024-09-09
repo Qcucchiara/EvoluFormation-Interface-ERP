@@ -23,7 +23,7 @@ export const FormRessource = () => {
   };
 
   return (
-    <Card className="w-full max-w-md mx-auto">
+    <Card className="mx-auto w-full max-w-4xl">
       <CardHeader>
         <CardTitle>Add Resource</CardTitle>
         <CardDescription>
