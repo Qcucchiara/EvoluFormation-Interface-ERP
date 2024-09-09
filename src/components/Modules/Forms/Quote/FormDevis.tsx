@@ -16,6 +16,7 @@ import {
 import { Textarea } from "@/components/ui/textarea";
 import { X } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { DateRangePicker } from "@/components/Composites/DateRangePicker";
 
 // Mock data for modules
 const modules = [
@@ -121,7 +122,8 @@ export const FormDevis = () => {
               </div>
               <div className="space-y-2">
                 <Label htmlFor="creationDate">Date de création du devis</Label>
-                <Input id="creationDate" type="date" />
+                <DateRangePicker />
+                {/* <Input id="creationDate" type="date" /> */}
               </div>
             </div>
 
@@ -157,21 +159,27 @@ export const FormDevis = () => {
                 <Label htmlFor="participants">Nombre de participants</Label>
                 <Input id="participants" type="number" min="1" />
               </div>
-              <div className="space-y-2">
-                <Label htmlFor="duration">Durée</Label>
+              <div className="mt-2 space-y-2">
+                {/* <Label htmlFor="duration">Durée</Label> */}
                 <div className="flex space-x-2">
-                  <Input
-                    id="duration-days"
-                    type="number"
-                    min="0"
-                    placeholder="Jours"
-                  />
-                  <Input
-                    id="duration-hours"
-                    type="number"
-                    min="0"
-                    placeholder="Heures"
-                  />
+                  <div>
+                    <Label htmlFor="duration-days">jours:</Label>
+                    <Input
+                      id="duration-days"
+                      type="number"
+                      min="0"
+                      placeholder="Jours"
+                    />
+                  </div>
+                  <div>
+                    <Label htmlFor="duration-hours">heures:</Label>
+                    <Input
+                      id="duration-hours"
+                      type="number"
+                      min="0"
+                      placeholder="Heures"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
