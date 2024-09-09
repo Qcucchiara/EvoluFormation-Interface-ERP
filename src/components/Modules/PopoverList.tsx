@@ -60,7 +60,10 @@ export const PopoverList = ({
   return (
     <Popover>
       <PopoverTrigger asChild>
-        <Button variant="outline" className="w-[200px] justify-between">
+        <Button
+          variant="outline"
+          className="mt-6 min-w-[200px] justify-between"
+        >
           Sélectionner {entityName}
           <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>

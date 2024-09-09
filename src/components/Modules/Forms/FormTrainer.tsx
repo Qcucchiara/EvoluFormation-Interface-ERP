@@ -68,32 +68,47 @@ export const FormTrainer = () => {
                 <Input id="prenom" placeholder="Entrez votre prénom" />
               </div>
             </div>
-            <div className="space-y-2">
-              <Label htmlFor="email">Email</Label>
-              <Input id="email" type="email" placeholder="Entrez votre email" />
+            <div className="grid grid-cols-2 gap-4">
+              <div className="space-y-2">
+                <Label htmlFor="email">Email</Label>
+                <Input
+                  id="email"
+                  type="email"
+                  placeholder="Entrez votre email"
+                />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="tel">Téléphone</Label>
+                <Input
+                  id="tel"
+                  type="tel"
+                  placeholder="Entrez votre numéro de téléphone"
+                />
+              </div>
             </div>
-            <div className="space-y-2">
-              <Label htmlFor="tel">Téléphone</Label>
-              <Input
-                id="tel"
-                type="tel"
-                placeholder="Entrez votre numéro de téléphone"
-              />
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="tarif">Tarif (€ journalier)</Label>
-              <Input
-                id="tarif"
-                type="number"
-                min="0"
-                step="0.01"
-                placeholder="Entrez votre tarif journalier"
-              />
+            <div className="grid grid-cols-2 gap-4">
+              <div className="space-y-2">
+                <Label htmlFor="tarif">Tarif (€ journalier)</Label>
+                <Input
+                  id="tarif"
+                  type="number"
+                  min="0"
+                  placeholder="Entrez votre tarif journalier"
+                />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="city">Ville</Label>
+                <Input
+                  id="city"
+                  type="text"
+                  placeholder="Ville d'activité (plusieurs a terme)"
+                />
+              </div>
             </div>
             <PopoverList
               listNames={skills}
               setSelectedNames={setSelectedNames}
-              entityName={"formation"}
+              entityName={"compétence"}
             />
           </TabsContent>
           <TabsContent value="commentaire">

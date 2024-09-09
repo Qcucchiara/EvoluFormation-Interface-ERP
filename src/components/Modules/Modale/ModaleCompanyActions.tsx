@@ -18,9 +18,9 @@ export const ModaleCompanyActions = ({
   setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
   selectedEntreprise: any;
 }) => {
-  useEffect(() => {
-    console.log("opened?");
-  }, [isModalOpen]);
+  // useEffect(() => {
+  //   console.log("opened?");
+  // }, [isModalOpen]);
   return (
     <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
       <DialogTitle hidden>
