@@ -17,6 +17,7 @@ import {
   DialogDescription,
 } from "@/components/ui/dialog";
 import { ModaleCompanyActions } from "../Modale/ModaleCompanyActions";
+import { ListCompanyElement } from "./ListCompanyElement";
 
 // Sample data
 const entreprises = [
@@ -68,7 +69,7 @@ export const ListCompanies = () => {
 
   return (
     <div className="container mx-auto py-10">
-      <h1 className="text-2xl font-bold mb-5">Liste des Entreprises</h1>
+      <h1 className="mb-5 text-2xl font-bold">Liste des Entreprises</h1>
       <Table>
         <TableHeader>
           <TableRow>
@@ -81,29 +82,30 @@ export const ListCompanies = () => {
         </TableHeader>
         <TableBody>
           {entreprises.map((entreprise) => (
-            <TableRow
-              key={entreprise.id}
-              onClick={() => handleRowClick(entreprise)}
-              className="cursor-pointer"
-            >
-              <TableCell>{entreprise.name}</TableCell>
-              <TableCell>{entreprise.siret}</TableCell>
-              <TableCell>{entreprise.address}</TableCell>
-              <TableCell>{entreprise.city}</TableCell>
-              <TableCell>
-                <Button variant="outline" size="sm">
-                  View
-                </Button>
-              </TableCell>
-            </TableRow>
+            // <TableRow
+            //   key={entreprise.id}
+            //   onClick={() => handleRowClick(entreprise)}
+            //   className="cursor-pointer"
+            // >
+            //   <TableCell>{entreprise.name}</TableCell>
+            //   <TableCell>{entreprise.siret}</TableCell>
+            //   <TableCell>{entreprise.address}</TableCell>
+            //   <TableCell>{entreprise.city}</TableCell>
+            //   <TableCell>
+            //     <Button variant="outline" size="sm">
+            //       View
+            //     </Button>
+            //   </TableCell>
+            // </TableRow>
+            <ListCompanyElement entreprise={entreprise} />
           ))}
         </TableBody>
       </Table>
-      <ModaleCompanyActions
+      {/* <ModaleCompanyActions
         isModalOpen={isModalOpen}
         setIsModalOpen={setIsModalOpen}
         selectedEntreprise={selectedEntreprise}
-      />
+      /> */}
     </div>
   );
 };

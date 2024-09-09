@@ -222,6 +222,7 @@ export const FormCompany = () => {
                   entityName="contact"
                   listNames={formatedListName()}
                   setSelectedNames={setSelectedNames}
+                  selectedNames={selectedNames}
                 />
                 <Button
                   onClick={() => {
@@ -291,6 +292,7 @@ export const FormCompany = () => {
                   entityName="élève"
                   listNames={formatedListName()}
                   setSelectedNames={setSelectedNames}
+                  selectedNames={selectedNames}
                 />
                 <Button
                   onClick={() => {
