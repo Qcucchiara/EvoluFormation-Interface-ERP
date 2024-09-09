@@ -98,12 +98,12 @@ export const FormDevis = () => {
           <Textarea id="address" placeholder="Adresse complète" />
         </div> */}
         <Tabs defaultValue="devis">
-          <TabsList>
+          <TabsList className="grid w-full grid-cols-2">
             <TabsTrigger value="devis">devis</TabsTrigger>
             <TabsTrigger value="module">Sélectionner modules</TabsTrigger>
           </TabsList>
           <TabsContent value="devis">
-            <div className="flex items-center justify-end space-x-2">
+            <div className="my-6 flex items-center justify-end space-x-2">
               <Checkbox id="showAddress" />
               <Label htmlFor="showAddress">
                 Afficher l'adresse sur le devis

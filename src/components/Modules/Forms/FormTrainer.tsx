@@ -53,7 +53,7 @@ export const FormTrainer = () => {
 
       <CardContent className="space-y-4">
         <Tabs defaultValue="requis">
-          <TabsList>
+          <TabsList className="grid w-full grid-cols-2">
             <TabsTrigger value="requis">Requis</TabsTrigger>
             <TabsTrigger value="commentaire">Commentaire</TabsTrigger>
           </TabsList>

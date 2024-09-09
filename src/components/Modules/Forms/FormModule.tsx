@@ -76,7 +76,7 @@ export const FormModule = () => {
       <form onSubmit={handleSubmit(onSubmit)}>
         <CardContent className="space-y-6">
           <Tabs defaultValue="mandatory">
-            <TabsList>
+            <TabsList className="grid w-full grid-cols-2">
               <TabsTrigger value="mandatory">Requis</TabsTrigger>
               <TabsTrigger value="optional">Facultatif</TabsTrigger>
             </TabsList>
