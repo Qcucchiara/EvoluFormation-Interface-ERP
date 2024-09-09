@@ -30,11 +30,14 @@ export const FormDevis = () => {
   const [formationTitle, setFormationTitle] = useState("");
 
   const handleAddModule = (moduleId: string) => {
-    const module = modules.find((m) => m.id.toString() === moduleId);
-    if (module && !selectedModules.some((m) => m.id === module.id)) {
-      setSelectedModules((prev) => [...prev, module]);
+    const moduleFormation = modules.find((m) => m.id.toString() === moduleId);
+    if (
+      moduleFormation &&
+      !selectedModules.some((m) => m.id === moduleFormation.id)
+    ) {
+      setSelectedModules((prev) => [...prev, moduleFormation]);
       if (selectedModules.length === 0) {
-        setFormationTitle(module.name);
+        setFormationTitle(moduleFormation.name);
       }
     }
   };
@@ -106,9 +109,7 @@ export const FormDevis = () => {
           <TabsContent value="devis">
             <div className="my-6 flex items-center justify-end space-x-2">
               <Checkbox id="showAddress" />
-              <Label htmlFor="showAddress">
-                Afficher l'adresse sur le devis
-              </Label>
+              <Label htmlFor="showAddress">Afficher adresse sur le devis</Label>
             </div>
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-2">

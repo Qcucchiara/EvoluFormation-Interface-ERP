@@ -105,7 +105,7 @@ export const FormCompany = () => {
   return (
     <Card className="mx-auto w-full">
       <CardHeader>
-        <CardTitle>Formulaire d'Entreprise</CardTitle>
+        <CardTitle>Formulaire Entreprise</CardTitle>
       </CardHeader>
       <CardContent>
         <Tabs defaultValue="enterprise" className="w-full">
@@ -117,7 +117,7 @@ export const FormCompany = () => {
           <TabsContent value="enterprise">
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
               <div className="space-y-2">
-                <Label htmlFor="name">Nom de l'entreprise</Label>
+                <Label htmlFor="name">Nom Entreprise</Label>
                 <Input
                   id="name"
                   placeholder="Entrez le nom de l'entreprise"

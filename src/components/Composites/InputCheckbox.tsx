@@ -19,9 +19,9 @@ const InputCheckbox = ({
       });
     !isChecked &&
       setFormateur((prev: []) =>
-        prev.filter((formateur) => formateur !== formateurName)
+        prev.filter((formateur) => formateur !== formateurName),
       );
-  }, [isChecked]);
+  }, [isChecked, formateurName, setFormateur]);
   return (
     <div key={formateurId} className="flex items-center space-x-2">
       <Checkbox

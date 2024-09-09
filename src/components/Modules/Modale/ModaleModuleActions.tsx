@@ -25,7 +25,7 @@ export const ModaleModuleActions = ({
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Détails du module "":</DialogTitle>
+          <DialogTitle>Détails du module &quot;&quot;:</DialogTitle>
           <DialogDescription>les changements sont définitifs</DialogDescription>
         </DialogHeader>
 
@@ -35,7 +35,9 @@ export const ModaleModuleActions = ({
             <TabsTrigger value="update">Modification</TabsTrigger>
             <TabsTrigger value="other">other</TabsTrigger>
           </TabsList>
-          <TabsContent value="details">Détails d'un module ici </TabsContent>
+          <TabsContent value="details">
+            Détails d&quot;un module ici
+          </TabsContent>
           <TabsContent value="update">
             <div>
               mêmes infos que dans détails, mais avec des input ghost préremplis
