@@ -14,6 +14,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "../ui/tabs";
 import { Input } from "../ui/input";
 import { ScrollArea } from "../ui/scroll-area";
 import { PopoverListElement } from "./PopoverListElement";
+import { ChevronsUpDown } from "lucide-react";
 
 function filtreSearch(arr: string[], requete: string) {
   return arr.filter(function (el) {
@@ -33,10 +34,12 @@ export const PopoverList = ({
   listNames,
   selectedNames,
   setSelectedNames,
+  entityName,
 }: {
   listNames: string[];
   selectedNames: string[];
   setSelectedNames: React.Dispatch<React.SetStateAction<string[]>>;
+  entityName: string;
 }) => {
   const [searchValue, setSearchValue] = useState<string>("");
 
@@ -63,14 +66,17 @@ export const PopoverList = ({
   }, [lastChecked]);
   return (
     <Popover>
-      <PopoverTrigger className="h-10 rounded-md bg-primary px-4 py-2 text-primary-foreground hover:bg-primary/90">
-        compétences
+      <PopoverTrigger asChild>
+        <Button variant="outline" className="w-[200px] justify-between">
+          Sélectionner {entityName}
+          <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+        </Button>
       </PopoverTrigger>
       <PopoverContent>
         <Tabs defaultValue="list" className="w-auto">
           <TabsList>
-            <TabsTrigger value="list">Liste compétences</TabsTrigger>
-            <TabsTrigger value="new">Nouvelle compétence</TabsTrigger>
+            <TabsTrigger value="list">Liste {entityName}</TabsTrigger>
+            <TabsTrigger value="new">+ {entityName}</TabsTrigger>
           </TabsList>
           <TabsContent value="list">
             <div>
@@ -82,7 +88,7 @@ export const PopoverList = ({
             </div>
             <div>
               <Table>
-                <TableCaption>sélectionner les compétences lié</TableCaption>
+                <TableCaption>sélectionner {entityName} lié</TableCaption>
                 <TableHeader>
                   {/* <TableHeader className=" fixed"> */}
                   <TableRow>
@@ -117,7 +123,7 @@ export const PopoverList = ({
             </div>
           </TabsContent>
           <TabsContent className="h-[444px]" value="new">
-            formulaire de compétences (a priori il faut juste mettre le nom)
+            formulaire de {entityName} (a priori il faut juste mettre le nom)
           </TabsContent>
         </Tabs>
       </PopoverContent>

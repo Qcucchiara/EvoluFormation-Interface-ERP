@@ -18,7 +18,6 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Plus, Trash2 } from "lucide-react";
-import { ButtonIcon } from "../../Primitives/ButtonIcon";
 
 export const FormQuote = () => {
   // TODO: penser a ajouter un cadre, et remodifier des détails
@@ -50,8 +49,8 @@ export const FormQuote = () => {
         <CardTitle>Devis</CardTitle>
       </CardHeader>
       <CardContent className="space-y-4">
-        <form className="space-y-8 max-w-4xl mx-auto p-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <form className="mx-auto max-w-4xl space-y-8 p-4">
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
             <div className="space-y-2">
               <Label htmlFor="start-date">Date du devis</Label>
               <Input id="start-date" type="date" />
@@ -61,7 +60,7 @@ export const FormQuote = () => {
               <Input id="end-date" type="date" />
             </div>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
             <div className="space-y-2">
               <Label htmlFor="duration">Durée</Label>
               <Input id="duration" type="text" />
@@ -74,10 +73,10 @@ export const FormQuote = () => {
           <div className="space-y-4">
             <Card>
               <CardHeader>
-                <CardTitle className="flex justify-between items-center">
+                <CardTitle className="flex items-center justify-between">
                   Resources
                   <Button type="button" onClick={addResource} className="ml-2">
-                    <Plus className="h-4 w-4 mr-2" />
+                    <Plus className="mr-2 h-4 w-4" />
                     Ajout Resource
                   </Button>
                 </CardTitle>
@@ -86,8 +85,7 @@ export const FormQuote = () => {
                 {resources.map((resource, index) => (
                   <Card
                     key={index}
-                    className="flex items-end space-x-2 
-                    border-gray-50 shadow-sm"
+                    className="flex items-end space-x-2 border-gray-50 shadow-sm"
                   >
                     <div className="flex-1 space-y-2">
                       <Input
@@ -127,7 +125,7 @@ export const FormQuote = () => {
                       type="button"
                       variant="secondary"
                       onClick={() => removeResource(index)}
-                      className=" rounded-full aspect-square p-0 hover:bg-destructive hover:text-white"
+                      className="aspect-square rounded-full p-0 hover:bg-destructive hover:text-white"
                     >
                       <Trash2 className="h-4 w-4" />
                     </Button>
@@ -164,7 +162,7 @@ export const FormQuote = () => {
                 </SelectContent>
               </Select>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
               <div className="space-y-2">
                 <Label htmlFor="quote-start-date">Start Date</Label>
                 <Input id="quote-start-date" type="date" />
@@ -185,7 +183,7 @@ export const FormQuote = () => {
               <CardTitle>Beneficiary</CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                 <div className="space-y-2">
                   <Label htmlFor="first-name">First Name</Label>
                   <Input id="first-name" type="text" />
@@ -195,7 +193,7 @@ export const FormQuote = () => {
                   <Input id="last-name" type="text" />
                 </div>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                 <div className="space-y-2">
                   <Label htmlFor="phone">Phone</Label>
                   <Input id="phone" type="tel" />

@@ -56,7 +56,7 @@ export const FormProspect = () => {
     setValue("company", company);
   }, [company]);
   return (
-    <Card className="w-full">
+    <Card className="mx-auto w-full max-w-4xl">
       <CardHeader>
         <CardTitle>Nouveau prospect</CardTitle>
       </CardHeader>
@@ -120,21 +120,23 @@ export const FormProspect = () => {
                 />
               </div>
               <div className="grid grid-cols-2 gap-4">
-                <InputSelectForm
-                  id={"type"}
-                  label={"Type"}
-                  placeholder={"Sélectionnez un type"}
-                  state={type}
-                  setState={setType}
-                  errors={errors.type?.message}
-                >
-                  <SelectItem value="client">Client</SelectItem>
-                  <SelectItem value="fournisseur">Fournisseur</SelectItem>
-                  <SelectItem value="partenaire">Partenaire</SelectItem>
-                </InputSelectForm>
-                {errors.type?.message && type === "" && (
-                  <p className="text-red-600">{errors.type.message}</p>
-                )}
+                <div className="mt-5">
+                  <InputSelectForm
+                    id={"type"}
+                    label={"Type"}
+                    placeholder={"Sélectionnez un type"}
+                    state={type}
+                    setState={setType}
+                    errors={errors.type?.message}
+                  >
+                    <SelectItem value="client">Client</SelectItem>
+                    <SelectItem value="fournisseur">Fournisseur</SelectItem>
+                    <SelectItem value="partenaire">Partenaire</SelectItem>
+                  </InputSelectForm>
+                  {errors.type?.message && type === "" && (
+                    <p className="text-red-600">{errors.type.message}</p>
+                  )}
+                </div>
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">
                     <Label>Entreprise</Label>

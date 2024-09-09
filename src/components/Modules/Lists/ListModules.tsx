@@ -95,7 +95,7 @@ const ListModules = () => {
   });
 
   const filteredData = sortedData.filter((item) =>
-    item.titre.toLowerCase().includes(searchTerm.toLowerCase())
+    item.titre.toLowerCase().includes(searchTerm.toLowerCase()),
   );
 
   const requestSort = (key: keyof DataItem) => {
@@ -132,14 +132,14 @@ const ListModules = () => {
                     <ArrowUpDown className="ml-2 h-4 w-4" />
                   </Button>
                 </TableHead>
-              )
+              ),
             )}
             <TableHead>Actions</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
-          {filteredData.map((item) => (
-            <ListModuleElement item={item} />
+          {filteredData.map((item, index) => (
+            <ListModuleElement key={index} item={item} />
           ))}
         </TableBody>
       </Table>

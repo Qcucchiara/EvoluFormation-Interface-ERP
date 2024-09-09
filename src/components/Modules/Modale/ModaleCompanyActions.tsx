@@ -26,7 +26,7 @@ export const ModaleCompanyActions = ({
       <DialogTitle hidden>
         <DialogTitle>Actions Entreprises</DialogTitle>
         <DialogDescription>
-          des actions possibles a effectuer sur l'entreprise selectionné
+          des actions possibles a effectuer sur l&apos;entreprise selectionné
         </DialogDescription>
       </DialogTitle>
       <DialogContent>

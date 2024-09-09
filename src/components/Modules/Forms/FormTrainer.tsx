@@ -12,6 +12,9 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { PopoverSkill } from "../PopoverSkill";
 import { PopoverList } from "../PopoverList";
+
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+
 import { SetStateAction, useEffect, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { trainerForm } from "@/app/utils/type";
@@ -68,78 +71,61 @@ export const FormTrainer = () => {
     setValue("skills", selectedNames);
   }, [selectedNames]);
   return (
-    <Card className="w-full max-w-2xl">
+    <Card className="mx-auto w-full max-w-4xl">
       <CardHeader>
         <CardTitle>Formulaire Formateur</CardTitle>
       </CardHeader>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <CardContent className="space-y-4">
-          <div className="grid grid-cols-2 gap-4">
-            <InputForm
-              label={"Nom"}
-              require={true}
-              id={"nom"}
-              placeholder={"Entrez votre nom"}
-              register={register("lastName")}
-            />
-            <InputForm
-              require={true}
-              label={"Prénom"}
-              id={"prenom"}
-              placeholder={"Entrez votre prénom"}
-              register={register("firstName")}
-            />
-          </div>
-          <div className="grid grid-cols-2 gap-4">
-            <InputForm
-              require={true}
-              label={"Email"}
-              id={"email"}
-              placeholder={"Entrez votre email"}
-              register={register("email")}
-              errors={errors.email?.message}
-            />
-            <InputForm
-              label={"Téléphone"}
-              id={"tel"}
-              placeholder={"Entrez votre numéro de téléphone"}
-              register={register("phone")}
-            />
+      <CardContent className="space-y-4">
+        <div className="grid grid-cols-2 gap-4">
+          <div className="space-y-2">
+            <Label htmlFor="nom">Nom</Label>
+            <Input id="nom" placeholder="Entrez votre nom" />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="tarif">Tarif (€ journalier)</Label>
-            <Input
-              id="tarif"
-              type="number"
-              min="0"
-              step="0.01"
-              placeholder="Entrez votre tarif journalier"
-              {...register("rate")}
-            />
-            {errors.rate?.message && (
-              <p className="text-red-600">{errors.rate.message}</p>
-            )}
+            <Label htmlFor="prenom">Prénom</Label>
+            <Input id="prenom" placeholder="Entrez votre prénom" />
           </div>
-          <PopoverList listNames={skills} selectedNames={selectedNames} setSelectedNames={setSelectedNames} />
-          {errors.skills?.message && (
-            <p className="text-red-600">{errors.skills.message}</p>
-          )}
-          <div className="space-y-2">
-            <Label htmlFor="commentaire">Commentaire</Label>
-            <Textarea
-              id="commentaire"
-              placeholder="Ajoutez un commentaire ou des informations supplémentaires"
-              className="min-h-[100px]"
-              {...register("commentary")}
-            />
-          </div>
-        </CardContent>
-        <CardFooter>
-          <Button type="submit" className="w-full">
-            Soumettre
-          </Button>
-        </CardFooter>
-      </form>
+        </div>
+        <div className="space-y-2">
+          <Label htmlFor="email">Email</Label>
+          <Input id="email" type="email" placeholder="Entrez votre email" />
+        </div>
+        <div className="space-y-2">
+          <Label htmlFor="tel">Téléphone</Label>
+          <Input
+            id="tel"
+            type="tel"
+            placeholder="Entrez votre numéro de téléphone"
+          />
+        </div>
+        <div className="space-y-2">
+          <Label htmlFor="tarif">Tarif (€ journalier)</Label>
+          <Input
+            id="tarif"
+            type="number"
+            min="0"
+            step="0.01"
+            placeholder="Entrez votre tarif journalier"
+          />
+        </div>
+        <PopoverList
+          listNames={skills}
+          setSelectedNames={setSelectedNames}
+          selectedNames={selectedNames}
+          entityName={"formation"}
+        />
+        <div className="space-y-2">
+          <Label htmlFor="commentaire">Commentaire</Label>
+          <Textarea
+            id="commentaire"
+            placeholder="Ajoutez un commentaire ou des informations supplémentaires"
+            className="min-h-[100px]"
+          />
+        </div>
+      </CardContent>
+      <CardFooter>
+        <Button className="w-full">Soumettre</Button>
+      </CardFooter>
     </Card>
   );
 };

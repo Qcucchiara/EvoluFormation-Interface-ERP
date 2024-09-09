@@ -34,7 +34,7 @@ export const FormRessource = () => {
   };
 
   return (
-    <Card className="mx-auto w-full max-w-md">
+    <Card className="mx-auto w-full max-w-4xl">
       <CardHeader>
         <CardTitle>Add Resource</CardTitle>
         <CardDescription>

@@ -16,12 +16,12 @@ const LayoutStandard = ({
 
   return (
     <div>
-      <SideNav sidebarOpen={sidebarOpen} />
+      <SideNav sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
       <CustomShortcutsHeader
         sidebarOpen={sidebarOpen}
         setSidebarOpen={setSidebarOpen}
       />
-      <div className="flex-1 flex flex-col overflow-hidden">
+      <div className="flex flex-1 flex-col overflow-hidden">
         {/* TODO: problème d'hydration lié a des <buttons> dans le resizable panel. */}
         {children}
       </div>

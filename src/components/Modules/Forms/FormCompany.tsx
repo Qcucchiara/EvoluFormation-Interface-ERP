@@ -23,6 +23,7 @@ import {
 import { schemaCompany } from "@/validator/CompanyValidator";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { PopoverList } from "../PopoverList";
 
 type Contact = {
   id: number;
@@ -40,6 +41,15 @@ const dummyData = [
   { id: 1, name: "John Doe", email: "john@example.com", tel: "0123456789" },
   { id: 2, name: "Jane Smith", email: "jane@example.com", tel: "9876543210" },
 ];
+
+const formatedListName = () => {
+  let formatedData: string[] = [];
+  dummyData.forEach((element) => {
+    formatedData.push(element.name);
+  });
+  return formatedData;
+};
+
 export const FormCompany = () => {
   const [contacts, setContacts] = useState<Contact[]>(dummyData);
   const [students, setStudents] = useState<Student[]>(dummyData);
@@ -50,6 +60,8 @@ export const FormCompany = () => {
   const [adressCity, setAdressCity] = useState("");
   const [selectedContacts, setSelectedContacts] = useState<Contact[]>([]);
   const [selectedStudents, setSelectedStudents] = useState<Student[]>([]);
+
+  const [selectedNames, setSelectedNames] = useState<string[]>([]);
 
   // TODO: gérer la récupération des contacts et students dans le useForm
   const {
@@ -79,10 +91,21 @@ export const FormCompany = () => {
     }
   };
 
+  useEffect(() => {
+    selectedNames.forEach((selectedName) => {
+      dummyData.forEach((element) => {
+        if (selectedName === element.name) {
+          setSelectedContacts((prev) => [...prev, element]);
+          setSelectedStudents((prev) => [...prev, element]);
+        }
+      });
+    });
+  }, [selectedNames]);
+
   return (
     <Card className="mx-auto w-full">
       <CardHeader>
-        <CardTitle>Formulaire d'Entreprise</CardTitle>
+        <CardTitle>Formulaire Entreprise</CardTitle>
       </CardHeader>
       <CardContent>
         <Tabs defaultValue="enterprise" className="w-full">
@@ -94,7 +117,7 @@ export const FormCompany = () => {
           <TabsContent value="enterprise">
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
               <div className="space-y-2">
-                <Label htmlFor="name">Nom de l'entreprise</Label>
+                <Label htmlFor="name">Nom Entreprise</Label>
                 <Input
                   id="name"
                   placeholder="Entrez le nom de l'entreprise"
@@ -180,7 +203,7 @@ export const FormCompany = () => {
           <TabsContent value="contacts">
             <div className="space-y-6">
               <div className="flex space-x-4">
-                <Select onValueChange={handleContactSelect}>
+                {/* <Select onValueChange={handleContactSelect}>
                   <SelectTrigger className="w-[200px]">
                     <SelectValue placeholder="Sélectionner un contact" />
                   </SelectTrigger>
@@ -194,7 +217,12 @@ export const FormCompany = () => {
                       </SelectItem>
                     ))}
                   </SelectContent>
-                </Select>
+                </Select> */}
+                <PopoverList
+                  entityName="contact"
+                  listNames={formatedListName()}
+                  setSelectedNames={setSelectedNames}
+                />
                 <Button
                   onClick={() => {
                     const newContact: Contact = {
@@ -207,7 +235,7 @@ export const FormCompany = () => {
                     setSelectedContacts([...selectedContacts, newContact]);
                   }}
                 >
-                  Nouveau Contact
+                  Nouveau Contact (bouton temporaire)
                 </Button>
               </div>
               <div className="space-y-4">
@@ -244,7 +272,7 @@ export const FormCompany = () => {
           <TabsContent value="students">
             <div className="space-y-6">
               <div className="flex space-x-4">
-                <Select onValueChange={handleStudentSelect}>
+                {/* <Select onValueChange={handleStudentSelect}>
                   <SelectTrigger className="w-[200px]">
                     <SelectValue placeholder="Sélectionner un élève" />
                   </SelectTrigger>
@@ -258,7 +286,12 @@ export const FormCompany = () => {
                       </SelectItem>
                     ))}
                   </SelectContent>
-                </Select>
+                </Select> */}
+                <PopoverList
+                  entityName="élève"
+                  listNames={formatedListName()}
+                  setSelectedNames={setSelectedNames}
+                />
                 <Button
                   onClick={() => {
                     const newStudent: Student = {
@@ -271,7 +304,7 @@ export const FormCompany = () => {
                     setSelectedStudents([...selectedStudents, newStudent]);
                   }}
                 >
-                  Nouvel Elève
+                  Nouvel Elève (bouton temporaire)
                 </Button>
               </div>
               <div className="space-y-4">

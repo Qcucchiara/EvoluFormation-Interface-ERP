@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Button } from "../ui/button";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const navItems = [
   "Prospects",
@@ -12,7 +13,14 @@ const navItems = [
   "Sessions", // TODO
   "Agenda", // TODO
 ];
-export const SideNav = ({ sidebarOpen }: { sidebarOpen: boolean }) => {
+export const SideNav = ({
+  sidebarOpen,
+  setSidebarOpen,
+}: {
+  sidebarOpen: boolean;
+  setSidebarOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}) => {
+  const { push } = useRouter();
   return (
     <aside
       className={`${
@@ -21,15 +29,17 @@ export const SideNav = ({ sidebarOpen }: { sidebarOpen: boolean }) => {
     >
       <nav className="flex h-full flex-col space-y-2 p-4 pt-20">
         {navItems.map((item, index) => (
-          <Link href={`/${item.toLowerCase()}`} key={item} className="w-full">
-            <Button
-              key={index}
-              variant="ghost"
-              className="w-full justify-start"
-            >
-              {item}
-            </Button>
-          </Link>
+          <Button
+            key={index}
+            variant="ghost"
+            className="w-full justify-start"
+            onClick={() => {
+              push(`/${item.toLowerCase()}`);
+              setSidebarOpen(false);
+            }}
+          >
+            {item}
+          </Button>
         ))}
       </nav>
     </aside>
