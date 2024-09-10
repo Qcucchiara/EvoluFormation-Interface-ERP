@@ -140,7 +140,7 @@ export const FormTrainer = () => {
                 listNames={skills}
                 selectedNames={selectedNames}
                 setSelectedNames={setSelectedNames}
-                entityName={"formation"}
+                entityName={"compétence"}
               />
               {errors.skills?.message && (
                 <p className="text-red-600">{errors.skills.message}</p>

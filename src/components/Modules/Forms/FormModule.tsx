@@ -115,7 +115,7 @@ export const FormModule = () => {
                 </div>
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <Label htmlFor="domaine">Domaine selon BPF</Label>
+                    <Label htmlFor="domaine">Spécialité selon BPF</Label>
                     <Select onValueChange={setDomaineBPF}>
                       <SelectTrigger id="domaine">
                         <SelectValue placeholder="Sélectionnez un domaine" />

@@ -11,26 +11,26 @@ import React from "react";
 
 const children = () => {
   return (
-    <Tabs defaultValue="new_module" className="h-full flex flex-col">
+    <Tabs defaultValue="new_module" className="flex h-full flex-col">
       <TabsList className="mb-4">
         <TabsTrigger value="new_module">Nouveau module</TabsTrigger>
-        <TabsTrigger value="browsing">Regarder les modules</TabsTrigger>
+        <TabsTrigger value="browsing">Liste des modules</TabsTrigger>
         <TabsTrigger value="other">peut être autre chose</TabsTrigger>
       </TabsList>
       <ScrollArea className="flex-1">
         <TabsContent value="new_module" className="h-full">
-          <div className="bg-card p-4 rounded-lg shadow">
+          <div className="rounded-lg bg-card p-4 shadow">
             <FormModule />
           </div>
         </TabsContent>
         <TabsContent value="browsing" className="h-full">
-          <div className="bg-card p-4 rounded-lg shadow">
+          <div className="rounded-lg bg-card p-4 shadow">
             <ListModules />
           </div>
         </TabsContent>
         <TabsContent value="other" className="h-full">
-          <div className="bg-card p-4 rounded-lg shadow">
-            <h3 className="text-lg font-semibold mb-2">Other</h3>
+          <div className="rounded-lg bg-card p-4 shadow">
+            <h3 className="mb-2 text-lg font-semibold">Other</h3>
             <p className="text-muted-foreground">
               Ajouter des nouvelles fonctionnalités ici
             </p>
