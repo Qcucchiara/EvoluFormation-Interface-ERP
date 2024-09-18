@@ -201,7 +201,7 @@ export const FormDevis = () => {
           </TabsContent>
           <TabsContent value="module">
             <div className="space-y-2">
-              <Label htmlFor="moduleSelect">Ajouter un module</Label>
+              <Label htmlFor="moduleSelect">Ajouter une session</Label>
               <div className="flex space-x-2">
                 <Select onValueChange={handleAddModule}>
                   <SelectTrigger id="moduleSelect">
