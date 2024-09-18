@@ -19,4 +19,5 @@ export const schemaTrainer = yup.object().shape({
     .of(yup.string().required())
     .required()
     .min(1, "Veuillez séléctionner une compétence"),
+  city: yup.string().required("Ce champ est obligatoire"),
 });

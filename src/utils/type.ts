@@ -39,5 +39,6 @@ export type trainerForm = {
   phone: string;
   rate: string;
   skills: [];
+  city: string;
   commentary?: string;
 };
