@@ -17,6 +17,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { schemaTrainer } from "@/validator/TrainerValidator";
 import InputForm from "@/components/Composites/InputForm";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { handlePerson } from "@/services/EvoluFormationAPI";
 
 const skills = [
   "JavaScript",
@@ -58,11 +59,13 @@ export const FormTrainer = () => {
     resolver: yupResolver(schemaTrainer),
   });
   const onSubmit: SubmitHandler<trainerForm> = async (data) => {
-    console.log(data);
-    //TODO plus tard avec le back
+    await handlePerson.trainer.create(data).then((res) => {
+      console.log(res);
+    });
+    // TODO: plus tard avec le back
   };
   useEffect(() => {
-    console.log(selectedNames);
+    console.log("COmpétences sélectionnés:", selectedNames);
     setValue("skills", []);
     setValue("skills", selectedNames);
   }, [selectedNames]);
@@ -85,14 +88,14 @@ export const FormTrainer = () => {
                   require={true}
                   id={"nom"}
                   placeholder={"Entrez votre nom"}
-                  register={register("lastName")}
+                  register={register("last_name")}
                 />
                 <InputForm
                   require={true}
                   label={"Prénom"}
                   id={"prenom"}
                   placeholder={"Entrez votre prénom"}
-                  register={register("firstName")}
+                  register={register("first_name")}
                 />
               </div>
               <div className="grid grid-cols-2 gap-4">
