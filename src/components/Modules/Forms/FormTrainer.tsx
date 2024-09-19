@@ -66,8 +66,8 @@ export const FormTrainer = () => {
   };
   useEffect(() => {
     console.log("COmpétences sélectionnés:", selectedNames);
-    setValue("skills", []);
-    setValue("skills", selectedNames);
+    // setValue("skills", []);
+    // setValue("skills", selectedNames);
   }, [selectedNames]);
   return (
     <Card className="mx-auto w-full max-w-4xl">
@@ -123,12 +123,12 @@ export const FormTrainer = () => {
                     min="0"
                     step="0.01"
                     placeholder="Entrez votre tarif journalier"
-                    {...register("rate")}
+                    // {...register("rate")}
                     required
                   />
-                  {errors.rate?.message && (
+                  {/* {errors.rate?.message && (
                     <p className="text-red-600">{errors.rate.message}</p>
-                  )}
+                  )} */}
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="city">Ville</Label>
@@ -145,9 +145,9 @@ export const FormTrainer = () => {
                 setSelectedNames={setSelectedNames}
                 entityName={"compétence"}
               />
-              {errors.skills?.message && (
+              {/* {errors.skills?.message && (
                 <p className="text-red-600">{errors.skills.message}</p>
-              )}
+              )} */}
             </TabsContent>
             <TabsContent value="commentaire">
               <div className="space-y-2">
@@ -156,7 +156,7 @@ export const FormTrainer = () => {
                   id="commentaire"
                   placeholder="Ajoutez un commentaire ou des informations supplémentaires"
                   className="min-h-[100px]"
-                  {...register("commentary")}
+                  // {...register("commentary")}
                 />
               </div>
             </TabsContent>
