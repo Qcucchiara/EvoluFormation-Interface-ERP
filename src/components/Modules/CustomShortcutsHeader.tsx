@@ -12,9 +12,6 @@ export const CustomShortcutsHeader = ({
 }) => {
   return (
     <header className="sticky top-0 z-50 flex items-center justify-between bg-muted p-4">
-      <div className="flex-1 px-4">
-        <Input placeholder="Barre de raccourcis custom" className="max-w-sm" />
-      </div>
       <Button
         variant="ghost"
         size="icon"
@@ -23,6 +20,9 @@ export const CustomShortcutsHeader = ({
       >
         <Menu className="h-6 w-6" />
       </Button>
+      <div className="flex-1 px-4">
+        <Input placeholder="Barre de raccourcis custom" className="max-w-sm" />
+      </div>
     </header>
   );
 };

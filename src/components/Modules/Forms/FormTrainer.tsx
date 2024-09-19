@@ -75,12 +75,6 @@ export const FormTrainer = () => {
   };
 
   useEffect(() => {
-    if (isSubmited) {
-      setIsSubmited(false);
-    }
-  }, [isSubmited]);
-
-  useEffect(() => {
     console.log("Compétences sélectionnés:", selectedNames);
     // setValue("skills", []);
     // setValue("skills", selectedNames);
