@@ -17,11 +17,12 @@ export const ListCompanyElement = ({ entreprise }: { entreprise: any }) => {
 
   return (
     <>
+      <ModaleModuleActions open={openModale} setOpen={setOpenModale} />
       <TableRow
         key={entreprise.id}
         className="cursor-pointer"
         onClick={() => {
-          setIsModalOpen(!isModalOpen);
+          setOpenModale(!openModale);
         }}
       >
         <TableCell>{entreprise.name}</TableCell>
@@ -29,7 +30,6 @@ export const ListCompanyElement = ({ entreprise }: { entreprise: any }) => {
         <TableCell>{entreprise.address}</TableCell>
         <TableCell>{entreprise.city}</TableCell>
         <TableCell>
-          <ModaleModuleActions open={openModale} setOpen={setOpenModale} />
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="ghost" className="h-8 w-8 p-0">
