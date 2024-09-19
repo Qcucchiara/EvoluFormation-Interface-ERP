@@ -94,23 +94,18 @@ type SortConfig = {
 };
 const ListProspects = () => {
   const [listProspect, setListProspect] = useState<any[]>(data);
-  //   const [filteredData, setFilteredData] = useState<any[]>(data);
   const [searchTerm, setSearchTerm] = useState("");
-  //ici
   const [sortConfig, setSortConfig] = useState<SortConfig>({
     key: "id",
     direction: "asc",
   });
-  //la
   useEffect(() => {
     handlePerson.prospect.findAll().then((res: any) => {
       console.log(res.data);
       setListProspect(res.data);
     });
   }, []);
-  //ici
   const sortedData = [...listProspect].sort((a, b) => {
-    console.log(sortConfig);
     if (a[sortConfig.key] < b[sortConfig.key]) {
       return sortConfig.direction === "asc" ? -1 : 1;
     }
@@ -126,20 +121,11 @@ const ListProspects = () => {
 
   const requestSort = (key: keyof DataItem) => {
     let direction: "asc" | "desc" = "asc";
-    console.log(
-      sortConfig.key,
-      "sortconfig",
-      key,
-      "key",
-      sortConfig.direction,
-      "direction",
-    );
     if (sortConfig.key === key && sortConfig.direction === "asc") {
       direction = "desc";
     }
     setSortConfig({ key, direction });
   };
-  //la
   return (
     <div className="container mx-auto py-10">
       <div className="mb-4">
@@ -162,7 +148,6 @@ const ListProspects = () => {
                     variant="ghost"
                     onClick={() => {
                       requestSort(key as keyof DataItem);
-                      console.log("test");
                     }}
                     className="hover:bg-transparent"
                   >

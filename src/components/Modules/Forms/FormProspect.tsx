@@ -43,7 +43,6 @@ export const FormProspect = () => {
     resolver: yupResolver(schemaProspect),
   });
   const onSubmit: SubmitHandler<prospectForm> = async (data) => {
-    // console.log(data);
     await handlePerson.prospect.create(data).then((res) => {
       console.log(res);
     });
