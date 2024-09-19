@@ -18,6 +18,7 @@ import { schemaTrainer } from "@/validator/TrainerValidator";
 import InputForm from "@/components/Composites/InputForm";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { handlePerson } from "@/services/EvoluFormationAPI";
+import { toast } from "sonner";
 
 const skills = [
   "JavaScript",
@@ -47,6 +48,7 @@ const skills = [
   "Angular",
 ];
 export const FormTrainer = () => {
+  const [isSubmited, setIsSubmited] = useState(false);
   const [selectedNames, setSelectedNames] = useState<string[]>([]);
   const {
     register,
@@ -61,11 +63,25 @@ export const FormTrainer = () => {
   const onSubmit: SubmitHandler<trainerForm> = async (data) => {
     await handlePerson.trainer.create(data).then((res) => {
       console.log(res);
+      toast("Le formateur a été ajouté", {
+        description: `le formateur ${data.first_name} a été correctement ajouté à la base de donnée`,
+        // action: {
+        //   label: "Undo",
+        //   onClick: () => console.log("Undo"),
+        // },
+      });
     });
     // TODO: plus tard avec le back
   };
+
   useEffect(() => {
-    console.log("COmpétences sélectionnés:", selectedNames);
+    if (isSubmited) {
+      setIsSubmited(false);
+    }
+  }, [isSubmited]);
+
+  useEffect(() => {
+    console.log("Compétences sélectionnés:", selectedNames);
     // setValue("skills", []);
     // setValue("skills", selectedNames);
   }, [selectedNames]);
@@ -163,7 +179,13 @@ export const FormTrainer = () => {
           </Tabs>
         </CardContent>
         <CardFooter>
-          <Button type="submit" className="w-full">
+          <Button
+            type="submit"
+            className="w-full"
+            // onClick={() => {
+            //   setIsSubmited(true);
+            // }}
+          >
             Soumettre
           </Button>
         </CardFooter>
