@@ -14,8 +14,8 @@ export type instructor = {
 };
 export type prospectForm = {
   civility: string;
-  firstName: string;
-  lastName: string;
+  first_name: string;
+  last_name: string;
   email: string;
   phone: string;
   type: string;

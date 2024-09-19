@@ -33,10 +33,12 @@ export const backend = axios.create({
 export const handlePerson = {
   prospect: {
     create: (data: unknown) => {
+      console.log("ici");
       return backend.post("/prospect", data);
     },
     // skip: number, take: number
     findAll: () => {
+      console.log("la");
       return backend.get(`/prospect`);
     },
     findOne: (id: string) => {

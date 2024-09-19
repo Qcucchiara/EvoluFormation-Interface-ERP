@@ -2,8 +2,8 @@ import * as yup from "yup";
 
 export const schemaProspect = yup.object().shape({
   civility: yup.string().required("Ce champ est obligatoire"),
-  firstName: yup.string().required("Ce champ est obligatoire"),
-  lastName: yup.string().required("Ce champ est obligatoire"),
+  first_name: yup.string().required("Ce champ est obligatoire"),
+  last_name: yup.string().required("Ce champ est obligatoire"),
   email: yup
     .string()
     .required("Ce champ est obligatoire")
