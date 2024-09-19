@@ -24,6 +24,7 @@ import { schemaCompany } from "@/validator/CompanyValidator";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { PopoverList } from "../PopoverList";
+import { Textarea } from "@/components/ui/textarea";
 
 type Contact = {
   id: number;
@@ -109,10 +110,11 @@ export const FormCompany = () => {
       </CardHeader>
       <CardContent>
         <Tabs defaultValue="enterprise" className="w-full">
-          <TabsList className="grid w-full grid-cols-3">
+          <TabsList className="grid w-full grid-cols-4">
             <TabsTrigger value="enterprise">Entreprise</TabsTrigger>
             <TabsTrigger value="contacts">Contacts</TabsTrigger>
             <TabsTrigger value="students">Elèves</TabsTrigger>
+            <TabsTrigger value="comment">Commentaire</TabsTrigger>
           </TabsList>
           <TabsContent value="enterprise">
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
@@ -338,6 +340,17 @@ export const FormCompany = () => {
                   </div>
                 ))}
               </div>
+            </div>
+          </TabsContent>
+          <TabsContent value="comment" className="space-y-4">
+            <div className="space-y-2">
+              <Label htmlFor="comment">Commentaire</Label>
+              <Textarea
+                id="comment"
+                placeholder="Ajoutez un commentaire ou des informations supplémentaires"
+                className="min-h-[200px]"
+                {...register("commentary")}
+              />
             </div>
           </TabsContent>
         </Tabs>

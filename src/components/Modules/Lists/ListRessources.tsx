@@ -15,6 +15,15 @@ import {
   DialogTitle,
   DialogDescription,
 } from "@/components/ui/dialog";
+import { ModaleModuleActions } from "../Modale/ModaleModuleActions";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { Button } from "@/components/ui/button";
+import { MoreHorizontal } from "lucide-react";
 
 const ressources = [
   {
@@ -78,6 +87,7 @@ const ressources = [
 ];
 
 export const ListRessources = () => {
+  const [openModale, setOpenModale] = useState(false);
   const [selectedRessource, setSelectedRessource] = useState<any>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -88,13 +98,14 @@ export const ListRessources = () => {
 
   return (
     <div className="container mx-auto py-10">
-      <h1 className="text-2xl font-bold mb-5">Liste des Ressources</h1>
+      <h1 className="mb-5 text-2xl font-bold">Liste des Ressources</h1>
       <Table>
         <TableHeader>
           <TableRow>
             <TableHead>Nom</TableHead>
             <TableHead>Type</TableHead>
             <TableHead>Prix (€)</TableHead>
+            <TableHead>Actions</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -107,6 +118,25 @@ export const ListRessources = () => {
               <TableCell>{ressource.nom}</TableCell>
               <TableCell>{ressource.type}</TableCell>
               <TableCell>{ressource.prix}</TableCell>
+              <TableCell>
+                <ModaleModuleActions
+                  open={openModale}
+                  setOpen={setOpenModale}
+                />
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button variant="ghost" className="h-8 w-8 p-0">
+                      <span className="sr-only">Open menu</span>
+                      <MoreHorizontal className="h-4 w-4" />
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent align="end">
+                    <DropdownMenuItem>Détails</DropdownMenuItem>
+                    <DropdownMenuItem>Modifier</DropdownMenuItem>
+                    <DropdownMenuItem>Supprimer</DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>
