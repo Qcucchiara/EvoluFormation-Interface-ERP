@@ -29,7 +29,7 @@ import { handlePerson } from "@/services/EvoluFormationAPI";
 
 export const FormProspect = () => {
   const [showNewCompany, setShowNewCompany] = useState(false);
-  const [civility, setCivility] = useState<string>("");
+  const [civility, setCivility] = useState<string>("M.");
   const [type, setType] = useState<string>("");
   const [company, setCompany] = useState<string>("");
   const {
