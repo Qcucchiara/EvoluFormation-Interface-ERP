@@ -1,0 +1,506 @@
+[33mcommit ac6b7578836a6eda7f2f060fb3f2b3ce031526d4[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mdev[m[33m)[m
+Merge: 434a1ce 0c76b76
+Author: Phost <cucchiaraquentin@gmail.com>
+Date:   Thu Sep 19 13:05:22 2024 +0200
+
+    Merge branch 'dev' of github.com:Qcucchiara/EvoluFormation-Interface-ERP into dev
+
+[33mcommit 434a1ce079cc6f318be18817e18a8e0ad25ddf06[m
+Merge: 7544e0d 7d6654d
+Author: Phost <cucchiaraquentin@gmail.com>
+Date:   Thu Sep 19 11:51:58 2024 +0200
+
+    new page params.replace(')
+
+[33mcommit 7d6654ddab4d1814c125c21b703abbd42ec813fb[m
+Merge: 2f4d75e e44018b
+Author: NicolasMezieres <nicolas.mezieres73@gmail.com>
+Date:   Thu Sep 19 11:52:27 2024 +0200
+
+    Merge branch 'dev' of github.com:Qcucchiara/EvoluFormation-Interface-ERP into nico
+
+[33mcommit 0c76b76a460fe5d66b1dda144a0305d303e2e650[m[33m ([m[1;31morigin/dev[m[33m)[m
+Merge: 7544e0d 7d6654d
+Author: Phost <cucchiaraquentin@gmail.com>
+Date:   Thu Sep 19 11:51:58 2024 +0200
+
+    Merge branch 'dev' of github.com:Qcucchiara/EvoluFormation-Interface-ERP into dev
+
+[33mcommit 7544e0d9631ac76e20ab561880eaa84b523927ba[m
+Author: Phost <cucchiaraquentin@gmail.com>
+Date:   Thu Sep 19 11:51:43 2024 +0200
+
+    new page company to add the student form
+
+[33mcommit 2f4d75ea763dfeb0ac08911f18217bc33a232213[m
+Author: NicolasMezieres <nicolas.mezieres73@gmail.com>
+Date:   Thu Sep 19 11:49:22 2024 +0200
+
+    Siret Optional
+
+[33mcommit e44018b95c27bd974b46b96b1703edd4666699cf[m
+Merge: cab401c b52ea73
+Author: Phost <cucchiaraquentin@gmail.com>
+Date:   Thu Sep 19 11:37:46 2024 +0200
+
+    Merge branch 'dev' of github.com:Qcucchiara/EvoluFormation-Interface-ERP into dev
+
+[33mcommit cab401c7fa655fece69173affef3bab5e1ac1fa4[m
+Author: Phost <cucchiaraquentin@gmail.com>
+Date:   Thu Sep 19 11:37:18 2024 +0200
+
+    small fixes (actions buttons, add comments and minor layout changes)
+
+[33mcommit b52ea7338c7787ee2868000a55010f0317a28e41[m
+Merge: 863be2f 5da1b45
+Author: NicolasMezieres <nicolas.mezieres73@gmail.com>
+Date:   Thu Sep 19 11:36:16 2024 +0200
+
+    Merge branch 'dev' of github.com:Qcucchiara/EvoluFormation-Interface-ERP into nico
+
+[33mcommit 863be2f6fed88bfc5ce5d5a5992b1a901b130092[m
+Author: NicolasMezieres <nicolas.mezieres73@gmail.com>
+Date:   Thu Sep 19 11:35:52 2024 +0200
+
+    rectify form prospect
+
+[33mcommit 5da1b458a3b794e64b79ef779aecfc910487f404[m
+Author: Phost <cucchiaraquentin@gmail.com>
+Date:   Thu Sep 19 11:06:36 2024 +0200
+
+    correcting merging errors
+
+[33mcommit a5100cf60f652f73fe369f81daf012c185032d81[m
+Merge: 02c3b32 c6d57e0
+Author: NicolasMezieres <nicolas.mezieres73@gmail.com>
+Date:   Thu Sep 19 10:17:45 2024 +0200
+
+    Merge branch 'dev' of github.com:Qcucchiara/EvoluFormation-Interface-ERP into nico
+
+[33mcommit 02c3b32c15c72d1af1bddef0fcb8d34f143a165e[m
+Author: NicolasMezieres <nicolas.mezieres73@gmail.com>
+Date:   Thu Sep 19 10:11:37 2024 +0200
+
+    list prospect
+
+[33mcommit c6d57e041d8c2c4f811eec7be06e455a9e59517e[m
+Author: Phost <cucchiaraquentin@gmail.com>
+Date:   Thu Sep 19 10:03:03 2024 +0200
+
+    add toaster (sonner from shadcn)
+
+[33mcommit ce1d5e0ffa0dff2adf64ea60ce99b895d1f02c56[m
+Author: Phost <cucchiaraquentin@gmail.com>
+Date:   Thu Sep 19 09:10:48 2024 +0200
+
+    resolve attempt vercel
+
+[33mcommit b797ec931e2389cbe8172752e7aea77bfdde8c37[m
+Author: NicolasMezieres <nicolas.mezieres73@gmail.com>
+Date:   Thu Sep 19 03:11:46 2024 +0200
+
+    list prospect element, list prospect connect to service
+
+[33mcommit 93952157238c1820cbbb433d7873542ee63c7831[m
+Merge: 077e616 a09fc03
+Author: NicolasMezieres <nicolas.mezieres73@gmail.com>
+Date:   Wed Sep 18 16:29:50 2024 +0200
+
+    Co-authored-by: Qcucchiara <Qcucchiara@users.noreply.github.com>
+
+[33mcommit 077e616de726823192f071d66231fd9729b38d9e[m
+Author: NicolasMezieres <nicolas.mezieres73@gmail.com>
+Date:   Wed Sep 18 16:28:43 2024 +0200
+
+    Service
+
+[33mcommit a09fc038057e5b2a5c031c79fab24fbe125e28e4[m
+Author: Phost <cucchiaraquentin@gmail.com>
+Date:   Wed Sep 18 16:23:51 2024 +0200
+
+    connexion with api (trainer)
+
+[33mcommit 0980f58c5cbac549b3ab5fbd512ac2fa35e3c23c[m
+Author: Phost <cucchiaraquentin@gmail.com>
+Date:   Wed Sep 18 15:25:44 2024 +0200
+
+    axios services evoluformation (handlePerson)
+
+[33mcommit 4ea51e85a2429e2f982e2c58a70f443d258e2fb8[m
+Author: Phost <cucchiaraquentin@gmail.com>
+Date:   Tue Sep 10 09:09:43 2024 +0200
+
+    small changes after visio
+
+[33mcommit 963b95a62a58e3684f863e100cfedb4651dbd040[m
+Author: Phost <cucchiaraquentin@gmail.com>
+Date:   Mon Sep 9 15:34:52 2024 +0200
+
+    correction
+
+[33mcommit f42242313f70cd8d8bcdf51d698e6bdb85a6a2cb[m
+Merge: 0e410ad a7216cd
+Author: Phost <cucchiaraquentin@gmail.com>
+Date:   Mon Sep 9 15:17:56 2024 +0200
+
+    merge form trainer
+
+[33mcommit a7216cd0d463709921cb883c90e932acc3554470[m
+Merge: 9976f99 b1aa9a9
+Author: nico <nicolas.mezieres73@gmail.com>
+Date:   Mon Sep 9 14:54:56 2024 +0200
+
+    Merge branch 'dev' of github.com:Qcucchiara/EvoluFormation-Interface-ERP into dev
+
+[33mcommit 9976f99562785b1ae0d7a8f2d1897bff02f44ff5[m
+Author: nico <nicolas.mezieres73@gmail.com>
+Date:   Mon Sep 9 14:42:03 2024 +0200
+
+    merge branch dev on nico
+
+[33mcommit b1aa9a9b906280cd2ea885abd5f8486e801f135a[m
+Author: nico <nicolas.mezieres73@gmail.com>
+Date:   Mon Sep 9 14:42:03 2024 +0200
+
+    merge branch dev on nico
+
+[33mcommit 0e410ade0eeda6707c5205c4b3ee9d35dc04b97f[m[33m ([m[1;32mquentin[m[33m)[m
+Author: Phost <cucchiaraquentin@gmail.com>
+Date:   Mon Sep 9 14:25:34 2024 +0200
+
+    minors fix
+
+[33mcommit 4ac8a9e4c8396587fec2250859e804db194a443c[m
+Merge: 151e25c 3f8e144
+Author: nico <nicolas.mezieres73@gmail.com>
+Date:   Mon Sep 9 14:25:15 2024 +0200
+
+    Merge remote-tracking branch 'origin/dev' into nico
+
+[33mcommit 3f8e144a312d3be9bd600bb8a6492d83cc78c62f[m
+Author: Phost <cucchiaraquentin@gmail.com>
+Date:   Mon Sep 9 13:28:13 2024 +0200
+
+    fifth try deploy
+
+[33mcommit 27c3ed6594f53cab4f0a7cc14ed4d9b6aa604bce[m
+Author: Phost <cucchiaraquentin@gmail.com>
+Date:   Mon Sep 9 13:20:53 2024 +0200
+
+    forth try deploy
+
+[33mcommit 7c98dead302e1a106e5ec5f24a3edccc6e6586fb[m
+Author: Phost <cucchiaraquentin@gmail.com>
+Date:   Mon Sep 9 13:12:04 2024 +0200
+
+    third try deploy
+
+[33mcommit eca4247b016ff99d9be1a1a76138ba35d4ac8965[m
+Author: Phost <cucchiaraquentin@gmail.com>
+Date:   Mon Sep 9 12:06:02 2024 +0200
+
+    second try deploy
+
+[33mcommit 2a664e23c3b3ac8f62c9e6e4c389f35991019e4c[m
+Merge: a472a89 0d95b45
+Author: Phost <cucchiaraquentin@gmail.com>
+Date:   Mon Sep 9 11:49:09 2024 +0200
+
+    Merge branch 'dev' of github.com:Qcucchiara/EvoluFormation-Interface-ERP into dev
+
+[33mcommit a472a8932b7dd7c4b6c179d88b0ce15f2d70a036[m
+Author: Phost <cucchiaraquentin@gmail.com>
+Date:   Mon Sep 9 11:48:01 2024 +0200
+
+    first try deploy
+
+[33mcommit 26e42f5f3ca3b4f6dee9f3c20647e02eba15e1b1[m[33m ([m[1;31morigin/quentin[m[33m)[m
+Author: Phost <cucchiaraquentin@gmail.com>
+Date:   Mon Sep 9 11:26:20 2024 +0200
+
+    polish forms
+
+[33mcommit 2d1293d3ffaaf0ff120999aef1088a3b64ab0c2a[m
+Author: Phost <cucchiaraquentin@gmail.com>
+Date:   Mon Sep 9 09:11:40 2024 +0200
+
+    -
+
+[33mcommit 151e25c979c4a83ce48b46dff72e1fe022ec7943[m
+Author: nico <nicolas.mezieres73@gmail.com>
+Date:   Fri Sep 6 17:10:28 2024 +0200
+
+    rectify check list skill form trainer
+
+[33mcommit cea2d6c293b5a0b9e89d3b959ae065a550b873d3[m
+Author: Phost <cucchiaraquentin@gmail.com>
+Date:   Fri Sep 6 15:43:28 2024 +0200
+
+    je supprimerais plus des fichiers dans github directement la prochaine fois :(
+
+[33mcommit 9cc9ff656b4e218cc0f22c0b4ef97763c5278419[m[33m ([m[1;31morigin/nico[m[33m)[m
+Author: nico <nicolas.mezieres73@gmail.com>
+Date:   Fri Sep 6 15:37:45 2024 +0200
+
+    yup form trainer
+
+[33mcommit 0e6da2b0f4f9ec850bed1002e57216ebb33417b3[m
+Author: Phost <cucchiaraquentin@gmail.com>
+Date:   Fri Sep 6 15:28:03 2024 +0200
+
+    remove V0 errors
+
+[33mcommit 0d95b452f3a950ac096ec25ab10164535214fb9a[m
+Author: Qcucchiara <153177906+Qcucchiara@users.noreply.github.com>
+Date:   Fri Sep 6 15:07:39 2024 +0200
+
+    Delete src/components/Others/V0 directory
+
+[33mcommit 20c8d997a6db95f42202674daab6ab9b2cf198c7[m
+Author: Phost <cucchiaraquentin@gmail.com>
+Date:   Fri Sep 6 14:52:05 2024 +0200
+
+    close nav on click
+
+[33mcommit 82df6ae42378a6728f624b155794d99774207f61[m
+Merge: efd5915 516691b
+Author: nico <nicolas.mezieres73@gmail.com>
+Date:   Fri Sep 6 13:34:56 2024 +0200
+
+    Merge remote-tracking branch 'origin/dev' into nico
+
+[33mcommit efd591517ad0da8b15f15955c492ca38ee7d34c2[m
+Author: nico <nicolas.mezieres73@gmail.com>
+Date:   Fri Sep 6 13:34:52 2024 +0200
+
+    first merge
+
+[33mcommit 272ef642b375f318a78b0e292f6fd3b796f8a1f8[m
+Merge: 69ceebc 23ea707
+Author: nico <nicolas.mezieres73@gmail.com>
+Date:   Fri Sep 6 13:31:28 2024 +0200
+
+    Merge remote-tracking branch 'origin/dev' into nico
+
+[33mcommit 516691bc7b4289585f7a9aa7501489800b417399[m
+Author: Phost <cucchiaraquentin@gmail.com>
+Date:   Fri Sep 6 13:28:39 2024 +0200
+
+    i => I
+
+[33mcommit 23ea7074718b0ab9c68d2d07735c2066c5ae770d[m
+Author: Phost <cucchiaraquentin@gmail.com>
+Date:   Fri Sep 6 13:17:41 2024 +0200
+
+    inputOTP value
+
+[33mcommit 69ceebc79a99f36af27eb45cf739600edaa21538[m
+Merge: 5749a58 16e5b9d
+Author: nico <nicolas.mezieres73@gmail.com>
+Date:   Fri Sep 6 11:55:50 2024 +0200
+
+    Merge remote-tracking branch 'origin/dev' into nico
+
+[33mcommit 5749a58524ef82f888d8dd60bfb6cfba91bf6e35[m
+Author: nico <nicolas.mezieres73@gmail.com>
+Date:   Fri Sep 6 11:55:35 2024 +0200
+
+    merge dev
+
+[33mcommit 16e5b9da5c2cb8a4f2fa478cdeea45c52d41c7a8[m
+Author: Phost <cucchiaraquentin@gmail.com>
+Date:   Fri Sep 6 11:50:30 2024 +0200
+
+    prettier tailwind
+
+[33mcommit 2e124262fecbcd062d76d0a149201f48d3dbeb9f[m
+Merge: fcd62e9 42dc85c
+Author: nico <nicolas.mezieres73@gmail.com>
+Date:   Fri Sep 6 11:44:34 2024 +0200
+
+    Merge branch 'dev' into nico
+
+[33mcommit fcd62e973ae7ad8eddfbf1fa1138f7fb676cc497[m
+Author: nico <nicolas.mezieres73@gmail.com>
+Date:   Fri Sep 6 11:38:10 2024 +0200
+
+    schema yup ressource
+
+[33mcommit 42dc85cafb0f25edc67c1cbe87d8f73c25d07926[m
+Author: Phost <cucchiaraquentin@gmail.com>
+Date:   Fri Sep 6 11:14:25 2024 +0200
+
+    popoverList: search and get checked elements
+
+[33mcommit bf0b4a069ebb19e99eba2762347330b0592f1a50[m
+Author: Phost <cucchiaraquentin@gmail.com>
+Date:   Thu Sep 5 16:54:30 2024 +0200
+
+    page formateur, ressources and entreprises
+
+[33mcommit a8892d7aca561744b24fa52aec5860d877ff3b91[m
+Merge: fc966d5 5d18525
+Author: Phost <cucchiaraquentin@gmail.com>
+Date:   Thu Sep 5 14:08:28 2024 +0200
+
+    Merge branch 'nico' of github.com:Qcucchiara/EvoluFormation-Interface-ERP into quentin
+
+[33mcommit fc966d5e1b720648b1e585220398e33774cce8b1[m
+Author: Phost <cucchiaraquentin@gmail.com>
+Date:   Thu Sep 5 14:07:57 2024 +0200
+
+    PopowerSkill component
+
+[33mcommit 5d185256ce1990cb2dcf89eb32f561453c0a7e53[m
+Author: nico <nicolas.mezieres73@gmail.com>
+Date:   Thu Sep 5 14:05:50 2024 +0200
+
+    Create a component input select and add in FormProspect
+
+[33mcommit 0e1518141ee1b66c8370976dd158fbf12d7957ba[m
+Author: Phost <cucchiaraquentin@gmail.com>
+Date:   Thu Sep 5 11:12:47 2024 +0200
+
+    nav
+
+[33mcommit 8121eea8f587dbc15809e9e53dd5b9f04b88829a[m
+Author: nico <nicolas.mezieres73@gmail.com>
+Date:   Thu Sep 5 10:49:10 2024 +0200
+
+    create and add component InputForm FormProspect
+
+[33mcommit e7e813fd10c3760f583eb2a398325517e60f7f28[m
+Merge: 832457f 039c877
+Author: Phost <cucchiaraquentin@gmail.com>
+Date:   Thu Sep 5 10:27:25 2024 +0200
+
+    Merge branch 'nico' of github.com:Qcucchiara/EvoluFormation-Interface-ERP into quentin
+
+[33mcommit 832457f4ddd39e7ed1357872729818266a5951c5[m
+Author: Phost <cucchiaraquentin@gmail.com>
+Date:   Thu Sep 5 10:26:50 2024 +0200
+
+    design layout
+
+[33mcommit 039c87783248ce28f805081e02689d9d54739b80[m
+Author: nico <nicolas.mezieres73@gmail.com>
+Date:   Thu Sep 5 10:12:08 2024 +0200
+
+    finish validation form prospect
+
+[33mcommit 7cf0126b971b56f7ff0b52f7d9488cbd8edc1cac[m
+Author: Phost <cucchiaraquentin@gmail.com>
+Date:   Wed Sep 4 16:45:01 2024 +0200
+
+    help input OTP
+
+[33mcommit c2de3ccb0879254ba96d41573957a2a943d34637[m
+Merge: 3436624 aea1c27
+Author: nico <nicolas.mezieres73@gmail.com>
+Date:   Wed Sep 4 15:08:23 2024 +0200
+
+    rectify TODO.md conflit with quentin for merge
+
+[33mcommit 343662474fd1e4648ce3c9084dba895026e5adac[m
+Author: nico <nicolas.mezieres73@gmail.com>
+Date:   Wed Sep 4 15:02:17 2024 +0200
+
+    finish schema prospect et type prospect for form
+
+[33mcommit aea1c276f0db8c0bbbaa510c1b3eb5b32a1ae90b[m
+Author: Phost <cucchiaraquentin@gmail.com>
+Date:   Wed Sep 4 12:53:05 2024 +0200
+
+    form company
+
+[33mcommit 02c2065a33f9505c18244da21d8757ad2f958aff[m
+Merge: a510cce 215b7f8
+Author: Phost <cucchiaraquentin@gmail.com>
+Date:   Wed Sep 4 11:26:22 2024 +0200
+
+    Merge branch 'nico' of github.com:Qcucchiara/EvoluFormation-Interface-ERP into quentin
+
+[33mcommit 215b7f880d0148c6aab07758f92de51d2b5bbf99[m
+Author: nico <nicolas.mezieres73@gmail.com>
+Date:   Wed Sep 4 11:26:20 2024 +0200
+
+    truc
+
+[33mcommit a510cce6eff3abda487bd78cf66063ae13dae774[m
+Author: Phost <cucchiaraquentin@gmail.com>
+Date:   Wed Sep 4 11:25:44 2024 +0200
+
+    input number
+
+[33mcommit 591ecc3c479af41c662367c6a906263511c4847e[m
+Author: Phost <cucchiaraquentin@gmail.com>
+Date:   Wed Sep 4 06:19:05 2024 +0200
+
+    merge
+
+[33mcommit d8d080d57cf637814ce2cc74f6c1ef34d5520040[m
+Merge: 4dd538b 895295a
+Author: Phost <cucchiaraquentin@gmail.com>
+Date:   Wed Sep 4 06:10:54 2024 +0200
+
+    merging
+
+[33mcommit 895295a701b8f30530cd283c4abd60b03deceb2e[m
+Author: nico <nicolas.mezieres73@gmail.com>
+Date:   Wed Sep 4 01:33:42 2024 +0200
+
+    rectify submit data
+
+[33mcommit decdbcf6c8045fc79f2eb4e61b1ab2281c4ba621[m
+Author: nico <nicolas.mezieres73@gmail.com>
+Date:   Wed Sep 4 01:19:04 2024 +0200
+
+    finish schema validation form module with error message and rectify input checkbox
+
+[33mcommit 96cb1dee3767a7f9c03b1d1ae085d3a8675d68aa[m
+Author: nico <nicolas.mezieres73@gmail.com>
+Date:   Tue Sep 3 17:27:43 2024 +0200
+
+    schema yup module + form module
+
+[33mcommit 4dd538b22f66178ca4dda0bf843bdd9909663d62[m
+Author: Phost <cucchiaraquentin@gmail.com>
+Date:   Tue Sep 3 14:41:07 2024 +0200
+
+    modale module
+
+[33mcommit 8ab1e8503d309294ba7670f1d89dc64a2ea6d269[m
+Author: Phost <cucchiaraquentin@gmail.com>
+Date:   Tue Sep 3 13:16:45 2024 +0200
+
+    list modules
+
+[33mcommit 2d56a177056dff3acb768afaf96f14bfdb1a0bf8[m
+Author: Phost <cucchiaraquentin@gmail.com>
+Date:   Tue Sep 3 11:15:17 2024 +0200
+
+    init page modules
+
+[33mcommit bb88a6d36ea0dba75bd178be51119cf374434e15[m
+Author: Phost <cucchiaraquentin@gmail.com>
+Date:   Mon Sep 2 15:51:31 2024 +0200
+
+    comboboxInput
+
+[33mcommit 2d9dbfbe571efa089e9d6614a62681874ec3c12a[m
+Author: Phost <cucchiaraquentin@gmail.com>
+Date:   Sat Aug 31 03:49:21 2024 +0200
+
+    forms and layouts prototypes
+
+[33mcommit adc2c0b45d2ab460c4ce44e9e589c507ad604d3c[m
+Author: Phost <cucchiaraquentin@gmail.com>
+Date:   Thu Aug 22 17:16:44 2024 +0200
+
+    first commit, add V0 mockup
+
+[33mcommit 88ae524d45a5652be808fb244a46030515f8a0e7[m
+Author: Phost <cucchiaraquentin@gmail.com>
+Date:   Thu Aug 22 15:42:43 2024 +0200
+
+    Initial commit from Create Next App
