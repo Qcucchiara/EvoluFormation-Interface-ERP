@@ -16,6 +16,15 @@ import {
   DialogDescription,
 } from "@/components/ui/dialog";
 import { handlePerson } from "@/services/EvoluFormationAPI";
+import { ModaleModuleActions } from "../Modale/ModaleModuleActions";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { MoreHorizontal } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const data = [
   {
@@ -85,9 +94,17 @@ const data = [
 ];
 
 export const ListTrainers = () => {
+  const [openModale, setOpenModale] = useState(false);
   const [formateurs, setFormateurs] = useState(data);
   const [selectedFormateur, setSelectedFormateur] = useState<any>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  useEffect(() => {
+    handlePerson.trainer.findAll().then(({ data }) => {
+      console.log(data);
+      setFormateurs(data);
+    });
+  }, []);
 
   const handleRowClick = (formateur: any) => {
     setSelectedFormateur(formateur);
@@ -111,6 +128,7 @@ export const ListTrainers = () => {
               <TableHead>Nom</TableHead>
               <TableHead>Prénom</TableHead>
               <TableHead>Ville</TableHead>
+              <TableHead>Actions</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
@@ -123,6 +141,25 @@ export const ListTrainers = () => {
                 <TableCell>{formateur.last_name}</TableCell>
                 <TableCell>{formateur.first_name}</TableCell>
                 <TableCell>{formateur.city}</TableCell>
+                <TableCell>
+                  <ModaleModuleActions
+                    open={openModale}
+                    setOpen={setOpenModale}
+                  />
+                  <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+                      <Button variant="ghost" className="h-8 w-8 p-0">
+                        <span className="sr-only">Open menu</span>
+                        <MoreHorizontal className="h-4 w-4" />
+                      </Button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent align="end">
+                      <DropdownMenuItem>Détails</DropdownMenuItem>
+                      <DropdownMenuItem>Modifier</DropdownMenuItem>
+                      <DropdownMenuItem>Supprimer</DropdownMenuItem>
+                    </DropdownMenuContent>
+                  </DropdownMenu>
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>
