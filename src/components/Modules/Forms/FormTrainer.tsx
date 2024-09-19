@@ -18,6 +18,7 @@ import { schemaTrainer } from "@/validator/TrainerValidator";
 import InputForm from "@/components/Composites/InputForm";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { handlePerson } from "@/services/EvoluFormationAPI";
+import { toast } from "sonner";
 
 const skills = [
   "JavaScript",
@@ -47,6 +48,7 @@ const skills = [
   "Angular",
 ];
 export const FormTrainer = () => {
+  const [isSubmited, setIsSubmited] = useState(false);
   const [selectedNames, setSelectedNames] = useState<string[]>([]);
   const {
     register,
@@ -61,13 +63,27 @@ export const FormTrainer = () => {
   const onSubmit: SubmitHandler<trainerForm> = async (data) => {
     await handlePerson.trainer.create(data).then((res) => {
       console.log(res);
+      toast("Le formateur a été ajouté", {
+        description: `le formateur ${data.first_name} a été correctement ajouté à la base de donnée`,
+        // action: {
+        //   label: "Undo",
+        //   onClick: () => console.log("Undo"),
+        // },
+      });
     });
     // TODO: plus tard avec le back
   };
+
   useEffect(() => {
-    console.log("COmpétences sélectionnés:", selectedNames);
-    setValue("skills", []);
-    setValue("skills", selectedNames);
+    if (isSubmited) {
+      setIsSubmited(false);
+    }
+  }, [isSubmited]);
+
+  useEffect(() => {
+    console.log("Compétences sélectionnés:", selectedNames);
+    // setValue("skills", []);
+    // setValue("skills", selectedNames);
   }, [selectedNames]);
   return (
     <Card className="mx-auto w-full max-w-4xl">
@@ -123,12 +139,12 @@ export const FormTrainer = () => {
                     min="0"
                     step="0.01"
                     placeholder="Entrez votre tarif journalier"
-                    {...register("rate")}
+                    // {...register("rate")}
                     required
                   />
-                  {errors.rate?.message && (
+                  {/* {errors.rate?.message && (
                     <p className="text-red-600">{errors.rate.message}</p>
-                  )}
+                  )} */}
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="city">Ville</Label>
@@ -145,9 +161,9 @@ export const FormTrainer = () => {
                 setSelectedNames={setSelectedNames}
                 entityName={"compétence"}
               />
-              {errors.skills?.message && (
+              {/* {errors.skills?.message && (
                 <p className="text-red-600">{errors.skills.message}</p>
-              )}
+              )} */}
             </TabsContent>
             <TabsContent value="commentaire">
               <div className="space-y-2">
@@ -156,14 +172,20 @@ export const FormTrainer = () => {
                   id="commentaire"
                   placeholder="Ajoutez un commentaire ou des informations supplémentaires"
                   className="min-h-[100px]"
-                  {...register("commentary")}
+                  // {...register("commentary")}
                 />
               </div>
             </TabsContent>
           </Tabs>
         </CardContent>
         <CardFooter>
-          <Button type="submit" className="w-full">
+          <Button
+            type="submit"
+            className="w-full"
+            // onClick={() => {
+            //   setIsSubmited(true);
+            // }}
+          >
             Soumettre
           </Button>
         </CardFooter>

@@ -13,12 +13,11 @@ export const schemaTrainer = yup.object().shape({
     .matches(/^[0-9]+$/, "Il ne doit y avoir que des chiffres")
     .min(10, "Doit contenir 10 chiffres")
     .max(10, "Doit contenir 10 chiffres"),
-  rate: yup.number().min(0),
+  // rate: yup.number().min(0),
   // .required("Ce champ est requis")
-  skills: yup
-    .array()
-    .of(yup.string().required())
-    .min(1, "Veuillez séléctionner une compétence"),
-  city: yup.string(),
+  // skills: yup
+  //   .array()
+  //   .of(yup.string().required())
+  //   .min(1, "Veuillez séléctionner une compétence"),
   // .required()
 });
