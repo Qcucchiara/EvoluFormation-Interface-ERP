@@ -3,7 +3,7 @@ import React from "react";
 const page = ({ params }: { params: { companyId: string } }) => {
   return (
     <div>
-      <div>{params.companyId}</div>
+      <div>{params.companyId.replace("'", "&apos;")}</div>
       <ul>
         <li>liste des élèves</li>
         <li>formulaire nouvel élève</li>
