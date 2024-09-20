@@ -30,6 +30,13 @@ export const ListCompanyElement = ({ entreprise }: { entreprise: any }) => {
         <TableCell>{entreprise.address}</TableCell>
         <TableCell>{entreprise.city}</TableCell>
         <TableCell>
+          {new Date(entreprise.updated_at).toLocaleDateString("fr-FR", {
+            day: "2-digit",
+            month: "2-digit",
+            year: "numeric",
+          })}
+        </TableCell>
+        <TableCell>
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="ghost" className="h-8 w-8 p-0">

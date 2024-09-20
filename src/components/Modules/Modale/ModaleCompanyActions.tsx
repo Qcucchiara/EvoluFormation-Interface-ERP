@@ -51,6 +51,28 @@ export const ModaleCompanyActions = ({
                   <p>
                     <strong>City:</strong> {selectedEntreprise?.city}
                   </p>
+
+                  <div className="flex justify-between">
+                    <p>
+                      crée le:{" "}
+                      {new Date(
+                        selectedEntreprise.created_at,
+                      ).toLocaleDateString("fr-FR", {
+                        day: "2-digit",
+                        month: "2-digit",
+                        year: "numeric",
+                      })}
+                    </p>
+                    édité pour la dernière fois le:{" "}
+                    {new Date(selectedEntreprise.updated_at).toLocaleDateString(
+                      "fr-FR",
+                      {
+                        day: "2-digit",
+                        month: "2-digit",
+                        year: "numeric",
+                      },
+                    )}
+                  </div>
                 </DialogDescription>
               </DialogHeader>
             </DialogContent>
