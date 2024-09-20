@@ -88,3 +88,20 @@ export const handlePerson = {
     },
   },
 };
+export const handleCompany = {
+  create: (data: unknown) => {
+    return backend.post(`/company`, data);
+  },
+  findAll: () => {
+    return backend.get("/company");
+  },
+  findOne: (id: string) => {
+    return backend.get(`/company/${id}`);
+  },
+  update: (id: string, data: unknown) => {
+    return backend.patch(`/company/${id}`, data);
+  },
+  remove: (id: string) => {
+    return backend.delete(`/company/${id}`);
+  },
+};
