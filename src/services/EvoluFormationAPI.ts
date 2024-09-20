@@ -2,7 +2,7 @@
 import axios from "axios";
 
 export const backend = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_API_BACKEND_URL,
+  baseURL: "https://85.215.196.28:8443",
 
   headers: {
     "content-type": "application/json;charset=utf-8",
