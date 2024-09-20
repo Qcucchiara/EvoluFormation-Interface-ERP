@@ -15,7 +15,7 @@ const page = ({ params }: { params: { companyId: string } }) => {
         </TabsList>
         <TabsContent value="details">
           <Tabs defaultValue="infos" className="w-full">
-            <TabsList>
+            <TabsList className="w-full justify-start">
               <TabsTrigger value="infos">Infos</TabsTrigger>
               <TabsTrigger value="folders">Dossiers</TabsTrigger>
             </TabsList>
