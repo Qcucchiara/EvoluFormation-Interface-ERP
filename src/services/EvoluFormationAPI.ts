@@ -42,7 +42,7 @@ export const handlePerson = {
       return backend.get(`/prospect`);
     },
     findOne: (id: string) => {
-      return backend.get(`/prospect/${id}`);
+      return backend.get(`http://85.215.196.28:8443/prospect/${id}`);
     },
     update: (id: string, data: unknown) => {
       return backend.patch(`/prospect/${id}`, data);
