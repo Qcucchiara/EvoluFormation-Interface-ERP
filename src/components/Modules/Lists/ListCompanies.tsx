@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import {
   Table,
@@ -18,6 +18,7 @@ import {
 } from "@/components/ui/dialog";
 import { ModaleCompanyActions } from "../Modale/ModaleCompanyActions";
 import { ListCompanyElement } from "./ListCompanyElement";
+import { handleCompany } from "@/services/EvoluFormationAPI";
 
 // Sample data
 const entreprises = [
@@ -67,6 +68,13 @@ export const ListCompanies = () => {
     setIsModalOpen(true);
   };
 
+  useEffect(() => {
+    handleCompany.findAll().then(({ data }) => {
+      console.log(data);
+      //TODO: envoyer la data dans le useState "selectedEntreprise" pour afficher la liste
+    });
+  }, []);
+
   return (
     <div className="container mx-auto py-10">
       <h1 className="mb-5 text-2xl font-bold">Liste des Entreprises</h1>
@@ -82,30 +90,10 @@ export const ListCompanies = () => {
         </TableHeader>
         <TableBody>
           {entreprises.map((entreprise, index) => (
-            // <TableRow
-            //   key={entreprise.id}
-            //   onClick={() => handleRowClick(entreprise)}
-            //   className="cursor-pointer"
-            // >
-            //   <TableCell>{entreprise.name}</TableCell>
-            //   <TableCell>{entreprise.siret}</TableCell>
-            //   <TableCell>{entreprise.address}</TableCell>
-            //   <TableCell>{entreprise.city}</TableCell>
-            //   <TableCell>
-            //     <Button variant="outline" size="sm">
-            //       View
-            //     </Button>
-            //   </TableCell>
-            // </TableRow>
             <ListCompanyElement key={index} entreprise={entreprise} />
           ))}
         </TableBody>
       </Table>
-      {/* <ModaleCompanyActions
-        isModalOpen={isModalOpen}
-        setIsModalOpen={setIsModalOpen}
-        selectedEntreprise={selectedEntreprise}
-      /> */}
     </div>
   );
 };

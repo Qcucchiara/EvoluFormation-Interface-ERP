@@ -25,6 +25,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { PopoverList } from "../PopoverList";
 import { Textarea } from "@/components/ui/textarea";
+import { handleCompany } from "@/services/EvoluFormationAPI";
 
 type Contact = {
   id: number;
@@ -77,6 +78,9 @@ export const FormCompany = () => {
   });
   const onSubmit: SubmitHandler<any> = async (data) => {
     console.log(data);
+    await handleCompany.create(data).then((res) => {
+      console.log(res);
+    });
   };
 
   const handleContactSelect = (contactId: string) => {
@@ -116,8 +120,8 @@ export const FormCompany = () => {
             <TabsTrigger value="students">Elèves</TabsTrigger>
             <TabsTrigger value="comment">Commentaire</TabsTrigger>
           </TabsList>
-          <TabsContent value="enterprise">
-            <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+            <TabsContent value="enterprise">
               <div className="space-y-2">
                 <Label htmlFor="name">Nom Entreprise</Label>
                 <Input
@@ -196,163 +200,162 @@ export const FormCompany = () => {
                   </div>
                 </div>
               </div>
-
-              <Button type="submit" className="w-full">
-                Soumettre
-              </Button>
-            </form>
-          </TabsContent>
-          <TabsContent value="contacts">
-            <div className="space-y-6">
-              <div className="flex space-x-4">
-                {/* <Select onValueChange={handleContactSelect}>
+            </TabsContent>
+            <TabsContent value="contacts">
+              <div className="space-y-6">
+                <div className="flex space-x-4">
+                  {/* <Select onValueChange={handleContactSelect}>
                   <SelectTrigger className="w-[200px]">
-                    <SelectValue placeholder="Sélectionner un contact" />
+                  <SelectValue placeholder="Sélectionner un contact" />
                   </SelectTrigger>
                   <SelectContent>
-                    {contacts.map((contact) => (
-                      <SelectItem
-                        key={contact.id}
-                        value={contact.id.toString()}
-                      >
-                        {contact.name}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select> */}
-                <PopoverList
-                  entityName="contact"
-                  listNames={formatedListName()}
-                  setSelectedNames={setSelectedNames}
-                  selectedNames={selectedNames}
-                />
-                <Button
-                  onClick={() => {
-                    const newContact: Contact = {
-                      id: contacts.length + 1,
-                      name: "Nouveau Contact",
-                      email: "nouveau@example.com",
-                      tel: "0000000000",
-                    };
-                    setContacts([...contacts, newContact]);
-                    setSelectedContacts([...selectedContacts, newContact]);
-                  }}
-                >
-                  Nouveau Contact (bouton temporaire)
-                </Button>
-              </div>
-              <div className="space-y-4">
-                {selectedContacts.map((contact) => (
-                  <div
+                  {contacts.map((contact) => (
+                    <SelectItem
                     key={contact.id}
-                    className="flex items-center justify-between rounded-md border p-4"
-                  >
-                    <div>
-                      <p className="font-semibold">{contact.name}</p>
-                      <p className="text-sm text-muted-foreground">
-                        {contact.email}
-                      </p>
-                      <p className="text-sm text-muted-foreground">
-                        {contact.tel}
-                      </p>
-                    </div>
-                    <Button
-                      variant="ghost"
-                      size="icon"
-                      onClick={() =>
-                        setSelectedContacts(
-                          selectedContacts.filter((c) => c.id !== contact.id),
-                        )
-                      }
+                    value={contact.id.toString()}
                     >
-                      <X className="h-4 w-4" />
-                    </Button>
-                  </div>
-                ))}
+                    {contact.name}
+                    </SelectItem>
+                    ))}
+                    </SelectContent>
+                    </Select> */}
+                  <PopoverList
+                    entityName="contact"
+                    listNames={formatedListName()}
+                    setSelectedNames={setSelectedNames}
+                    selectedNames={selectedNames}
+                  />
+                  <Button
+                    onClick={() => {
+                      const newContact: Contact = {
+                        id: contacts.length + 1,
+                        name: "Nouveau Contact",
+                        email: "nouveau@example.com",
+                        tel: "0000000000",
+                      };
+                      setContacts([...contacts, newContact]);
+                      setSelectedContacts([...selectedContacts, newContact]);
+                    }}
+                  >
+                    Nouveau Contact (bouton temporaire)
+                  </Button>
+                </div>
+                <div className="space-y-4">
+                  {selectedContacts.map((contact) => (
+                    <div
+                      key={contact.id}
+                      className="flex items-center justify-between rounded-md border p-4"
+                    >
+                      <div>
+                        <p className="font-semibold">{contact.name}</p>
+                        <p className="text-sm text-muted-foreground">
+                          {contact.email}
+                        </p>
+                        <p className="text-sm text-muted-foreground">
+                          {contact.tel}
+                        </p>
+                      </div>
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        onClick={() =>
+                          setSelectedContacts(
+                            selectedContacts.filter((c) => c.id !== contact.id),
+                          )
+                        }
+                      >
+                        <X className="h-4 w-4" />
+                      </Button>
+                    </div>
+                  ))}
+                </div>
               </div>
-            </div>
-          </TabsContent>
-          <TabsContent value="students">
-            <div className="space-y-6">
-              <div className="flex space-x-4">
-                {/* <Select onValueChange={handleStudentSelect}>
+            </TabsContent>
+            <TabsContent value="students">
+              <div className="space-y-6">
+                <div className="flex space-x-4">
+                  {/* <Select onValueChange={handleStudentSelect}>
                   <SelectTrigger className="w-[200px]">
-                    <SelectValue placeholder="Sélectionner un élève" />
+                  <SelectValue placeholder="Sélectionner un élève" />
                   </SelectTrigger>
                   <SelectContent>
-                    {students.map((student) => (
-                      <SelectItem
-                        key={student.id}
-                        value={student.id.toString()}
-                      >
-                        {student.name}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select> */}
-                <PopoverList
-                  entityName="élève"
-                  listNames={formatedListName()}
-                  setSelectedNames={setSelectedNames}
-                  selectedNames={selectedNames}
-                />
-                <Button
-                  onClick={() => {
-                    const newStudent: Student = {
-                      id: students.length + 1,
-                      name: "Nouvel Elève",
-                      email: "nouveau@example.com",
-                      tel: "0000000000",
-                    };
-                    setStudents([...students, newStudent]);
-                    setSelectedStudents([...selectedStudents, newStudent]);
-                  }}
-                >
-                  Nouvel Elève (bouton temporaire)
-                </Button>
-              </div>
-              <div className="space-y-4">
-                {selectedStudents.map((student) => (
-                  <div
+                  {students.map((student) => (
+                    <SelectItem
                     key={student.id}
-                    className="flex items-center justify-between rounded-md border p-4"
-                  >
-                    <div>
-                      <p className="font-semibold">{student.name}</p>
-                      <p className="text-sm text-muted-foreground">
-                        {student.email}
-                      </p>
-                      <p className="text-sm text-muted-foreground">
-                        {student.tel}
-                      </p>
-                    </div>
-                    <Button
-                      variant="ghost"
-                      size="icon"
-                      onClick={() =>
-                        setSelectedStudents(
-                          selectedStudents.filter((c) => c.id !== student.id),
-                        )
-                      }
+                    value={student.id.toString()}
                     >
-                      <X className="h-4 w-4" />
-                    </Button>
-                  </div>
-                ))}
+                    {student.name}
+                    </SelectItem>
+                    ))}
+                    </SelectContent>
+                    </Select> */}
+                  <PopoverList
+                    entityName="élève"
+                    listNames={formatedListName()}
+                    setSelectedNames={setSelectedNames}
+                    selectedNames={selectedNames}
+                  />
+                  <Button
+                    onClick={() => {
+                      const newStudent: Student = {
+                        id: students.length + 1,
+                        name: "Nouvel Elève",
+                        email: "nouveau@example.com",
+                        tel: "0000000000",
+                      };
+                      setStudents([...students, newStudent]);
+                      setSelectedStudents([...selectedStudents, newStudent]);
+                    }}
+                  >
+                    Nouvel Elève (bouton temporaire)
+                  </Button>
+                </div>
+                <div className="space-y-4">
+                  {selectedStudents.map((student) => (
+                    <div
+                      key={student.id}
+                      className="flex items-center justify-between rounded-md border p-4"
+                    >
+                      <div>
+                        <p className="font-semibold">{student.name}</p>
+                        <p className="text-sm text-muted-foreground">
+                          {student.email}
+                        </p>
+                        <p className="text-sm text-muted-foreground">
+                          {student.tel}
+                        </p>
+                      </div>
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        onClick={() =>
+                          setSelectedStudents(
+                            selectedStudents.filter((c) => c.id !== student.id),
+                          )
+                        }
+                      >
+                        <X className="h-4 w-4" />
+                      </Button>
+                    </div>
+                  ))}
+                </div>
               </div>
-            </div>
-          </TabsContent>
-          <TabsContent value="comment" className="space-y-4">
-            <div className="space-y-2">
-              <Label htmlFor="comment">Commentaire</Label>
-              <Textarea
-                id="comment"
-                placeholder="Ajoutez un commentaire ou des informations supplémentaires"
-                className="min-h-[200px]"
-                {...register("commentary")}
-              />
-            </div>
-          </TabsContent>
+            </TabsContent>
+            <TabsContent value="comment" className="space-y-4">
+              <div className="space-y-2">
+                <Label htmlFor="comment">Commentaire</Label>
+                <Textarea
+                  id="comment"
+                  placeholder="Ajoutez un commentaire ou des informations supplémentaires"
+                  className="min-h-[200px]"
+                  {...register("commentary")}
+                />
+              </div>
+            </TabsContent>
+            <Button type="submit" className="w-full">
+              Soumettre
+            </Button>
+          </form>
         </Tabs>
       </CardContent>
     </Card>
