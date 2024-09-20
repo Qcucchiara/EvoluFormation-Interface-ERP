@@ -8,6 +8,8 @@ import {
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import React, { useEffect } from "react";
 import { FormCompany } from "../Forms/FormCompany";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
 export const ModaleCompanyActions = ({
   isModalOpen,
