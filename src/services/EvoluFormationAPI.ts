@@ -39,15 +39,12 @@ export const handlePerson = {
     // skip: number, take: number
     findAll: () => {
       console.log("la");
-      return backend.get(`/prospect`);
+      return backend.get(`http://85.215.196.28:8443/prospect`);
     },
     findOne: (id: string) => {
       return backend.get(`/prospect/${id}`);
     },
     update: (id: string, data: unknown) => {
-      return backend.patch(`/prospect/${id}`, data);
-    },
-    toggleBlacklist: (id: string, data: unknown) => {
       return backend.patch(`/prospect/${id}`, data);
     },
     remove: (id: string) => {

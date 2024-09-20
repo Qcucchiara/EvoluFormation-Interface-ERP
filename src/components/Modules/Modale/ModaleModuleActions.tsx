@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { FormModule } from "../Forms/FormModule";
+import Link from "next/link";
 
 export const ModaleModuleActions = ({
   open,
@@ -34,6 +35,10 @@ export const ModaleModuleActions = ({
             <TabsTrigger value="details">Détails</TabsTrigger>
             <TabsTrigger value="update">Modification</TabsTrigger>
             <TabsTrigger value="other">other</TabsTrigger>
+            {/* // TODO: Remplacer entrepriseId */}
+            <Link href={`/entreprises/entreprise-detail/${"entrepriseId"}`}>
+              <Button>Vers page détails</Button>
+            </Link>
           </TabsList>
           <TabsContent value="details">
             Détails d&quot;un module ici
