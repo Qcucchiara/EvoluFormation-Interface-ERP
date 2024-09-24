@@ -10,14 +10,25 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { DataItem } from "./ListModules";
 import { ModaleProspectActions } from "../Modale/ModaleProspectActions";
+import { handlePerson } from "@/services/EvoluFormationAPI";
 
-export const ListProspectElement = ({ item }: { item: any }) => {
+export const ListProspectElement = ({
+  item,
+  setIsReloadNeeded,
+}: {
+  item: any;
+  setIsReloadNeeded: React.Dispatch<React.SetStateAction<boolean>>;
+}) => {
   const [openModale, setOpenModale] = useState(false);
-
-  const handleAction = (action: string, item: DataItem) => {
+  const handleAction = (action: any, item: DataItem) => {
     console.log(`Action ${action} for item:`, item);
     // Implement actual logic for details, edit, delete here
   };
+  function remove() {
+    handlePerson.prospect.remove(item.id);
+    console.log("test");
+    setIsReloadNeeded(true);
+  }
   return (
     <TableRow key={item.id}>
       <TableCell onClick={() => setOpenModale(true)}>
@@ -30,7 +41,11 @@ export const ListProspectElement = ({ item }: { item: any }) => {
       <TableCell onClick={() => setOpenModale(true)}>{item.phone}</TableCell>
       <TableCell onClick={() => setOpenModale(true)}>{item.type}</TableCell>
       <TableCell>
-        <ModaleProspectActions open={openModale} setOpen={setOpenModale} />
+        <ModaleProspectActions
+          item={item}
+          open={openModale}
+          setOpen={setOpenModale}
+        />
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="ghost" className="h-8 w-8 p-0">
@@ -39,13 +54,15 @@ export const ListProspectElement = ({ item }: { item: any }) => {
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
-            <DropdownMenuItem onClick={() => handleAction("details", item)}>
+            <DropdownMenuItem
+              onClick={() => handleAction(setOpenModale(true), item)}
+            >
               Détails
             </DropdownMenuItem>
             <DropdownMenuItem onClick={() => handleAction("modifier", item)}>
               Modifier
             </DropdownMenuItem>
-            <DropdownMenuItem onClick={() => handleAction("supprimer", item)}>
+            <DropdownMenuItem onClick={() => handleAction(remove(), item)}>
               Supprimer
             </DropdownMenuItem>
           </DropdownMenuContent>

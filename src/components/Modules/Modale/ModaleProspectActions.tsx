@@ -11,11 +11,14 @@ import {
 import { Button } from "@/components/ui/button";
 import { FormModule } from "../Forms/FormModule";
 import Link from "next/link";
+import { FormProspect } from "../Forms/FormProspect";
 
-export const ModaleProspectActions = ({
+export const  ModaleProspectActions = ({
   open,
   setOpen,
+  item,
 }: {
+  item: any;
   open: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
@@ -44,11 +47,11 @@ export const ModaleProspectActions = ({
             Détails d&quot;un module ici
           </TabsContent>
           <TabsContent value="update">
-            <div>
+            {/* <div>
               mêmes infos que dans détails, mais avec des input ghost préremplis
             </div>
-            <Button variant={"destructive"}>delete</Button>
-            <FormModule />
+            <Button variant={"destructive"}>delete</Button> */}
+            <FormProspect item={item} />
           </TabsContent>
         </Tabs>
       </DialogContent>

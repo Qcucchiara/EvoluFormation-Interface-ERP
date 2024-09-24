@@ -15,6 +15,7 @@ const InputForm = ({
   labelCSSAditional,
   inputCSSAditional,
   pCSSAditional,
+  defaultValue,
 }: {
   label: string;
   id: string;
@@ -28,6 +29,7 @@ const InputForm = ({
   labelCSSAditional?: string;
   inputCSSAditional?: string;
   pCSSAditional?: string;
+  defaultValue?: string;
 }) => {
   return (
     <div className={`${divCSSAditional} space-y-2`}>
@@ -36,6 +38,7 @@ const InputForm = ({
       </Label>
       <Input
         id={id}
+        defaultValue={defaultValue}
         type={type ? type : "text"}
         list={list}
         placeholder={placeholder}

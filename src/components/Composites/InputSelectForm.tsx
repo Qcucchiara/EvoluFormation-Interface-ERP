@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction } from "react";
+import React, { Dispatch, SetStateAction, useEffect } from "react";
 import { Label } from "../ui/label";
 import {
   Select,
@@ -20,6 +20,7 @@ const InputSelectForm = ({
   selectTriggerCSSAditional,
   selectValueCSSAditional,
   selectContentCSSAditional,
+  defaultValue,
 }: {
   id: string;
   label: string;
@@ -33,7 +34,11 @@ const InputSelectForm = ({
   selectTriggerCSSAditional?: string;
   selectValueCSSAditional?: string;
   selectContentCSSAditional?: string;
+  defaultValue?: string;
 }) => {
+  useEffect(() => {
+    setState(defaultValue);
+  }, [defaultValue]);
   return (
     <div className={`${divCSSAditional} space-y-2`}>
       <Label className={labelCSSAditional} htmlFor={id}>
@@ -47,7 +52,7 @@ const InputSelectForm = ({
           />
         </SelectTrigger>
         <SelectContent className={selectContentCSSAditional}>
-          {children}
+          {defaultValue ? defaultValue : children}
         </SelectContent>
       </Select>
       {state === "" && <p className="text-red-600">{errors}</p>}

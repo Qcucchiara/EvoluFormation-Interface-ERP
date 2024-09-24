@@ -92,6 +92,7 @@ type SortConfig = {
   direction: "asc" | "desc";
 };
 const ListProspects = () => {
+  const [isReloadNeeded, setIsReloadNeeded] = useState(false);
   const [listProspect, setListProspect] = useState<any[]>(data);
   const [searchTerm, setSearchTerm] = useState("");
   const [sortConfig, setSortConfig] = useState<SortConfig>({
@@ -100,10 +101,10 @@ const ListProspects = () => {
   });
   useEffect(() => {
     handlePerson.prospect.findAll().then((res: any) => {
-      console.log(res.data);
       setListProspect(res.data);
     });
-  }, []);
+    setIsReloadNeeded(false);
+  }, [isReloadNeeded]);
   const sortedData = [...listProspect].sort((a, b) => {
     if (a[sortConfig.key] < b[sortConfig.key]) {
       return sortConfig.direction === "asc" ? -1 : 1;
@@ -161,7 +162,7 @@ const ListProspects = () => {
         </TableHeader>
         <TableBody>
           {filteredData.map((item, index) => (
-            <ListProspectElement key={index} item={item} />
+            <ListProspectElement setIsReloadNeeded={setIsReloadNeeded} key={index} item={item} />
           ))}
         </TableBody>
       </Table>

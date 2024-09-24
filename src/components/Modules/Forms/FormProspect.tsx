@@ -27,7 +27,7 @@ import InputForm from "@/components/Composites/InputForm";
 import InputSelectForm from "@/components/Composites/InputSelectForm";
 import { handlePerson } from "@/services/EvoluFormationAPI";
 
-export const FormProspect = () => {
+export const FormProspect = ({ item }: { item?: any }) => {
   const [showNewCompany, setShowNewCompany] = useState(false);
   const [civility, setCivility] = useState<string>("M.");
   const [type, setType] = useState<string>("");
@@ -43,10 +43,20 @@ export const FormProspect = () => {
     resolver: yupResolver(schemaProspect),
   });
   const onSubmit: SubmitHandler<prospectForm> = async (data) => {
-    await handlePerson.prospect.create(data).then((res) => {
-      console.log(res);
-    });
+    if (!item) {
+      await handlePerson.prospect.create(data).then((res) => {
+        console.log(res.data);
+      });
+    } else {
+      await handlePerson.prospect.update(item.id, data).then((res) => {
+        console.log(res.data);
+      });
+    }
+    console.log(item, "item existe");
   };
+  useEffect(() => {
+    console.log(item);
+  }, []);
   useEffect(() => {
     setValue("civility", civility);
     console.log(watch("civility"));
@@ -59,7 +69,7 @@ export const FormProspect = () => {
   }, [company]);
 
   return (
-    <Card className="mx-auto w-full max-w-4xl">
+    <Card className="mx-auto max-h-[400px] w-full max-w-4xl overflow-y-auto overflow-x-hidden">
       <CardHeader>
         <CardTitle>Nouveau prospect</CardTitle>
       </CardHeader>
@@ -92,6 +102,7 @@ export const FormProspect = () => {
                 <InputForm
                   label={"Prénom"}
                   id={"prenom"}
+                  defaultValue={item?.first_name}
                   placeholder={"Entrez votre prénom"}
                   type={"text"}
                   register={register("first_name")}
@@ -100,6 +111,7 @@ export const FormProspect = () => {
                 <InputForm
                   label={"Nom"}
                   id={"nom"}
+                  defaultValue={item?.last_name}
                   placeholder={"Entrez votre nom"}
                   type={"text"}
                   register={register("last_name")}
@@ -108,6 +120,7 @@ export const FormProspect = () => {
                 <InputForm
                   label={"Email"}
                   id={"email"}
+                  defaultValue={item?.email}
                   placeholder={"Entrez votre email"}
                   type={"email"}
                   register={register("email")}
@@ -116,6 +129,7 @@ export const FormProspect = () => {
                 <InputForm
                   label={"Téléphone"}
                   id={"tel"}
+                  defaultValue={item?.phone}
                   placeholder={"Entrez votre numéro de téléphone"}
                   type={"tel"}
                   register={register("phone")}
@@ -127,6 +141,7 @@ export const FormProspect = () => {
                   <InputSelectForm
                     id={"type"}
                     label={"Type"}
+                    defaultValue={item?.type}
                     placeholder={"Sélectionnez un type"}
                     state={type}
                     setState={setType}
@@ -195,6 +210,7 @@ export const FormProspect = () => {
                   <Input
                     id="rue"
                     placeholder="Entrez votre numéro et nom de rue"
+                    defaultValue={item?.street}
                     {...register("address.street")}
                   />
                 </div>
@@ -204,6 +220,7 @@ export const FormProspect = () => {
                     <Input
                       id="code-postal"
                       placeholder="Entrez votre code postal"
+                      defaultValue={item?.postal_code}
                       {...register("address.postalCode")}
                     />
                   </div>
@@ -212,6 +229,7 @@ export const FormProspect = () => {
                     <Input
                       id="ville"
                       placeholder="Entrez votre ville"
+                      defaultValue={item?.city}
                       {...register("address.city")}
                     />
                   </div>
