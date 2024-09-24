@@ -101,8 +101,14 @@ export const handleCompany = {
     }
     return res;
   },
-  findAll: () => {
-    return backend.get("/company");
+  findAll: async () => {
+    const result = backend.get("/company");
+    toast.promise(result, {
+      loading: "Chargement",
+      success: "Success",
+      error: "error",
+    });
+    return await result;
   },
   findOne: (id: string) => {
     return backend.get(`/company/${id}`);
