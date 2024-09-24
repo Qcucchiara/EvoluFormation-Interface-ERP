@@ -19,8 +19,10 @@ export const ListProspectElement = ({
   item: any;
   setIsReloadNeeded: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
+  const [modalDefaultValue, setModalDefaultValue] = useState<string>();
   const [openModale, setOpenModale] = useState(false);
-  const handleAction = (action: any, item: DataItem) => {
+  const handleAction = (action: any, item: DataItem, defaultValue?: string) => {
+    setModalDefaultValue(defaultValue);
     console.log(`Action ${action} for item:`, item);
     // Implement actual logic for details, edit, delete here
   };
@@ -45,6 +47,7 @@ export const ListProspectElement = ({
           item={item}
           open={openModale}
           setOpen={setOpenModale}
+          defaultValue={modalDefaultValue}
         />
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
@@ -55,11 +58,13 @@ export const ListProspectElement = ({
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
             <DropdownMenuItem
-              onClick={() => handleAction(setOpenModale(true), item)}
+              onClick={() => handleAction(setOpenModale(true), item, "details")}
             >
               Détails
             </DropdownMenuItem>
-            <DropdownMenuItem onClick={() => handleAction("modifier", item)}>
+            <DropdownMenuItem
+              onClick={() => handleAction(setOpenModale(true), item, "update")}
+            >
               Modifier
             </DropdownMenuItem>
             <DropdownMenuItem onClick={() => handleAction(remove(), item)}>

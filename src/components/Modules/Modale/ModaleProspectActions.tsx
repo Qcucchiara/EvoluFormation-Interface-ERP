@@ -13,12 +13,14 @@ import { FormModule } from "../Forms/FormModule";
 import Link from "next/link";
 import { FormProspect } from "../Forms/FormProspect";
 
-export const  ModaleProspectActions = ({
+export const ModaleProspectActions = ({
   open,
   setOpen,
   item,
+  defaultValue,
 }: {
   item: any;
+  defaultValue?: string;
   open: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
@@ -33,7 +35,7 @@ export const  ModaleProspectActions = ({
           <DialogDescription>les changements sont définitifs</DialogDescription>
         </DialogHeader>
 
-        <Tabs defaultValue="details">
+        <Tabs defaultValue={defaultValue ? defaultValue : "details"}>
           <TabsList>
             <TabsTrigger value="details">Détails</TabsTrigger>
             <TabsTrigger value="update">Modification</TabsTrigger>
