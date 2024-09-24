@@ -1,5 +1,6 @@
 "use client";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 export const backend = axios.create({
   baseURL: process.env.NEXT_PUBLIC_API_BACKEND_URL,
@@ -90,11 +91,24 @@ export const handlePerson = {
 };
 
 export const handleCompany = {
-  create: (data: unknown) => {
-    return backend.post(`/company`, data);
+  create: async (data: unknown) => {
+    const res = await backend.post(`/company`, data);
+    if (res.data.statusCode === 201) {
+      toast.success(res.data.message);
+      console.log(res);
+    } else {
+      toast.error(res.data.message);
+    }
+    return res;
   },
-  findAll: () => {
-    return backend.get("/company");
+  findAll: async () => {
+    const result = backend.get("/company");
+    toast.promise(result, {
+      loading: "Chargement",
+      success: "Success",
+      error: "error",
+    });
+    return await result;
   },
   findOne: (id: string) => {
     return backend.get(`/company/${id}`);
@@ -102,7 +116,14 @@ export const handleCompany = {
   update: (id: string, data: unknown) => {
     return backend.patch(`/company/${id}`, data);
   },
-  remove: (id: string) => {
-    return backend.delete(`/company/${id}`);
+  remove: async (id: string) => {
+    const res = await backend.delete(`/company/${id}`);
+    if (res.status !== 200) {
+      toast.error(res.data.message);
+    } else {
+      toast.success(res.data.message);
+    }
+
+    return res;
   },
 };
