@@ -32,15 +32,9 @@ export const backend = axios.create({
 
 export const handlePerson = {
   prospect: {
-    create: (data: any) => {
-      const newData = {
-        ...data,
-        city: data.address.city,
-        postal_code: data.address.postalCode,
-        street: data.address.street,
-      };
+    create: (data: unknown) => {
       console.log("ici");
-      return backend.post("/prospect", newData);
+      return backend.post("/prospect", data);
     },
     // skip: number, take: number
     findAll: () => {
@@ -50,14 +44,8 @@ export const handlePerson = {
     findOne: (id: string) => {
       return backend.get(`/prospect/${id}`);
     },
-    update: (id: string, data: any) => {
-      const newData = {
-        ...data,
-        city: data.address.city,
-        postal_code: data.address.postalCode,
-        street: data.address.street,
-      };
-      return backend.patch(`/prospect/${id}`, newData);
+    update: (id: string, data: unknown) => {
+      return backend.patch(`/prospect/${id}`, data);
     },
     remove: (id: string) => {
       return backend.delete(`/prospect/${id}`);

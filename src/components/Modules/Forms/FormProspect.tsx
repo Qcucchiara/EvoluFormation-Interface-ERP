@@ -43,6 +43,12 @@ export const FormProspect = ({ item }: { item?: any }) => {
     resolver: yupResolver(schemaProspect),
   });
   const onSubmit: SubmitHandler<prospectForm> = async (data) => {
+    const newData = {
+      ...data,
+      city: data.address?.city,
+      postal_code: data.address?.postalCode,
+      street: data.address?.street,
+    };
     if (!item) {
       await handlePerson.prospect.create(data).then((res) => {
         console.log(res.data);
