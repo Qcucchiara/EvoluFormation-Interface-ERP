@@ -95,6 +95,7 @@ export const ListCompanies = () => {
   const [entreprises, setEntreprises] = useState(data);
   const [selectedEntreprise, setSelectedEntreprise] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [refresh, setRefresh] = useState(false);
 
   const handleRowClick = (entreprise: any) => {
     setSelectedEntreprise(entreprise);
@@ -106,9 +107,9 @@ export const ListCompanies = () => {
       console.log(res);
       setEntreprises(res.data);
 
-      //TODO: envoyer la data dans le useState "selectedEntreprise" pour afficher la liste
+      // ODOT: envoyer la data dans le useState "selectedEntreprise" pour afficher la liste
     });
-  }, []);
+  }, [refresh]);
 
   return (
     <div className="container mx-auto py-10">
@@ -126,7 +127,11 @@ export const ListCompanies = () => {
         </TableHeader>
         <TableBody>
           {entreprises.map((entreprise, index) => (
-            <ListCompanyElement key={index} entreprise={entreprise} />
+            <ListCompanyElement
+              key={index}
+              entreprise={entreprise}
+              setRefresh={setRefresh}
+            />
           ))}
         </TableBody>
       </Table>

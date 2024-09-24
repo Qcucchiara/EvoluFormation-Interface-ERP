@@ -26,7 +26,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { PopoverList } from "../PopoverList";
 import { Textarea } from "@/components/ui/textarea";
 import { handleCompany } from "@/services/EvoluFormationAPI";
-
+import { useToast } from "@/hooks/use-toast";
 
 type Contact = {
   id: number;
@@ -54,6 +54,8 @@ const formatedListName = () => {
 };
 
 export const FormCompany = () => {
+  const { toast } = useToast();
+
   const [contacts, setContacts] = useState<Contact[]>(dummyData);
   const [students, setStudents] = useState<Student[]>(dummyData);
   const [companyName, setCompanyName] = useState("");
@@ -78,9 +80,9 @@ export const FormCompany = () => {
     resolver: yupResolver(schemaCompany),
   });
   const onSubmit: SubmitHandler<any> = async (data) => {
-    console.log(data);
-    await handleCompany.create(data).then((res) => {
-      console.log(res);
+    console.log({ ...data, siret: siret });
+    await handleCompany.create({ ...data, siret: siret }).then((res) => {
+      toast({ title: "Entrprise Créée" });
     });
   };
 
