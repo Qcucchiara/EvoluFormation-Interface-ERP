@@ -4,7 +4,6 @@ import { FormModule } from "@/components/Modules/Forms/FormModule";
 import { FormProspect } from "@/components/Modules/Forms/FormProspect";
 import ListModules from "@/components/Modules/Lists/ListModules";
 import ListProspects from "@/components/Modules/Lists/ListProspects";
-import { ModaleModuleActions } from "@/components/Modules/Modale/ModaleModuleActions";
 import { Card } from "@/components/ui/card";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";

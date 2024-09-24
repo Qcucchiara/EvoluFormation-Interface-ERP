@@ -18,7 +18,6 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { ModaleModuleActions } from "../Modale/ModaleModuleActions";
 import { ListModuleElement } from "./ListModuleElement";
 
 export type DataItem = {

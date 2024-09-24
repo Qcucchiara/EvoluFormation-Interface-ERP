@@ -2,7 +2,6 @@ import { Button } from "@/components/ui/button";
 import { TableCell, TableRow } from "@/components/ui/table";
 import { MoreHorizontal } from "lucide-react";
 import React, { useState } from "react";
-import { ModaleModuleActions } from "../Modale/ModaleModuleActions";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -10,6 +9,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { DataItem } from "./ListModules";
+import { ModaleProspectActions } from "../Modale/ModaleProspectActions";
 
 export const ListProspectElement = ({ item }: { item: any }) => {
   const [openModale, setOpenModale] = useState(false);
@@ -30,7 +30,7 @@ export const ListProspectElement = ({ item }: { item: any }) => {
       <TableCell onClick={() => setOpenModale(true)}>{item.phone}</TableCell>
       <TableCell onClick={() => setOpenModale(true)}>{item.type}</TableCell>
       <TableCell>
-        <ModaleModuleActions open={openModale} setOpen={setOpenModale} />
+        <ModaleProspectActions open={openModale} setOpen={setOpenModale} />
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="ghost" className="h-8 w-8 p-0">
