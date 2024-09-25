@@ -94,6 +94,7 @@ const data = [
 ];
 
 export const ListTrainers = () => {
+  const [isReloadNeeded, setIsReloadNeeded] = useState(false);
   const [openModale, setOpenModale] = useState(false);
   const [formateurs, setFormateurs] = useState(data);
   const [selectedFormateur, setSelectedFormateur] = useState<any>(null);
@@ -104,7 +105,8 @@ export const ListTrainers = () => {
       console.log(data);
       setFormateurs(data);
     });
-  }, []);
+    setIsReloadNeeded(false);
+  }, [isReloadNeeded]);
 
   const handleRowClick = (formateur: any) => {
     setSelectedFormateur(formateur);
@@ -117,7 +119,12 @@ export const ListTrainers = () => {
       setFormateurs(data);
     });
   }, []);
-
+  function remove(id: any) {
+    handlePerson.trainer.remove(id).then((res) => {
+      console.log(res);
+      setIsReloadNeeded(true);
+    });
+  }
   return (
     <div className="container mx-auto py-10">
       <h1 className="mb-5 text-2xl font-bold">Liste des Formateurs</h1>
@@ -135,17 +142,19 @@ export const ListTrainers = () => {
             {formateurs.map((formateur) => (
               <TableRow
                 key={formateur.id}
-                onClick={() => handleRowClick(formateur)}
+                onClick={() => {
+                  handleRowClick(formateur);
+                }}
                 className="cursor-pointer hover:bg-muted/50"
               >
                 <TableCell>{formateur.last_name}</TableCell>
                 <TableCell>{formateur.first_name}</TableCell>
                 <TableCell>{formateur.city}</TableCell>
                 <TableCell>
-                  <ModaleModuleActions
+                  {/* <ModaleModuleActions
                     open={openModale}
                     setOpen={setOpenModale}
-                  />
+                  />  */}
                   <DropdownMenu>
                     <DropdownMenuTrigger asChild>
                       <Button variant="ghost" className="h-8 w-8 p-0">
@@ -156,7 +165,9 @@ export const ListTrainers = () => {
                     <DropdownMenuContent align="end">
                       <DropdownMenuItem>Détails</DropdownMenuItem>
                       <DropdownMenuItem>Modifier</DropdownMenuItem>
-                      <DropdownMenuItem>Supprimer</DropdownMenuItem>
+                      <DropdownMenuItem onClick={() => remove(formateur.id)}>
+                        Supprimer
+                      </DropdownMenuItem>
                     </DropdownMenuContent>
                   </DropdownMenu>
                 </TableCell>
