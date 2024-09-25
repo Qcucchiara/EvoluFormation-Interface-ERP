@@ -18,7 +18,7 @@ import {
 } from "@/components/ui/dialog";
 import { ModaleCompanyActions } from "../Modale/ModaleCompanyActions";
 import { ListCompanyElement } from "./ListCompanyElement";
-import { handleCompany } from "@/services/EvoluFormationAPI";
+import { handleCompany } from "@/services/EvoluFormationAPI/handleCompany";
 
 export type Entreprise = {
   id: string;

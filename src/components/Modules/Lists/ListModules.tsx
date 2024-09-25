@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import {
   Table,
@@ -82,6 +82,8 @@ const ListModules = () => {
     key: "id",
     direction: "asc",
   });
+
+  useEffect(() => {}, []);
 
   const sortedData = [...data].sort((a, b) => {
     if (a[sortConfig.key] < b[sortConfig.key]) {

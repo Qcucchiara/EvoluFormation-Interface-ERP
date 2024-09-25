@@ -25,8 +25,8 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { PopoverList } from "../PopoverList";
 import { Textarea } from "@/components/ui/textarea";
-import { handleCompany } from "@/services/EvoluFormationAPI";
 import { useToast } from "@/hooks/use-toast";
+import { handleCompany } from "@/services/EvoluFormationAPI/handleCompany";
 
 type Contact = {
   id: number;

@@ -17,8 +17,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { schemaTrainer } from "@/validator/TrainerValidator";
 import InputForm from "@/components/Composites/InputForm";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { handlePerson } from "@/services/EvoluFormationAPI";
 import { toast } from "sonner";
+import { handlePerson } from "@/services/EvoluFormationAPI/handlePerson";
 
 const skills = [
   "JavaScript",
