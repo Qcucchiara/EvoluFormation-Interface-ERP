@@ -9,7 +9,7 @@ export const handlePerson = {
     // skip: number, take: number
     findAll: () => {
       console.log("la");
-      return backend.get(`http://85.215.196.28:8443/prospect`);
+      return backend.get(`/prospect`);
     },
     findOne: (id: string) => {
       return backend.get(`/prospect/${id}`);

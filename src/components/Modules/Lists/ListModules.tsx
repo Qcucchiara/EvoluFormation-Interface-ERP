@@ -19,6 +19,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { ListModuleElement } from "./ListModuleElement";
+import { handleModule } from "@/services/EvoluFormationAPI/handleModule";
 
 export type DataItem = {
   id: number;
@@ -29,7 +30,7 @@ export type DataItem = {
   domaineBPF: string;
 };
 
-const data: DataItem[] = [
+const dummyData: DataItem[] = [
   {
     id: 1,
     titre: "Projet A",
@@ -77,13 +78,18 @@ type SortConfig = {
   direction: "asc" | "desc";
 };
 const ListModules = () => {
+  const [data, setData] = useState(dummyData);
   const [searchTerm, setSearchTerm] = useState("");
   const [sortConfig, setSortConfig] = useState<SortConfig>({
     key: "id",
     direction: "asc",
   });
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    handleModule.findAll().then((res) => {
+      console.log(res);
+    });
+  }, []);
 
   const sortedData = [...data].sort((a, b) => {
     if (a[sortConfig.key] < b[sortConfig.key]) {
