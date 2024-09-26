@@ -16,7 +16,6 @@ import {
   DialogDescription,
 } from "@/components/ui/dialog";
 import { handlePerson } from "@/services/EvoluFormationAPI";
-import { ModaleModuleActions } from "../Modale/ModaleModuleActions";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -25,6 +24,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { MoreHorizontal } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { ModaleTrainerActions } from "../Modale/ModaleTrainerActions";
 
 const data = [
   {
@@ -94,6 +94,7 @@ const data = [
 ];
 
 export const ListTrainers = () => {
+  const [modalDefaultValue, setModalDefaultValue] = useState<string>();
   const [isReloadNeeded, setIsReloadNeeded] = useState(false);
   const [openModale, setOpenModale] = useState(false);
   const [formateurs, setFormateurs] = useState(data);
@@ -102,7 +103,6 @@ export const ListTrainers = () => {
 
   useEffect(() => {
     handlePerson.trainer.findAll().then(({ data }) => {
-      console.log(data);
       setFormateurs(data);
     });
     setIsReloadNeeded(false);
@@ -112,18 +112,16 @@ export const ListTrainers = () => {
     setSelectedFormateur(formateur);
     setIsModalOpen(true);
   };
-
-  useEffect(() => {
-    handlePerson.trainer.findAll().then(({ data }: any) => {
-      console.log(data);
-      setFormateurs(data);
-    });
-  }, []);
   function remove(id: any) {
     handlePerson.trainer.remove(id).then((res) => {
       console.log(res);
       setIsReloadNeeded(true);
     });
+  }
+  function handleAction(formateur: any, defaultValue: string) {
+    setSelectedFormateur(formateur);
+    setModalDefaultValue(defaultValue);
+    setOpenModale(true);
   }
   return (
     <div className="container mx-auto py-10">
@@ -142,19 +140,30 @@ export const ListTrainers = () => {
             {formateurs.map((formateur) => (
               <TableRow
                 key={formateur.id}
-                onClick={() => {
-                  handleRowClick(formateur);
-                }}
                 className="cursor-pointer hover:bg-muted/50"
               >
-                <TableCell>{formateur.last_name}</TableCell>
-                <TableCell>{formateur.first_name}</TableCell>
-                <TableCell>{formateur.city}</TableCell>
+                <TableCell
+                  onClick={() => {
+                    handleRowClick(formateur);
+                  }}
+                >
+                  {formateur.last_name}
+                </TableCell>
+                <TableCell
+                  onClick={() => {
+                    handleRowClick(formateur);
+                  }}
+                >
+                  {formateur.first_name}
+                </TableCell>
+                <TableCell
+                  onClick={() => {
+                    handleRowClick(formateur);
+                  }}
+                >
+                  {formateur.city}
+                </TableCell>
                 <TableCell>
-                  {/* <ModaleModuleActions
-                    open={openModale}
-                    setOpen={setOpenModale}
-                  />  */}
                   <DropdownMenu>
                     <DropdownMenuTrigger asChild>
                       <Button variant="ghost" className="h-8 w-8 p-0">
@@ -163,8 +172,20 @@ export const ListTrainers = () => {
                       </Button>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent align="end">
-                      <DropdownMenuItem>Détails</DropdownMenuItem>
-                      <DropdownMenuItem>Modifier</DropdownMenuItem>
+                      <DropdownMenuItem
+                        onClick={() => {
+                          handleAction(formateur, "details");
+                        }}
+                      >
+                        Détails
+                      </DropdownMenuItem>
+                      <DropdownMenuItem
+                        onClick={() => {
+                          handleAction(formateur, "update");
+                        }}
+                      >
+                        Modifier
+                      </DropdownMenuItem>
                       <DropdownMenuItem onClick={() => remove(formateur.id)}>
                         Supprimer
                       </DropdownMenuItem>
@@ -176,7 +197,12 @@ export const ListTrainers = () => {
           </TableBody>
         </Table>
       </div>
-
+      <ModaleTrainerActions
+        open={openModale}
+        setOpen={setOpenModale}
+        item={selectedFormateur}
+        defaultValue={modalDefaultValue}
+      />
       <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
         <DialogContent>
           <DialogHeader>
