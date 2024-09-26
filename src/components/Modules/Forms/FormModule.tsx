@@ -169,10 +169,10 @@ export const FormModule = () => {
                       min="0"
                       step="0.01"
                       placeholder="Entrez le montant"
-                      {...register("price")}
+                      {...register("amount")}
                     />
-                    {errors.price?.message && (
-                      <p className="text-red-600">{errors.price.message}</p>
+                    {errors.amount?.message && (
+                      <p className="text-red-600">{errors.amount.message}</p>
                     )}
                   </div>
                   <div className="space-y-2">
@@ -180,7 +180,8 @@ export const FormModule = () => {
                       label={"Durée (heures)"}
                       step={1}
                       placeholder={"placeholder test"}
-                      {...register("duration")}
+                      nameInputForm="duration"
+                      setValueForm={setValue}
                     />
                     {errors.duration?.message && (
                       <p className="text-red-600">{errors.duration.message}</p>

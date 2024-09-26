@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { DataItem } from "./ListModules";
 import { ModaleProspectActions } from "../Modale/ModaleProspectActions";
-import { handlePerson } from "@/services/EvoluFormationAPI";
+import { handlePerson } from "@/services/EvoluFormationAPI/handlePerson";
 
 export const ListProspectElement = ({
   item,

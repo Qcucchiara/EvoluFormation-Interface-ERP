@@ -3,7 +3,7 @@ export type moduleForm = {
   category: string;
   domaineBPF: string;
   objectifBPF: string;
-  price: number;
+  amount: number;
   duration: number;
   instructor?: [];
   link?: string;

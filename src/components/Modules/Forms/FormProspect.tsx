@@ -25,7 +25,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { schemaProspect } from "@/validator/ProspectValidator";
 import InputForm from "@/components/Composites/InputForm";
 import InputSelectForm from "@/components/Composites/InputSelectForm";
-import { handlePerson } from "@/services/EvoluFormationAPI";
+import { handlePerson } from "@/services/EvoluFormationAPI/handlePerson";
 
 export const FormProspect = ({ item }: { item?: any }) => {
   const [showNewCompany, setShowNewCompany] = useState(false);

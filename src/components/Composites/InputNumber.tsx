@@ -1,26 +1,36 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Label } from "../ui/label";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import { MinusIcon, PlusIcon } from "@radix-ui/react-icons";
+import { UseFormSetValue } from "react-hook-form";
 
 export const InputNumber = ({
   children,
   label,
   step,
   placeholder,
+  setValueForm,
+  nameInputForm,
   ...props
 }: {
   children?: React.ReactNode;
   label: string;
   step: number | string;
   placeholder: string;
+  nameInputForm?: string;
+  setValueForm?: UseFormSetValue<any>;
 }) => {
   const [value, setValue] = useState<number>(0);
+  useEffect(() => {
+    if (setValueForm && nameInputForm) {
+      setValueForm(nameInputForm, value);
+    }
+  }, [value]);
   return (
     <div className="space-y-2">
       <Label htmlFor="duree">{label}</Label>
-      <div className=" flex">
+      <div className="flex">
         <Input
           className="rounded-r-none [&::-webkit-inner-spin-button]:appearance-none"
           id="duree"

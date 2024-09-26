@@ -15,7 +15,6 @@ import { resourceForm } from "@/app/utils/type";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { schemaResource } from "@/validator/ResourceValidator";
 import InputForm from "@/components/Composites/InputForm";
-import { InputNumber } from "@/components/Composites/InputNumber";
 
 export const FormRessource = () => {
   const {

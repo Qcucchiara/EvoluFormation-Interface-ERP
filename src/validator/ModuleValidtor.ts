@@ -19,7 +19,7 @@ export const schemaModule = yup.object().shape({
     .string()
     .required("Ce champ est obligatoire")
     .min(3, "Minimum 3 character"),
-  price: yup
+  amount: yup
     .number()
     .required("Ce champ est obligatoire")
     .positive()
@@ -31,7 +31,7 @@ export const schemaModule = yup.object().shape({
           return patternTwoDigisAfterComma.test(val);
         }
         return true;
-      }
+      },
     )
     .min(0, "Minimum 0"),
   duration: yup

@@ -15,7 +15,7 @@ import {
   DialogTitle,
   DialogDescription,
 } from "@/components/ui/dialog";
-import { handlePerson } from "@/services/EvoluFormationAPI";
+import { handlePerson } from "@/services/EvoluFormationAPI/handlePerson";
 import {
   DropdownMenu,
   DropdownMenuContent,
