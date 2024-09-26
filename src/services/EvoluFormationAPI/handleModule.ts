@@ -18,8 +18,9 @@ export const handleModule = {
       result,
       {
         loading: "Chargement de la liste des modules",
-        success: "Liste chargée correctement",
-        error: "Erreur dans le chargement de la liste",
+        success: (res) => `${res.data.message}`,
+        error: (err) =>
+          err.data.message ? `${err.data.message}` : "Unexpected error",
       },
       { id: "findAllModules" },
     );
