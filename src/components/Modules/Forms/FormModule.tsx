@@ -54,6 +54,7 @@ export const FormModule = () => {
     resolver: yupResolver(schemaModule),
   });
   const onSubmit: SubmitHandler<moduleForm> = async (data) => {
+    console.log(data);
     await handleModule.create({ ...data }).then((res) => {
       console.log(res);
     });
