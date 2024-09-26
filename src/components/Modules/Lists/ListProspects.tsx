@@ -19,8 +19,8 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { ListModuleElement } from "./ListModuleElement";
-import { handlePerson } from "@/services/EvoluFormationAPI";
 import { ListProspectElement } from "./ListProspectElement";
+import { handlePerson } from "@/services/EvoluFormationAPI/handlePerson";
 
 export type DataItem = {
   id: string;
@@ -162,7 +162,11 @@ const ListProspects = () => {
         </TableHeader>
         <TableBody>
           {filteredData.map((item, index) => (
-            <ListProspectElement setIsReloadNeeded={setIsReloadNeeded} key={index} item={item} />
+            <ListProspectElement
+              setIsReloadNeeded={setIsReloadNeeded}
+              key={index}
+              item={item}
+            />
           ))}
         </TableBody>
       </Table>

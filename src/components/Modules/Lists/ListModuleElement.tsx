@@ -10,11 +10,20 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { DataItem } from "./ListModules";
+import { handleModule } from "@/services/EvoluFormationAPI/handleModule";
 
 export const ListModuleElement = ({ item }: { item: any }) => {
   const [openModale, setOpenModale] = useState(false);
 
-  const handleAction = (action: string, item: DataItem) => {
+  const handleAction = (action: string, item: any) => {
+    switch (action) {
+      case "supprimer":
+        handleModule.remove(item.id);
+        break;
+
+      default:
+        break;
+    }
     console.log(`Action ${action} for item:`, item);
     // Implement actual logic for details, edit, delete here
   };

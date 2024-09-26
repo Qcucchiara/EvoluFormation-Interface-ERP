@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Label } from "../ui/label";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
@@ -17,13 +17,17 @@ export const InputNumber = ({
   placeholder: string;
 }) => {
   const [value, setValue] = useState<number>(0);
+
+  useEffect(() => {
+    console.log(value);
+  }, [value]);
   return (
     <div className="space-y-2">
-      <Label htmlFor="duree">{label}</Label>
-      <div className=" flex">
+      <Label htmlFor="inputNumber">{label}</Label>
+      <div className="flex">
         <Input
           className="rounded-r-none [&::-webkit-inner-spin-button]:appearance-none"
-          id="duree"
+          id="inputNumber"
           type="number"
           min="0"
           value={value}
