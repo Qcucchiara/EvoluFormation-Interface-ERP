@@ -10,9 +10,9 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { MoreHorizontal } from "lucide-react";
-import { handleCompany } from "@/services/EvoluFormationAPI";
 import { useToast } from "@/hooks/use-toast";
 import { ToastAction } from "@/components/ui/toast";
+import { handleCompany } from "@/services/EvoluFormationAPI/handleCompany";
 
 export const ListCompanyElement = ({
   entreprise,
