@@ -24,7 +24,7 @@ export const InputNumber = ({
   const [value, setValue] = useState<number>(0);
   useEffect(() => {
     if (setValueForm && nameInputForm) {
-      setValueForm(nameInputForm, value);
+      setValueForm(nameInputForm, String(value));
     }
   }, [value]);
   return (
