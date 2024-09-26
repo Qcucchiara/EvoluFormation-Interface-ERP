@@ -33,6 +33,7 @@ import { string } from "yup";
 import { MinusIcon, PlusIcon } from "@radix-ui/react-icons";
 import { InputNumber } from "@/components/Composites/InputNumber";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { handleModule } from "@/services/EvoluFormationAPI/handleModule";
 
 export const FormModule = () => {
   const [categories] = useState(["Catégorie 1", "Catégorie 2", "Catégorie 3"]);
@@ -53,6 +54,9 @@ export const FormModule = () => {
     resolver: yupResolver(schemaModule),
   });
   const onSubmit: SubmitHandler<moduleForm> = async (data) => {
+    await handleModule.create({ ...data }).then((res) => {
+      console.log(res);
+    });
     console.log(data);
     //TODO plus tard
   };

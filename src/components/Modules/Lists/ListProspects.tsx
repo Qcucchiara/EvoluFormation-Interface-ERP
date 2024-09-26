@@ -19,8 +19,8 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { ListModuleElement } from "./ListModuleElement";
-import { handlePerson } from "@/services/EvoluFormationAPI/handlePerson";
 import { ListProspectElement } from "./ListProspectElement";
+import { handlePerson } from "@/services/EvoluFormationAPI/handlePerson";
 
 export type DataItem = {
   id: string;

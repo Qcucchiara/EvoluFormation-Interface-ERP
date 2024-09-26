@@ -15,7 +15,6 @@ import {
   DialogTitle,
   DialogDescription,
 } from "@/components/ui/dialog";
-import { handlePerson } from "@/services/EvoluFormationAPI/handlePerson";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -24,6 +23,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { MoreHorizontal } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { handlePerson } from "@/services/EvoluFormationAPI/handlePerson";
 import { ModaleTrainerActions } from "../Modale/ModaleTrainerActions";
 
 const data = [

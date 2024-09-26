@@ -87,6 +87,7 @@ const ListModules = () => {
 
   useEffect(() => {
     handleModule.findAll().then((res) => {
+      if (res.data.data.length !== 0) setData(res.data.data);
       console.log(res);
     });
   }, []);

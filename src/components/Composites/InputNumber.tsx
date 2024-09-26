@@ -29,11 +29,11 @@ export const InputNumber = ({
   }, [value]);
   return (
     <div className="space-y-2">
-      <Label htmlFor="duree">{label}</Label>
+      <Label htmlFor="inputNumber">{label}</Label>
       <div className="flex">
         <Input
           className="rounded-r-none [&::-webkit-inner-spin-button]:appearance-none"
-          id="duree"
+          id="inputNumber"
           type="number"
           min="0"
           value={value}
