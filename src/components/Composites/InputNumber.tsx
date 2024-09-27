@@ -3,23 +3,29 @@ import { Label } from "../ui/label";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import { MinusIcon, PlusIcon } from "@radix-ui/react-icons";
+import { UseFormSetValue } from "react-hook-form";
 
 export const InputNumber = ({
   children,
   label,
   step,
   placeholder,
+  setValueForm,
+  nameInputForm,
   ...props
 }: {
   children?: React.ReactNode;
   label: string;
   step: number | string;
   placeholder: string;
+  nameInputForm?: string;
+  setValueForm?: UseFormSetValue<any>;
 }) => {
   const [value, setValue] = useState<number>(0);
-
   useEffect(() => {
-    console.log(value);
+    if (setValueForm && nameInputForm) {
+      setValueForm(nameInputForm, String(value));
+    }
   }, [value]);
 
   return (

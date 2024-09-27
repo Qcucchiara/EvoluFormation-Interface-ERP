@@ -3,6 +3,7 @@ import { backend } from "./base";
 
 export const handleModule = {
   create: async (data: unknown) => {
+    data.duration = data.duration + "";
     const result = await backend.post(`/module`, data);
     if (result.data.statusCode === 201) {
       toast.success(result.data.message);

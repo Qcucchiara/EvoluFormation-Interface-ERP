@@ -41,8 +41,12 @@ export const FormModule = () => {
   const [objectifs] = useState(["Objectif 1", "Objectif 2", "Objectif 3"]);
   const [formateurs] = useState(["Formateur 1", "Formateur 2", "Formateur 3"]);
   const [formateur, setFormateur] = useState<[]>([]);
-  const [domaineBPF, setDomaineBPF] = useState<string>("");
-  const [objectifBPF, setObjectifBPF] = useState<string>("");
+  const [speciality_bpf_id, setSpeciality_bpf_id] = useState<
+    string | undefined
+  >(undefined);
+  const [objective_bpf_id, setObjective_bpf_id] = useState<string | undefined>(
+    undefined,
+  );
   const {
     register,
     handleSubmit,
@@ -62,13 +66,13 @@ export const FormModule = () => {
     //TODO plus tard
   };
   useEffect(() => {
-    console.log(domaineBPF);
-    setValue("domaineBPF", domaineBPF);
-    watch("domaineBPF");
-  }, [domaineBPF]);
+    console.log(speciality_bpf_id);
+    setValue("speciality_bpf_id", speciality_bpf_id);
+    watch("speciality_bpf_id");
+  }, [speciality_bpf_id]);
   useEffect(() => {
-    setValue("objectifBPF", objectifBPF);
-  }, [objectifBPF]);
+    setValue("objective_bpf_id", objective_bpf_id);
+  }, [objective_bpf_id]);
   useEffect(() => {
     setValue("instructor", formateur);
   }, [formateur]);
@@ -121,7 +125,7 @@ export const FormModule = () => {
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-2">
                     <Label htmlFor="domaine">Spécialité selon BPF</Label>
-                    <Select onValueChange={setDomaineBPF}>
+                    <Select onValueChange={setSpeciality_bpf_id}>
                       <SelectTrigger id="domaine">
                         <SelectValue placeholder="Sélectionnez un domaine" />
                       </SelectTrigger>
@@ -133,10 +137,10 @@ export const FormModule = () => {
                         ))}
                       </SelectContent>
                     </Select>
-                    {errors.domaineBPF?.message &&
-                      watch("domaineBPF") === "" && (
+                    {errors.speciality_bpf_id?.message &&
+                      watch("speciality_bpf_id") === "" && (
                         <p className="text-red-600">
-                          {errors.domaineBPF?.message}
+                          {errors.speciality_bpf_id?.message}
                         </p>
                       )}
                   </div>
@@ -144,7 +148,7 @@ export const FormModule = () => {
                     <Label htmlFor="objectif">
                       Objectif de formation selon BPF
                     </Label>
-                    <Select onValueChange={setObjectifBPF}>
+                    <Select onValueChange={setObjective_bpf_id}>
                       <SelectTrigger id="objectif">
                         <SelectValue placeholder="Sélectionnez un objectif" />
                       </SelectTrigger>
@@ -157,10 +161,10 @@ export const FormModule = () => {
                       </SelectContent>
                     </Select>
                   </div>
-                  {errors.objectifBPF?.message &&
-                    watch("objectifBPF") === "" && (
+                  {errors.objective_bpf_id?.message &&
+                    watch("objective_bpf_id") === "" && (
                       <p className="text-red-600">
-                        {errors.objectifBPF?.message}
+                        {errors.objective_bpf_id?.message}
                       </p>
                     )}
                 </div>
@@ -174,17 +178,28 @@ export const FormModule = () => {
                       min="0"
                       step="0.01"
                       placeholder="Entrez le montant"
-                      {...register("price")}
+                      {...register("amount")}
                     />
-                    {errors.price?.message && (
-                      <p className="text-red-600">{errors.price.message}</p>
+                    {errors.amount?.message && (
+                      <p className="text-red-600">{errors.amount.message}</p>
                     )}
                   </div>
                   <div className="space-y-2">
-                    <InputNumber
+                    {/* <InputNumber
                       label={"Durée (heures)"}
                       step={1}
                       placeholder={"placeholder test"}
+                      nameInputForm="duration"
+                      setValueForm={setValue}
+                    /> */}
+                    <Label htmlFor="duration">Durée (Heures)</Label>
+                    <Input
+                      className="[&::-webkit-inner-spin-button]:appearance-none"
+                      id="duration"
+                      type="number"
+                      min="0"
+                      step="0.5"
+                      placeholder="durée"
                       {...register("duration")}
                     />
                     {errors.duration?.message && (
