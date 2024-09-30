@@ -79,6 +79,7 @@ type SortConfig = {
 };
 const ListModules = () => {
   const [data, setData] = useState(dummyData);
+  const [refresh, setRefresh] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [sortConfig, setSortConfig] = useState<SortConfig>({
     key: "id",
@@ -86,11 +87,13 @@ const ListModules = () => {
   });
 
   useEffect(() => {
+    setData(dummyData);
     handleModule.findAll().then((res) => {
       if (res.data.data.length !== 0) setData(res.data.data);
       console.log(res);
     });
-  }, []);
+    setRefresh(false);
+  }, [refresh]);
 
   const sortedData = [...data].sort((a, b) => {
     if (a[sortConfig.key] < b[sortConfig.key]) {
@@ -147,7 +150,11 @@ const ListModules = () => {
         </TableHeader>
         <TableBody>
           {filteredData.map((item, index) => (
-            <ListModuleElement key={index} item={item} />
+            <ListModuleElement
+              key={index}
+              item={item}
+              setRefresh={setRefresh}
+            />
           ))}
         </TableBody>
       </Table>

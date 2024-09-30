@@ -12,13 +12,20 @@ import {
 import { DataItem } from "./ListModules";
 import { handleModule } from "@/services/EvoluFormationAPI/handleModule";
 
-export const ListModuleElement = ({ item }: { item: any }) => {
+export const ListModuleElement = ({
+  item,
+  setRefresh,
+}: {
+  item: any;
+  setRefresh: React.Dispatch<React.SetStateAction<boolean>>;
+}) => {
   const [openModale, setOpenModale] = useState(false);
 
   const handleAction = (action: string, item: any) => {
     switch (action) {
       case "supprimer":
-        handleModule.remove(item.id);
+        handleModule.remove(item.id).then(() => setRefresh(true));
+
         break;
 
       default:

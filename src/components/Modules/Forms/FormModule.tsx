@@ -59,11 +59,11 @@ export const FormModule = () => {
   });
   const onSubmit: SubmitHandler<moduleForm> = async (data) => {
     console.log(data);
+
     await handleModule.create({ ...data }).then((res) => {
       console.log(res);
     });
     console.log(data);
-    //TODO plus tard
   };
   useEffect(() => {
     console.log(speciality_bpf_id);

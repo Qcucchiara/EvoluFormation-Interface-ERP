@@ -3,15 +3,21 @@ import { backend } from "./base";
 
 export const handleModule = {
   create: async (data: unknown) => {
-    data.duration = data.duration + "";
-    const result = await backend.post(`/module`, data);
-    if (result.data.statusCode === 201) {
-      toast.success(result.data.message);
-      console.log(result);
-    } else {
-      toast.error(result.data.message);
-    }
-    return result;
+    // data.duration = data.duration + "";
+    const result = backend.post(`/module`, data);
+    toast.promise(
+      result,
+      {
+        loading: "Envoie du formulaire",
+        success: (res) => `${res.data.message}`,
+        error: (err) =>
+          err.response.data.message
+            ? `${err.response.data.message}`
+            : "Unexpected error",
+      },
+      { id: "createModule" },
+    );
+    return await result;
   },
   findAll: async () => {
     const result = backend.get("/module");
