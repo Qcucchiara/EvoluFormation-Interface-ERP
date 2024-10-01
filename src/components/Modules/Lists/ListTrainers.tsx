@@ -33,7 +33,7 @@ const data = [
     last_name: "Dupont",
     city: "Paris",
     email: "jean.dupont@email.com",
-    tel: "01 23 45 67 89",
+    phone: "01 23 45 67 89",
   },
   {
     id: 2,
@@ -41,7 +41,7 @@ const data = [
     last_name: "Laurent",
     city: "Lyon",
     email: "marie.laurent@email.com",
-    tel: "04 56 78 90 12",
+    phone: "04 56 78 90 12",
   },
   {
     id: 3,
@@ -49,7 +49,7 @@ const data = [
     last_name: "Martin",
     city: "Marseille",
     email: "pierre.martin@email.com",
-    tel: "07 89 01 23 45",
+    phone: "07 89 01 23 45",
   },
   {
     id: 4,
@@ -57,7 +57,7 @@ const data = [
     last_name: "Bernard",
     city: "Bordeaux",
     email: "sophie.bernard@email.com",
-    tel: "05 67 89 01 23",
+    phone: "05 67 89 01 23",
   },
   {
     id: 5,
@@ -65,7 +65,7 @@ const data = [
     last_name: "Petit",
     city: "Lille",
     email: "luc.petit@email.com",
-    tel: "03 45 67 89 01",
+    phone: "03 45 67 89 01",
   },
   {
     id: 6,
@@ -73,7 +73,7 @@ const data = [
     last_name: "Dubois",
     city: "Toulouse",
     email: "claire.dubois@email.com",
-    tel: "05 12 34 56 78",
+    phone: "05 12 34 56 78",
   },
   {
     id: 7,
@@ -81,7 +81,7 @@ const data = [
     last_name: "Moreau",
     city: "Nantes",
     email: "thomas.moreau@email.com",
-    tel: "02 34 56 78 90",
+    phone: "02 34 56 78 90",
   },
   {
     id: 8,
@@ -89,7 +89,7 @@ const data = [
     last_name: "Leroy",
     city: "Strasbourg",
     email: "emilie.leroy@email.com",
-    tel: "03 78 90 12 34",
+    phone: "03 78 90 12 34",
   },
 ];
 

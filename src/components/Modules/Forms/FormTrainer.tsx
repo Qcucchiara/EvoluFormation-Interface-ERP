@@ -47,7 +47,7 @@ const skills = [
   "Kubernetes",
   "Angular",
 ];
-export const FormTrainer = () => {
+export const FormTrainer = ({ item }: { item?: any }) => {
   const [isSubmited, setIsSubmited] = useState(false);
   const [selectedNames, setSelectedNames] = useState<string[]>([]);
   const {
@@ -99,6 +99,7 @@ export const FormTrainer = () => {
                   id={"nom"}
                   placeholder={"Entrez votre nom"}
                   register={register("last_name")}
+                  defaultValue={item?.last_name}
                 />
                 <InputForm
                   require={true}
@@ -106,6 +107,7 @@ export const FormTrainer = () => {
                   id={"prenom"}
                   placeholder={"Entrez votre prénom"}
                   register={register("first_name")}
+                  defaultValue={item?.first_name}
                 />
               </div>
               <div className="grid grid-cols-2 gap-4">
@@ -116,12 +118,14 @@ export const FormTrainer = () => {
                   placeholder={"Entrez votre email"}
                   register={register("email")}
                   errors={errors.email?.message}
+                  defaultValue={item?.email}
                 />
                 <InputForm
                   label={"Téléphone"}
                   id={"tel"}
                   placeholder={"Entrez votre numéro de téléphone"}
                   register={register("phone")}
+                  defaultValue={item?.phone}
                 />
               </div>
               <div className="grid grid-cols-2 gap-4">
@@ -135,6 +139,7 @@ export const FormTrainer = () => {
                     placeholder="Entrez votre tarif journalier"
                     // {...register("rate")}
                     required
+                    defaultValue={item?.rate}
                   />
                   {/* {errors.rate?.message && (
                     <p className="text-red-600">{errors.rate.message}</p>
@@ -146,6 +151,7 @@ export const FormTrainer = () => {
                     id="city"
                     type="text"
                     placeholder="Ville d'activité (plusieurs a terme)"
+                    defaultValue={item?.city}
                   />
                 </div>
               </div>

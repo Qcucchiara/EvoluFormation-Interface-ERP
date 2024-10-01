@@ -1,7 +1,7 @@
 export type moduleForm = {
   title: string;
   category: string;
-  domaineBPF: string;
+  speciality_bpf_id: string;
   objectifBPF: string;
   amount: number;
   duration: number;

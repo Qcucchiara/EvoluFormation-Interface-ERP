@@ -11,7 +11,7 @@ export const schemaModule = yup.object().shape({
     .string()
     .required("Ce champ est obligatoire")
     .min(3, "Minimum 3 character"),
-  domaineBPF: yup
+  speciality_bpf_id: yup
     .string()
     .required("Ce champ est obligatoire")
     .min(3, "Minimum 3 character"),

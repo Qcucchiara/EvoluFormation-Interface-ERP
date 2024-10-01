@@ -62,8 +62,8 @@ export const FormModule = () => {
   };
   useEffect(() => {
     console.log(domaineBPF);
-    setValue("domaineBPF", domaineBPF);
-    watch("domaineBPF");
+    setValue("speciality_bpf_id", domaineBPF);
+    watch("speciality_bpf_id");
   }, [domaineBPF]);
   useEffect(() => {
     setValue("objectifBPF", objectifBPF);
@@ -132,10 +132,10 @@ export const FormModule = () => {
                         ))}
                       </SelectContent>
                     </Select>
-                    {errors.domaineBPF?.message &&
-                      watch("domaineBPF") === "" && (
+                    {errors.speciality_bpf_id?.message &&
+                      watch("speciality_bpf_id") === "" && (
                         <p className="text-red-600">
-                          {errors.domaineBPF?.message}
+                          {errors.speciality_bpf_id?.message}
                         </p>
                       )}
                   </div>

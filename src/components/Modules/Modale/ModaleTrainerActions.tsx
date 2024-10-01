@@ -12,6 +12,7 @@ import { Button } from "@/components/ui/button";
 import { FormModule } from "../Forms/FormModule";
 import Link from "next/link";
 import { FormProspect } from "../Forms/FormProspect";
+import { FormTrainer } from "../Forms/FormTrainer";
 
 export const ModaleTrainerActions = ({
   open,
@@ -25,7 +26,7 @@ export const ModaleTrainerActions = ({
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
   useEffect(() => {
-    console.log("opened?");
+    console.log("opened?", item);
   }, [open]);
   return (
     <Dialog open={open} onOpenChange={setOpen}>
@@ -53,7 +54,7 @@ export const ModaleTrainerActions = ({
               mêmes infos que dans détails, mais avec des input ghost préremplis
             </div>
             <Button variant={"destructive"}>delete</Button> */}
-            <FormProspect item={item} />
+            <FormTrainer item={item} />
           </TabsContent>
         </Tabs>
       </DialogContent>
