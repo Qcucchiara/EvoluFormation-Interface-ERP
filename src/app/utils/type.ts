@@ -1,8 +1,8 @@
 export type moduleForm = {
   title: string;
   category: string;
-  speciality_bpf_id: string;
-  objectifBPF: string;
+  speciality_bpf_id?: string;
+  objective_bpf_id?: string;
   amount: number;
   duration: number;
   instructor?: [];

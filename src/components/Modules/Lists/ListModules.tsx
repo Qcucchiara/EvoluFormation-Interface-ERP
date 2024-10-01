@@ -23,53 +23,53 @@ import { handleModule } from "@/services/EvoluFormationAPI/handleModule";
 
 export type DataItem = {
   id: number;
-  titre: string;
-  categorie: string;
-  montant: number;
-  duree: string;
-  domaineBPF: string;
+  title: string;
+  category: string;
+  amount: number;
+  duration: string;
+  speciality_bpf: string;
 };
 
 const dummyData: DataItem[] = [
   {
     id: 1,
-    titre: "Projet A",
-    categorie: "Développement",
-    montant: 10000,
-    duree: "6 mois",
-    domaineBPF: "Technologie",
+    title: "Projet A",
+    category: "Développement",
+    amount: 10000,
+    duration: "6 mois",
+    speciality_bpf: "Technologie",
   },
   {
     id: 2,
-    titre: "Projet B",
-    categorie: "Marketing",
-    montant: 5000,
-    duree: "3 mois",
-    domaineBPF: "Communication",
+    title: "Projet B",
+    category: "Marketing",
+    amount: 5000,
+    duration: "3 mois",
+    speciality_bpf: "Communication",
   },
   {
     id: 3,
-    titre: "Projet C",
-    categorie: "Recherche",
-    montant: 15000,
-    duree: "12 mois",
-    domaineBPF: "Innovation",
+    title: "Projet C",
+    category: "Recherche",
+    amount: 15000,
+    duration: "12 mois",
+    speciality_bpf: "Innovation",
   },
   {
     id: 4,
-    titre: "Projet D",
-    categorie: "Formation",
-    montant: 3000,
-    duree: "1 mois",
-    domaineBPF: "Ressources Humaines",
+    title: "Projet D",
+    category: "Formation",
+    amount: 3000,
+    duration: "1 mois",
+    speciality_bpf: "Ressources Humaines",
   },
   {
     id: 5,
-    titre: "Projet E",
-    categorie: "Infrastructure",
-    montant: 20000,
-    duree: "9 mois",
-    domaineBPF: "Technologie",
+    title: "Projet E",
+    category: "Infrastructure",
+    amount: 20000,
+    duration: "9 mois",
+    speciality_bpf: "Technologie",
   },
 ];
 
@@ -79,6 +79,7 @@ type SortConfig = {
 };
 const ListModules = () => {
   const [data, setData] = useState(dummyData);
+  const [refresh, setRefresh] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [sortConfig, setSortConfig] = useState<SortConfig>({
     key: "id",
@@ -86,11 +87,13 @@ const ListModules = () => {
   });
 
   useEffect(() => {
+    setData(dummyData);
     handleModule.findAll().then((res) => {
       if (res.data.data.length !== 0) setData(res.data.data);
       console.log(res);
     });
-  }, []);
+    setRefresh(false);
+  }, [refresh]);
 
   const sortedData = [...data].sort((a, b) => {
     if (a[sortConfig.key] < b[sortConfig.key]) {
@@ -103,7 +106,7 @@ const ListModules = () => {
   });
 
   const filteredData = sortedData.filter((item) =>
-    item.titre.toLowerCase().includes(searchTerm.toLowerCase()),
+    item.title.toLowerCase().includes(searchTerm.toLowerCase()),
   );
 
   const requestSort = (key: keyof DataItem) => {
@@ -128,7 +131,7 @@ const ListModules = () => {
       <Table>
         <TableHeader>
           <TableRow>
-            {["titre", "categorie", "montant", "duree", "domaineBPF"].map(
+            {["titre", "categorie", "montant", "duree", "spécialité BPF"].map(
               (key) => (
                 <TableHead key={key}>
                   <Button
@@ -147,7 +150,11 @@ const ListModules = () => {
         </TableHeader>
         <TableBody>
           {filteredData.map((item, index) => (
-            <ListModuleElement key={index} item={item} />
+            <ListModuleElement
+              key={index}
+              item={item}
+              setRefresh={setRefresh}
+            />
           ))}
         </TableBody>
       </Table>

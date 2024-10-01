@@ -4,7 +4,7 @@ export type moduleForm = {
   domaineBPF: string;
   objectifBPF: string;
   price: number;
-  duration: number;
+  duration: number | string;
   instructor?: [];
   link?: string;
   commentary?: string;

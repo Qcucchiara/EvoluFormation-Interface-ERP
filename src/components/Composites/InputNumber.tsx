@@ -27,6 +27,7 @@ export const InputNumber = ({
       setValueForm(nameInputForm, String(value));
     }
   }, [value]);
+
   return (
     <div className="space-y-2">
       <Label htmlFor="inputNumber">{label}</Label>

@@ -12,13 +12,20 @@ import {
 import { DataItem } from "./ListModules";
 import { handleModule } from "@/services/EvoluFormationAPI/handleModule";
 
-export const ListModuleElement = ({ item }: { item: any }) => {
+export const ListModuleElement = ({
+  item,
+  setRefresh,
+}: {
+  item: any;
+  setRefresh: React.Dispatch<React.SetStateAction<boolean>>;
+}) => {
   const [openModale, setOpenModale] = useState(false);
 
   const handleAction = (action: string, item: any) => {
     switch (action) {
       case "supprimer":
-        handleModule.remove(item.id);
+        handleModule.remove(item.id).then(() => setRefresh(true));
+
         break;
 
       default:
@@ -29,16 +36,13 @@ export const ListModuleElement = ({ item }: { item: any }) => {
   };
   return (
     <TableRow key={item.id}>
-      <TableCell onClick={() => setOpenModale(true)}>{item.titre}</TableCell>
+      <TableCell onClick={() => setOpenModale(true)}>{item.title}</TableCell>
+      <TableCell onClick={() => setOpenModale(true)}>{item.category}</TableCell>
+      <TableCell onClick={() => setOpenModale(true)}>{item.amount} €</TableCell>
+      <TableCell onClick={() => setOpenModale(true)}>{item.duration}</TableCell>
       <TableCell onClick={() => setOpenModale(true)}>
-        {item.categorie}
-      </TableCell>
-      <TableCell onClick={() => setOpenModale(true)}>
-        {item.montant} €
-      </TableCell>
-      <TableCell onClick={() => setOpenModale(true)}>{item.duree}</TableCell>
-      <TableCell onClick={() => setOpenModale(true)}>
-        {item.domaineBPF}
+        {/* {item.domaineBPF} */}
+        In_Progress
       </TableCell>
       <TableCell>
         <ModaleModuleActions open={openModale} setOpen={setOpenModale} />
