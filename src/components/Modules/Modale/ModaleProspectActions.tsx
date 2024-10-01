@@ -1,5 +1,5 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Dialog,
   DialogContent,
@@ -12,21 +12,39 @@ import { Button } from "@/components/ui/button";
 import { FormModule } from "../Forms/FormModule";
 import Link from "next/link";
 import { FormProspect } from "../Forms/FormProspect";
+import { Input } from "@/components/ui/input";
+import { handlePerson } from "@/services/EvoluFormationAPI/handlePerson";
+import { useToast } from "@/hooks/use-toast";
 
 export const ModaleProspectActions = ({
   open,
   setOpen,
   item,
   defaultValue,
+  setIsReloadNeeded,
 }: {
   item: any;
   defaultValue?: string;
   open: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  setIsReloadNeeded: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
+  const { toast } = useToast();
+  const [newStatus, setNewStatus] = useState<string>(item.status);
   useEffect(() => {
     console.log("opened?");
   }, [open]);
+  function modifyStatus() {
+    const data = {
+      status: newStatus,
+    };
+    handlePerson.prospect.update(item.id, data).then((res) => {
+      console.log(res);
+      toast({ title: "Prospect modifié" });
+      setIsReloadNeeded(true);
+      // setOpen(false);
+    });
+  }
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogContent>
@@ -47,6 +65,16 @@ export const ModaleProspectActions = ({
           </TabsList>
           <TabsContent value="details">
             Détails d&quot;un module ici
+            <br />
+            <label>Status</label>
+            <Input
+              variant={"ghost"}
+              defaultValue={item.status}
+              onChange={(e) => setNewStatus(e.target.value)}
+            />
+            {newStatus !== item.status && (
+              <Button onClick={modifyStatus}>Modifier</Button>
+            )}
           </TabsContent>
           <TabsContent value="update">
             {/* <div>

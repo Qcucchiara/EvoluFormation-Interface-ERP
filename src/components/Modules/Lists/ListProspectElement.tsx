@@ -48,6 +48,7 @@ export const ListProspectElement = ({
           open={openModale}
           setOpen={setOpenModale}
           defaultValue={modalDefaultValue}
+          setIsReloadNeeded={setIsReloadNeeded}
         />
         <DropdownMenu>
           <DropdownMenuTrigger asChild>

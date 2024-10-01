@@ -101,7 +101,8 @@ const ListProspects = () => {
   });
   useEffect(() => {
     handlePerson.prospect.findAll().then((res: any) => {
-      setListProspect(res.data);
+      setListProspect(res.data.message);
+      console.log(res.data.message);
     });
     setIsReloadNeeded(false);
   }, [isReloadNeeded]);
