@@ -12,6 +12,7 @@ const navItems = [
   "Ressources",
   "Sessions", // TODO
   "Agenda", // TODO
+  "Apprenant",
 ];
 export const SideNav = ({
   sidebarOpen,

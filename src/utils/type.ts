@@ -42,3 +42,12 @@ export type trainerForm = {
   city: string;
   commentary?: string;
 };
+export type studentForm = {
+  first_name: string;
+  last_name: string;
+  email: string;
+  phone: string;
+  birth_date: string;
+  city: string;
+  postal_code: string;
+};
