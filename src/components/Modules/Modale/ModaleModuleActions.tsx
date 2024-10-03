@@ -19,9 +19,9 @@ export const ModaleModuleActions = ({
   open: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
-  useEffect(() => {
-    console.log("opened?");
-  }, [open]);
+  // useEffect(() => {
+  //   console.log("opened?");
+  // }, [open]);
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogContent>

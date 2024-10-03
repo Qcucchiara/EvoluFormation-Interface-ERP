@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Card,
   CardHeader,
@@ -15,7 +15,21 @@ import { resourceForm } from "@/app/utils/type";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { schemaResource } from "@/validator/ResourceValidator";
 import InputForm from "@/components/Composites/InputForm";
+import { handleRessource } from "@/services/EvoluFormationAPI/handleRessource";
+import { handleRessourceType } from "@/services/EvoluFormationAPI/handleRessourceType";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
+type RessourceType = {
+  id: string;
+  name: string;
+  slug: string;
+};
 export const FormRessource = () => {
   const {
     register,
@@ -27,10 +41,25 @@ export const FormRessource = () => {
     mode: "onChange",
     resolver: yupResolver(schemaResource),
   });
+  const [listRessourceTypes, setListRessourcetypes] =
+    useState<RessourceType[]>();
+  const [ressourceTypeId, setRessourceTypeId] = useState("");
   const onSubmit: SubmitHandler<resourceForm> = async (data) => {
     console.log(data);
-    //TODO plus tard avec le back
+    handleRessource.create(data).then((res) => {
+      console.log(res);
+    });
   };
+  useEffect(() => {
+    setValue("type_id", ressourceTypeId);
+    watch("type_id");
+  }, [ressourceTypeId]);
+
+  useEffect(() => {
+    handleRessourceType.findAll().then((res) => {
+      setListRessourcetypes(res.data.data);
+    });
+  }, []);
 
   return (
     <Card className="mx-auto w-full max-w-4xl">
@@ -49,21 +78,46 @@ export const FormRessource = () => {
             require={true}
             register={register("name")}
           />
+          {/* <div className="hidden">
+            <InputForm
+              list="resource-types"
+              label={"Type"}
+              id={"type"}
+              placeholder={"Select or type a resource type"}
+              register={register("type")}
+              require={true}
+            />
+          </div> */}
+          {/* <datalist id="resource-types">
+            {ressourceTypes &&
+              ressourceTypes.map((type) => {
+                return (
+                  <option key={type.id} label={type.name} value={type.id}>
+                    {type.name}
+                  </option>
+                );
+              })}
 
-          <InputForm
-            list="resource-types"
-            label={"Type"}
-            id={"type"}
-            placeholder={"Select or type a resource type"}
-            register={register("type")}
-            require={true}
-          />
-          <datalist id="resource-types">
             <option value="Physical" />
             <option value="Digital" />
             <option value="Service" />
             <option value="Subscription" />
-          </datalist>
+          </datalist> */}
+
+          <Select onValueChange={setRessourceTypeId}>
+            <SelectTrigger>
+              <SelectValue placeholder="catégorie"></SelectValue>
+            </SelectTrigger>
+            <SelectContent>
+              {listRessourceTypes?.map((type) => {
+                return (
+                  <SelectItem key={type.id} value={type.id}>
+                    {type.name}
+                  </SelectItem>
+                );
+              })}
+            </SelectContent>
+          </Select>
 
           <div className="space-y-2">
             <Label htmlFor="price">Price</Label>
@@ -83,6 +137,17 @@ export const FormRessource = () => {
         <CardFooter>
           <Button type="submit" className="w-full">
             Add Resource
+          </Button>
+          <Button
+            onClick={() => {
+              console.log({
+                name: watch("name"),
+                price: watch("price"),
+                type: watch("type_id"),
+              });
+            }}
+          >
+            debug
           </Button>
         </CardFooter>
       </form>
