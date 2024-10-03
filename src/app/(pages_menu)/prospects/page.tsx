@@ -2,6 +2,7 @@
 import LayoutStandard from "@/components/Layouts/LayoutStandard";
 import { FormModule } from "@/components/Modules/Forms/FormModule";
 import { FormProspect } from "@/components/Modules/Forms/FormProspect";
+import BlacklistProspects from "@/components/Modules/Lists/BlacklistProspect";
 import ListModules from "@/components/Modules/Lists/ListModules";
 import ListProspects from "@/components/Modules/Lists/ListProspects";
 import { Card } from "@/components/ui/card";
@@ -16,7 +17,7 @@ const children = () => {
       <TabsList className="mb-4">
         <TabsTrigger value="new">Nouveau prospect</TabsTrigger>
         <TabsTrigger value="list">Liste prospects</TabsTrigger>
-        {/* <TabsTrigger value="other"></TabsTrigger> */}
+        <TabsTrigger value="blacklist">Liste des prospects banni</TabsTrigger>
       </TabsList>
       <TabsContent value="new" className="h-full">
         <div className="rounded-lg bg-card p-4 shadow">
@@ -26,6 +27,11 @@ const children = () => {
       <TabsContent value="list" className="h-full">
         <div className="rounded-lg bg-card p-4 shadow">
           <ListProspects />
+        </div>
+      </TabsContent>
+      <TabsContent value="blacklist" className="h-full">
+        <div className="rounded-lg bg-card p-4 shadow">
+          <BlacklistProspects />
         </div>
       </TabsContent>
     </Tabs>

@@ -31,6 +31,10 @@ export const ListProspectElement = ({
     console.log("test");
     setIsReloadNeeded(true);
   }
+  function blacklisting() {
+    handlePerson.prospect.toggleBlacklist(item.id);
+    setIsReloadNeeded(true);
+  }
   return (
     <TableRow key={item.id}>
       <TableCell onClick={() => setOpenModale(true)}>
@@ -67,6 +71,9 @@ export const ListProspectElement = ({
               onClick={() => handleAction(setOpenModale(true), item, "update")}
             >
               Modifier
+            </DropdownMenuItem>
+            <DropdownMenuItem onClick={() => handleAction(blacklisting(), item)}>
+              Bannir
             </DropdownMenuItem>
             <DropdownMenuItem onClick={() => handleAction(remove(), item)}>
               Supprimer

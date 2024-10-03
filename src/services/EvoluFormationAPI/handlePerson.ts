@@ -11,11 +11,17 @@ export const handlePerson = {
       console.log("la");
       return backend.get(`/prospect`);
     },
+    findAllBlacklist: () => {
+      return backend.get(`/prospect/blacklist`);
+    },
     findOne: (id: string) => {
       return backend.get(`/prospect/${id}`);
     },
     update: (id: string, data: unknown) => {
       return backend.patch(`/prospect/${id}`, data);
+    },
+    toggleBlacklist: (id: string) => {
+      return backend.patch(`/prospect/blacklist/${id}`);
     },
     remove: (id: string) => {
       return backend.delete(`/prospect/${id}`);
