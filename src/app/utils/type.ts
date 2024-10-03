@@ -29,7 +29,7 @@ export type prospectForm = {
 };
 export type resourceForm = {
   name: string;
-  type: string;
+  type_id: string;
   price: number;
 };
 export type trainerForm = {

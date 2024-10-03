@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import {
   Table,
@@ -24,72 +24,93 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
 import { MoreHorizontal } from "lucide-react";
+import { handleRessource } from "@/services/EvoluFormationAPI/handleRessource";
 
-const ressources = [
+type Ressource = {
+  id: string;
+  name: string;
+  type: string;
+  price: number;
+  type_name?: string;
+  details?: string;
+};
+
+const dummyData = [
   {
-    id: 1,
-    nom: "Salle de conférence A",
+    id: "1",
+    name: "Salle de conférence A",
     type: "Salle",
-    prix: 100,
+    price: 100,
     details: "Capacité: 50 personnes, Adresse: 123 Rue de la Conférence, Paris",
   },
   {
-    id: 2,
-    nom: "Ordinateur portable Dell XPS",
+    id: "2",
+    name: "Ordinateur portable Dell XPS",
     type: "Matériel",
-    prix: 1200,
+    price: 1200,
     details: "Processeur: Intel i7, RAM: 16GB, Stockage: 512GB SSD",
   },
   {
-    id: 3,
-    nom: "Bureau open space",
+    id: "3",
+    name: "Bureau open space",
     type: "Salle",
-    prix: 500,
+    price: 500,
     details: "Capacité: 20 postes, Adresse: 456 Avenue du Travail, Lyon",
   },
   {
-    id: 4,
-    nom: "Projecteur 4K",
+    id: "4",
+    name: "Projecteur 4K",
     type: "Matériel",
-    prix: 800,
+    price: 800,
     details: "Résolution: 3840x2160, Luminosité: 3000 lumens",
   },
   {
-    id: 5,
-    nom: "Salle de formation",
+    id: "5",
+    name: "Salle de formation",
     type: "Salle",
-    prix: 150,
+    price: 150,
     details:
       "Capacité: 30 personnes, Adresse: 789 Boulevard de l'Éducation, Marseille",
   },
   {
-    id: 6,
-    nom: 'iMac 27"',
+    id: "6",
+    name: 'iMac 27"',
     type: "Matériel",
-    prix: 2000,
+    price: 2000,
     details: "Processeur: Apple M1, RAM: 16GB, Stockage: 1TB SSD",
   },
   {
-    id: 7,
-    nom: "Studio d'enregistrement",
+    id: "7",
+    name: "Studio d'enregistrement",
     type: "Salle",
-    prix: 300,
+    price: 300,
     details:
       "Équipement professionnel, Adresse: 101 Rue de la Musique, Bordeaux",
   },
   {
-    id: 8,
-    nom: "Tablette graphique Wacom",
+    id: "8",
+    name: "Tablette graphique Wacom",
     type: "Matériel",
-    prix: 400,
+    price: 400,
     details: 'Taille: 16", Sensibilité à la pression: 8192 niveaux',
   },
 ];
 
 export const ListRessources = () => {
+  const [ressources, setRessources] = useState<Ressource[]>(dummyData);
   const [openModale, setOpenModale] = useState(false);
   const [selectedRessource, setSelectedRessource] = useState<any>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const [refresh, setRefresh] = useState(false);
+
+  useEffect(() => {
+    handleRessource.findAll().then((res) => {
+      console.log(res.data.data);
+      setRessources(res.data.data);
+    });
+    setRefresh(false);
+  }, [refresh]);
 
   const handleRowClick = (ressource: any) => {
     setSelectedRessource(ressource);
@@ -102,9 +123,9 @@ export const ListRessources = () => {
       <Table>
         <TableHeader>
           <TableRow>
-            <TableHead>Nom</TableHead>
+            <TableHead>nom</TableHead>
             <TableHead>Type</TableHead>
-            <TableHead>Prix (€)</TableHead>
+            <TableHead>prix (€)</TableHead>
             <TableHead>Actions</TableHead>
           </TableRow>
         </TableHeader>
@@ -115,9 +136,9 @@ export const ListRessources = () => {
               onClick={() => handleRowClick(ressource)}
               className="cursor-pointer hover:bg-muted/50"
             >
-              <TableCell>{ressource.nom}</TableCell>
-              <TableCell>{ressource.type}</TableCell>
-              <TableCell>{ressource.prix}</TableCell>
+              <TableCell>{ressource.name}</TableCell>
+              <TableCell>{ressource.type_name || "NO_CATEGORY"}</TableCell>
+              <TableCell>{ressource.price}</TableCell>
               <TableCell>
                 <ModaleModuleActions
                   open={openModale}
@@ -133,7 +154,15 @@ export const ListRessources = () => {
                   <DropdownMenuContent align="end">
                     <DropdownMenuItem>Détails</DropdownMenuItem>
                     <DropdownMenuItem>Modifier</DropdownMenuItem>
-                    <DropdownMenuItem>Supprimer</DropdownMenuItem>
+                    <DropdownMenuItem
+                      onClick={() => {
+                        handleRessource.remove(ressource.id);
+                        setRefresh(true);
+                        setOpenModale(false);
+                      }}
+                    >
+                      Supprimer
+                    </DropdownMenuItem>
                   </DropdownMenuContent>
                 </DropdownMenu>
               </TableCell>
@@ -145,17 +174,12 @@ export const ListRessources = () => {
       <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
         <DialogContent>
           <DialogHeader>
-            <DialogTitle>{selectedRessource?.nom}</DialogTitle>
+            <DialogTitle>{selectedRessource?.name}</DialogTitle>
             <DialogDescription>
-              <p>
-                <strong>Type:</strong> {selectedRessource?.type}
-              </p>
-              <p>
-                <strong>Prix:</strong> {selectedRessource?.prix} €
-              </p>
-              <p>
-                <strong>Détails:</strong> {selectedRessource?.details}
-              </p>
+              <strong>Nom:</strong> {selectedRessource?.name} €<br />
+              <strong>Type:</strong> {selectedRessource?.type} <br />
+              <strong>Prix:</strong> {selectedRessource?.price} <br />
+              <strong>Détails:</strong> {selectedRessource?.details}
             </DialogDescription>
           </DialogHeader>
         </DialogContent>
