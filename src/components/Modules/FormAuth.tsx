@@ -31,7 +31,7 @@ export const FormAuth = () => {
       <CardContent>
         <form>
           <div className="grid w-full items-center gap-4">
-            {!isLogin && (
+            {/* {!isLogin && (
               <>
                 <div className="grid grid-cols-2 gap-4">
                   <div className="flex flex-col space-y-1.5">
@@ -52,7 +52,7 @@ export const FormAuth = () => {
                   />
                 </div>
               </>
-            )}
+            )} */}
             <div className="flex flex-col space-y-1.5">
               <Label htmlFor="email">Email</Label>
               <Input id="email" placeholder="Enter your email" type="email" />
@@ -80,9 +80,9 @@ export const FormAuth = () => {
       </CardContent>
       <CardFooter className="flex flex-col">
         <Button className="w-full">{isLogin ? "Login" : "Register"}</Button>
-        <p className="mt-2 text-sm text-center">
+        <p className="mt-2 text-center text-sm">
           {isLogin ? "Don't have an account?" : "Already have an account?"}
-          <Button variant="link" className="p-0 ml-1" onClick={toggleForm}>
+          <Button variant="link" className="ml-1 p-0" onClick={toggleForm}>
             {isLogin ? "Register" : "Login"}
           </Button>
         </p>
