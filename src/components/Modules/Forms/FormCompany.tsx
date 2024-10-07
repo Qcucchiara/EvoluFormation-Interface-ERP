@@ -80,9 +80,10 @@ export const FormCompany = () => {
     resolver: yupResolver(schemaCompany),
   });
   const onSubmit: SubmitHandler<any> = async (data) => {
-    console.log({ ...data, siret: siret });
+    // console.log({ ...data, siret: siret });
     await handleCompany.create({ ...data, siret: siret }).then((res) => {
-      toast({ title: "Entrprise Créée" });
+      console.log(res);
+      toast({ title: "Entreprise Créée" });
     });
   };
 

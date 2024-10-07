@@ -109,6 +109,7 @@ export const ListCompanies = () => {
 
       // ODOT: envoyer la data dans le useState "selectedEntreprise" pour afficher la liste
     });
+    setRefresh(false);
   }, [refresh]);
 
   return (

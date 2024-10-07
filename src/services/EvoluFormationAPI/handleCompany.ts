@@ -3,14 +3,15 @@ import { backend } from "./base";
 
 export const handleCompany = {
   create: async (data: unknown) => {
-    const res = await backend.post(`/company`, data);
-    if (res.data.statusCode === 201) {
-      toast.success(res.data.message);
-      console.log(res);
-    } else {
-      toast.error(res.data.message);
+    try {
+      const res = await backend.post(`/company`, data);
+      if (res.data.status === 201) {
+        toast.success(res.data.message);
+      }
+      return res;
+    } catch (error: any) {
+      toast.error(error.response.data.message);
     }
-    return res;
   },
   findAll: async () => {
     const result = backend.get("/company");
