@@ -14,13 +14,13 @@ import React from "react";
 const children = () => {
   return (
     <Tabs defaultValue="new" className="flex h-full flex-col">
-      <TabsList className="mb-4">
+      <TabsList className="fixed w-full">
         <TabsTrigger value="new">Nouveau prospect</TabsTrigger>
         <TabsTrigger value="list">Liste prospects</TabsTrigger>
         <TabsTrigger value="blacklist">Liste des prospects banni</TabsTrigger>
       </TabsList>
       <TabsContent value="new" className="h-full">
-        <div className="rounded-lg bg-card p-4 shadow">
+        <div className="mt-12 rounded-lg bg-card p-4 shadow">
           <FormProspect />
         </div>
       </TabsContent>

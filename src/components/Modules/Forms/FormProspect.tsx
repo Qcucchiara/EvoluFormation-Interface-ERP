@@ -50,9 +50,7 @@ export const FormProspect = ({ item }: { item?: any }) => {
       street: data.address?.street,
     };
     if (!item) {
-      await handlePerson.prospect.create(data).then((res) => {
-        console.log(res.data);
-      });
+      await handlePerson.prospect.create(data).then((res) => {});
     } else {
       await handlePerson.prospect.update(item.id, data).then((res) => {
         console.log(res.data);

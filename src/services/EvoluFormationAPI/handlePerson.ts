@@ -1,18 +1,54 @@
+import toast from "react-hot-toast";
 import { backend } from "./base";
 
 export const handlePerson = {
   prospect: {
-    create: (data: unknown) => {
-      console.log("ici");
-      return backend.post("/prospect", data);
+    create: async (data: unknown) => {
+      try {
+        const res = await backend.post(`/prospect`, data);
+        if (res.data.statusCode === 201) {
+          toast.success(res.data.message);
+        }
+        return res;
+      } catch (error: any) {
+        toast.error(error.response.data.message);
+      }
     },
     // skip: number, take: number
-    findAll: () => {
-      console.log("la");
-      return backend.get(`/prospect`);
+    findAll: async () => {
+      try {
+        const res = backend.get(`/prospect`);
+        toast.promise(
+          res,
+          {
+            loading: "Chargement de la liste des entreprises",
+            success: "Liste chargée correctement",
+            error: "Erreur dans le chargement de la liste",
+          },
+          { id: "findAllProspect" },
+        );
+        return await res;
+      } catch (error: any) {
+        toast.error(error.response.data.message);
+      }
     },
-    findAllBlacklist: () => {
-      return backend.get(`/prospect/blacklist`);
+    findAllBlacklist: async () => {
+      console.log(process.env.NEXT_PUBLIC_API_BACKEND_URL, "ici c'est le .env");
+      try {
+        const res = backend.get(`/prospect/blacklist`);
+        toast.promise(
+          res,
+          {
+            loading: "Chargement de la liste des entreprises",
+            success: "Liste chargée correctement",
+            error: "Erreur dans le chargement de la liste",
+          },
+          { id: "findAllBlacklist" },
+        );
+        return await res;
+      } catch (error: any) {
+        toast.error(error.response.data.message);
+      }
     },
     findOne: (id: string) => {
       return backend.get(`/prospect/${id}`);
