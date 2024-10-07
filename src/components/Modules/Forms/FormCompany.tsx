@@ -82,7 +82,7 @@ export const FormCompany = () => {
   const onSubmit: SubmitHandler<any> = async (data) => {
     // console.log({ ...data, siret: siret });
     await handleCompany.create({ ...data, siret: siret }).then((res) => {
-      console.log(res);
+      console.log(res, "à virer");
       toast({ title: "Entreprise Créée" });
     });
   };
