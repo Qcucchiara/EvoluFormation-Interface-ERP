@@ -9,11 +9,8 @@ export const handleModule = {
       result,
       {
         loading: "Envoie du formulaire",
-        success: (res) => `${res.data.message}`,
-        error: (err) =>
-          err.response.data.message
-            ? `${err.response.data.message}`
-            : "Unexpected error",
+        success: (res) => res.data.message,
+        error: (err) => err.data.message,
       },
       { id: "createModule" },
     );
@@ -25,9 +22,8 @@ export const handleModule = {
       result,
       {
         loading: "Chargement de la liste des modules",
-        success: (res) => `${res.data.message}`,
-        error: (err) =>
-          err.data.message ? `${err.data.message}` : "Unexpected error",
+        success: (res) => res.data.message,
+        error: (err) => err.data.message,
       },
       { id: "findAllModules" },
     );

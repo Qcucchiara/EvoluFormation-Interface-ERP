@@ -3,14 +3,25 @@ import { backend } from "./base";
 
 export const handleCompany = {
   create: async (data: unknown) => {
-    const res = await backend.post(`/company`, data);
-    if (res.data.statusCode === 201) {
-      toast.success(res.data.message);
-      console.log(res);
-    } else {
-      toast.error(res.data.message);
-    }
-    return res;
+    const response = backend.post(`/company`, data);
+    toast.promise(
+      response,
+      {
+        loading: "Chargement",
+        success: (res) => {
+          if (res.data.success) {
+            return res.data.message;
+          }
+        },
+        error: (err) => {
+          if (!err.data.success) {
+            return err.data.message;
+          }
+        },
+      },
+      { id: "createCompany" },
+    );
+    return await response;
   },
   findAll: async () => {
     const result = backend.get("/company");
