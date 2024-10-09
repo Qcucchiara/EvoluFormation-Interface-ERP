@@ -1,59 +1,37 @@
-import toast from "react-hot-toast";
 import { backend } from "./base";
+import handleStatusToaster from "@/utils/handleStatusToaster";
 
 export const handleModule = {
-  create: async (data: unknown) => {
-    // data.duration = data.duration + "";
-    const result = backend.post(`/module`, data);
-    toast.promise(
-      result,
-      {
-        loading: "Envoie du formulaire",
-        success: (res) => res.data.message,
-        error: (err) => err.data.message,
-      },
-      { id: "createModule" },
-    );
-    return await result;
+  create: async (data: any) => {
+    delete data.speciality_bpf_id; //TODO: TEMPORAIRE
+    delete data.objective_bpf_id;
+    const response = backend.post(`/module`, data);
+    handleStatusToaster(response, "createModule");
+
+    return await response;
   },
   findAll: async () => {
-    const result = backend.get("/module");
-    toast.promise(
-      result,
-      {
-        loading: "Chargement de la liste des modules",
-        success: (res) => res.data.message,
-        error: (err) => err.data.message,
-      },
-      { id: "findAllModules" },
-    );
+    const response = backend.get("/module");
+    handleStatusToaster(response, "findAllModules");
 
-    return await result;
+    return await response;
   },
   findOne: async (id: string) => {
-    return backend.get(`/module/${id}`);
+    const response = backend.get(`/module/${id}`);
+    handleStatusToaster(response, "findOneModule");
+
+    return await response;
   },
   update: async (id: string, data: unknown) => {
-    const result = backend.patch(`/module/${id}`, data);
-    toast.promise(
-      result,
-      {
-        loading: "Chargement de la liste des entreprises",
-        success: "Liste chargée correctement",
-        error: "Erreur dans le chargement de la liste",
-      },
-      { id: "findAllCompanies" },
-    );
-    return await result;
+    const response = backend.patch(`/module/${id}`, data);
+    handleStatusToaster(response, "updateModule");
+
+    return await response;
   },
   remove: async (id: string) => {
-    const res = await backend.delete(`/module/${id}`);
-    if (res.status !== 200) {
-      toast.error(res.data.message);
-    } else {
-      toast.success(res.data.message);
-    }
+    const response = backend.delete(`/module/${id}`);
+    handleStatusToaster(response, "remoceModule");
 
-    return res;
+    return response;
   },
 };

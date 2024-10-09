@@ -1,6 +1,5 @@
 "use client";
 import { useEffect, useState } from "react";
-import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -25,13 +24,10 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { instructor, moduleForm } from "@/app/utils/type";
+import { moduleForm } from "@/app/utils/type";
 import { schemaModule } from "@/validator/ModuleValidtor";
 import { yupResolver } from "@hookform/resolvers/yup";
 import InputCheckbox from "@/components/Composites/InputCheckbox";
-import { string } from "yup";
-import { MinusIcon, PlusIcon } from "@radix-ui/react-icons";
-import { InputNumber } from "@/components/Composites/InputNumber";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { handleModule } from "@/services/EvoluFormationAPI/handleModule";
 

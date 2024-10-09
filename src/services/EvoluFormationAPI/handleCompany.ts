@@ -1,56 +1,35 @@
-import toast from "react-hot-toast";
 import { backend } from "./base";
+import handleStatusToaster from "@/utils/handleStatusToaster";
 
 export const handleCompany = {
   create: async (data: unknown) => {
     const response = backend.post(`/company`, data);
-    toast.promise(
-      response,
-      {
-        loading: "Chargement",
-        success: (res) => {
-          if (res.data.success) {
-            return res.data.message;
-          }
-        },
-        error: (err) => {
-          if (!err.data.success) {
-            return err.data.message;
-          }
-        },
-      },
-      { id: "createCompany" },
-    );
+    handleStatusToaster(response, "createCompany");
+
     return await response;
   },
   findAll: async () => {
-    const result = backend.get("/company");
-    toast.promise(
-      result,
-      {
-        loading: "Chargement de la liste des entreprises",
-        success: "Liste chargée correctement",
-        error: "Erreur dans le chargement de la liste",
-      },
-      { id: "findAllCompanies" },
-    );
+    const response = backend.get("/company");
+    handleStatusToaster(response, "findAllCompanies");
 
-    return await result;
+    return await response;
   },
-  findOne: (id: string) => {
-    return backend.get(`/company/${id}`);
+  findOne: async (id: string) => {
+    const response = backend.get(`/company/${id}`);
+    handleStatusToaster(response, "findOneCompany");
+
+    return await response;
   },
-  update: (id: string, data: unknown) => {
-    return backend.patch(`/company/${id}`, data);
+  update: async (id: string, data: unknown) => {
+    const response = backend.patch(`/company/${id}`, data);
+    handleStatusToaster(response, "updateCompany");
+
+    return await response;
   },
   remove: async (id: string) => {
-    const res = await backend.delete(`/company/${id}`);
-    if (res.status !== 200) {
-      toast.error(res.data.message);
-    } else {
-      toast.success(res.data.message);
-    }
+    const response = backend.delete(`/company/${id}`);
+    handleStatusToaster(response, "removeCompany");
 
-    return res;
+    return response;
   },
 };

@@ -50,9 +50,7 @@ export const FormProspect = ({ item }: { item?: any }) => {
       street: data.address?.street,
     };
     if (!item) {
-      await handlePerson.prospect.create(data).then((res) => {
-        console.log(res.data);
-      });
+      await handlePerson.prospect.create(data).then((res) => {});
     } else {
       await handlePerson.prospect.update(item.id, data).then((res) => {
         console.log(res.data);
@@ -75,7 +73,7 @@ export const FormProspect = ({ item }: { item?: any }) => {
   }, [company]);
 
   return (
-    <Card className="mx-auto max-h-[400px] w-full max-w-4xl overflow-y-auto overflow-x-hidden">
+    <Card className="mx-auto max-h-[518px] w-full max-w-4xl overflow-y-auto overflow-x-hidden">
       <CardHeader>
         <CardTitle>Nouveau prospect</CardTitle>
       </CardHeader>

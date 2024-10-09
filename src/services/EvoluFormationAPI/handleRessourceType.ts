@@ -1,75 +1,35 @@
-import toast from "react-hot-toast";
 import { backend } from "./base";
+import handleStatusToaster from "@/utils/handleStatusToaster";
 
 export const handleRessourceType = {
   create: async (data: unknown) => {
-    const result = backend.post("/ressource-type", data);
-    toast.promise(
-      result,
-      {
-        loading: "Envoie du formulaire",
-        success: (res) => `${res.data.message}`,
-        error: (err) =>
-          err.response.data.message
-            ? `${err.response.data.message}`
-            : "Unexpected error",
-      },
-      { id: "createRessourceType" },
-    );
-    return await result;
+    const response = backend.post("/ressource-type", data);
+    handleStatusToaster(response, "createRessourceType");
+
+    return await response;
   },
   findAll: async () => {
-    const result = backend.get("/ressource-type");
-    toast.promise(
-      result,
-      {
-        loading: "Chargement de la liste des catégories",
-        success: (res) => `${res.data.message}`,
-        error: (err) =>
-          err.data.message ? `${err.data.message}` : "Unexpected error",
-      },
-      { id: "findAllRessourceType" },
-    );
-    return await result;
+    const response = backend.get("/ressource-type");
+    handleStatusToaster(response, "findAllRessourceType");
+
+    return await response;
   },
   findOne: async (id: string) => {
-    const result = backend.get(`/ressource-type/${id}`);
-    toast.promise(
-      result,
-      {
-        loading: "",
-        success: "",
-        error: "",
-      },
-      { id: "findOneRessourceType" },
-    );
-    return await result;
+    const response = backend.get(`/ressource-type/${id}`);
+    handleStatusToaster(response, "findOneRessourceType");
+
+    return await response;
   },
   update: async (id: string, data: unknown) => {
-    const result = backend.patch(`/ressource-type/${id}`, data);
-    toast.promise(
-      result,
-      {
-        loading: "",
-        success: "",
-        error: "",
-      },
-      { id: "updateRessourceType" },
-    );
-    return await result;
+    const response = backend.patch(`/ressource-type/${id}`, data);
+    handleStatusToaster(response, "updateRessourceType");
+
+    return await response;
   },
   remove: async (id: string) => {
-    const result = backend.delete(`/ressource-type/${id}`);
-    toast.promise(
-      result,
-      {
-        loading: "Chargement",
-        success: (res) => `${res.data.message}`,
-        error: (err) =>
-          err.data.message ? `${err.data.message}` : "Unexpected error",
-      },
-      { id: "removeRessourceType" },
-    );
-    return await result;
+    const response = backend.delete(`/ressource-type/${id}`);
+    handleStatusToaster(response, "removeRessourceType");
+
+    return await response;
   },
 };
