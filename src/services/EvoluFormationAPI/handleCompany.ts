@@ -29,7 +29,6 @@ export const handleCompany = {
   remove: async (id: string) => {
     const response = backend.delete(`/company/${id}`);
     handleStatusToaster(response, "removeCompany");
-
     return response;
   },
 };

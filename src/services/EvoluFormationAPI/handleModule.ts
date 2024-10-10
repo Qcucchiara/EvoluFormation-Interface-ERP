@@ -12,6 +12,7 @@ export const handleModule = {
   },
   findAll: async () => {
     const response = backend.get("/module");
+    console.log(response);
     handleStatusToaster(response, "findAllModules");
 
     return await response;

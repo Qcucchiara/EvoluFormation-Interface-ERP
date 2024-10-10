@@ -12,6 +12,7 @@ export const handlePerson = {
     // skip: number, take: number
     findAll: async () => {
       const response = backend.get(`/prospect`);
+      console.log(response);
       handleStatusToaster(response, "findAllProspects");
 
       return await response;
