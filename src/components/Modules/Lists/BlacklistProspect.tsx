@@ -101,8 +101,7 @@ const BlacklistProspects = () => {
   });
   useEffect(() => {
     handlePerson.prospect.findAllBlacklist().then((res: any) => {
-      setListProspect(res.data.message);
-      console.log(res.data.message);
+      setListProspect(res.data.data);
     });
     setIsReloadNeeded(false);
   }, [isReloadNeeded]);

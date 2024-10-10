@@ -101,8 +101,7 @@ const ListProspects = () => {
   });
   useEffect(() => {
     handlePerson.prospect.findAll().then((res: any) => {
-      setListProspect(res.data.message);
-      console.log(res.data.message);
+      setListProspect(res.data.data);
     });
     setIsReloadNeeded(false);
   }, [isReloadNeeded]);
@@ -117,7 +116,7 @@ const ListProspects = () => {
   });
 
   const filteredData = sortedData.filter((item) =>
-    item.first_name.toLowerCase().includes(searchTerm.toLowerCase()),
+    item.first_name?.toLowerCase().includes(searchTerm.toLowerCase()),
   );
 
   const requestSort = (key: keyof DataItem) => {
