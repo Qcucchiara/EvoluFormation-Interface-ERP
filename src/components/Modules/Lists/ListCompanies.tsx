@@ -105,7 +105,7 @@ export const ListCompanies = () => {
   useEffect(() => {
     handleCompany.findAll().then((res) => {
       console.log(res);
-      setEntreprises(res.data);
+      setEntreprises(res.data.data);
 
       // ODOT: envoyer la data dans le useState "selectedEntreprise" pour afficher la liste
     });
