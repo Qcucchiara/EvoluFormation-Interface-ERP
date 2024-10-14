@@ -7,6 +7,7 @@ import toast from "react-hot-toast";
  * @param id > import an unique identifier to not permit duplicate between toasters
  * @param loadMsg > optionnal: import a string for the loading message. By default the loading return "Chargement"
  * @returns > return a promise of an AxiosResponse
+ *
  */
 export default async function handleStatusToaster(
   response: Promise<AxiosResponse<any, any>>,
@@ -31,4 +32,12 @@ export default async function handleStatusToaster(
     { id: id },
   );
   return response;
+}
+
+export function handleSucces(message?: string) {
+  return toast.success(message || "Succès");
+}
+
+export function handleError(message?: string) {
+  return toast.error(message || "Erreur");
 }
