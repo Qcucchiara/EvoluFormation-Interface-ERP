@@ -10,15 +10,7 @@ export const CommentsModule = ({ module_id }: { module_id: string }) => {
   const [categories, setCategories] = useState<any>();
 
   const getUsedCategories = async (commentList: any) => {
-    let ids: string[] = [];
-
-    commentList.map((comment: any) => {
-      if (!ids.includes(comment.category_id)) {
-        ids.push(comment.category_id);
-      }
-    });
-
-    return ids;
+    const response = await handleComment.findCategoriesFromEntity(module_id);
   };
   const getComments = async () => {
     const response = await handleComment.findAllFromEntity(module_id);
@@ -32,9 +24,9 @@ export const CommentsModule = ({ module_id }: { module_id: string }) => {
   return (
     <Tabs defaultValue="account" className="w-[400px]">
       <TabsList>
-        {categories.map((category: any) => {
+        {categories.map((category: any, index: number) => {
           return (
-            <TabsTrigger value={category.name}>
+            <TabsTrigger key={index} value={category.name}>
               {capitalizeFirstLetter(category.name.toLowerCase())}
             </TabsTrigger>
           );

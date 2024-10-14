@@ -23,7 +23,7 @@ export const LayoutEntity = (props: LayoutPropTabsAndChildrens[]) => {
       <TabsList className="mb-4">
         {props.map((prop: LayoutPropTabsAndChildrens) => {
           return (
-            <TabsTrigger value={prop.tabName}>
+            <TabsTrigger key={prop.tabName} value={prop.tabName}>
               {capitalizeFirstLetter(prop.tabName.toLowerCase())}
             </TabsTrigger>
           );
@@ -40,7 +40,11 @@ export const LayoutEntity = (props: LayoutPropTabsAndChildrens[]) => {
             <ScrollArea className="flex-1">
               {props.map((prop: LayoutPropTabsAndChildrens) => {
                 return (
-                  <TabsContent value={prop.tabName} className="h-full">
+                  <TabsContent
+                    key={prop.tabName}
+                    value={prop.tabName}
+                    className="h-full"
+                  >
                     <div className="rounded-lg bg-card p-4 shadow">
                       {prop.children}
                     </div>
