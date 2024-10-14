@@ -4,7 +4,7 @@ import { handleComment } from "@/services/EvoluFormationAPI/handleComment";
 import { capitalizeFirstLetter } from "@/utils/miscellaneous";
 import React, { useContext, useEffect, useState } from "react";
 
-export const CommentsModule = (module_id: string) => {
+export const CommentsModule = ({ module_id }: { module_id: string }) => {
   const { entityId } = useContext(ContextTemplateEntity);
   const [comments, setComments] = useState<any>();
   const [categories, setCategories] = useState<any>();

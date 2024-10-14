@@ -53,7 +53,7 @@ export const LayoutEntity = (props: LayoutPropTabsAndChildrens[]) => {
             <>
               <ResizableHandle />
               <ResizablePanel>
-                <CommentsModule></CommentsModule>
+                <CommentsModule module_id={entityId} />
               </ResizablePanel>
             </>
           )}
